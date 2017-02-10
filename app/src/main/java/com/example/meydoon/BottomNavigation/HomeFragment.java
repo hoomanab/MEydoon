@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //Bottom navigation menu configurations
+        /** Bottom navigation menu configurations*/
         bottomNavigationView = (BottomNavigationView)view.
                 findViewById(R.id.bottom_navigation);
 

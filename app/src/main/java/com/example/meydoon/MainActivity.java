@@ -107,12 +107,10 @@ public class MainActivity extends AppCompatActivity {
         //tabLayout.getTabAt(2).setIcon(tabIcons[2]);
     }
 
-
+    /** ********** If Meydoon is run for the first time, it goes to intro.xml layout ***********/
     @Override
     protected void onResume() {
         super.onResume();
-
-        /** ********** If Meydoon is run for the first time, it goes to intro.xml layout ***********/
         Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isFirstRun", true);
         if (isFirstRun) {
