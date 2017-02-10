@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Add the fragment to the 'fragment_container' FrameLayout
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.navigation_container, goToProfile).commit();
+                        .add(R.id.main_container, goToProfile).commit();
                 break;
 
             case R.id.btm_nav_notifications_inbox:
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Add the fragment to the 'fragment_container' FrameLayout
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.navigation_container, goToNotificationInbox).commit();
+                        .add(R.id.main_container, goToNotificationInbox).commit();
                 break;
 
             case R.id.btm_nav_add_item:
@@ -148,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Add the fragment to the 'fragment_container' FrameLayout
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.navigation_container, goToAddProduct).commit();
+                        .add(R.id.main_container, goToAddProduct).commit();
                 break;
 
             case R.id.btm_nav_search:
@@ -160,10 +161,25 @@ public class MainActivity extends AppCompatActivity {
 
                 // Add the fragment to the 'fragment_container' FrameLayout
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.navigation_container, gotToSearch).commit();
+                        .add(R.id.main_container, gotToSearch).commit();
                 break;
 
             case R.id.btm_nav_home:
+/*                HomeFragment goToHome = new HomeFragment();
+                Bundle homeArgs = new Bundle();
+                goToHome.setArguments(homeArgs);
+                FragmentTransaction homeTransaction = getSupportFragmentManager().beginTransaction();
+
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack so the user can navigate back
+                homeTransaction.replace(R.id.navigation_container, goToHome);
+                homeTransaction.addToBackStack(null);
+
+                // Commit the transaction
+                homeTransaction.commit();*/
+
+
                 // Create a new Fragment to be placed in the activity layout
                 HomeFragment goToHome = new HomeFragment();
 
