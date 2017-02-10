@@ -13,15 +13,25 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
+import com.example.meydoon.adapter.FeedListAdapter;
+import com.example.meydoon.data.FeedItem;
+
+import java.util.List;
 
 /**
  * Created by hooma on 2/8/2017.
  */
 public class SearchFragment extends Fragment {
+    private static final String TAG = HomeFragment.class.getSimpleName();
+    private ListView listView;
+    private FeedListAdapter listAdapter;
+    private List<FeedItem> feedItems;
+    private String URL_FEED = "http://api.androidhive.info/feed/feed.json";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
