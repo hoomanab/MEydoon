@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.meydoon.BottomNavigation.HomeFragment;
+import com.example.meydoon.BottomNavigation.SearchFragment;
 import com.example.meydoon.BottomNavigationViewHelper;
 import com.example.meydoon.R;
 
@@ -42,7 +43,7 @@ public class BottomNavigationTabFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+/*
 
         //Bottom navigation menu configurations
         bottomNavigationView = (BottomNavigationView)view.
@@ -72,6 +73,19 @@ public class BottomNavigationTabFragment extends Fragment {
                 break;
             case R.id.btm_nav_search:
 
+                SearchFragment gotToSearch = new SearchFragment();
+                Bundle args = new Bundle();
+                gotToSearch.setArguments(args);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack so the user can navigate back
+                transaction.replace(R.id.navigation_container, gotToSearch);
+                transaction.addToBackStack(null);
+
+                // Commit the transaction
+                transaction.commit();
                 break;
             case R.id.btm_nav_home:
 
@@ -90,6 +104,7 @@ public class BottomNavigationTabFragment extends Fragment {
                 transaction.commit();
                 break;
         }
+        */
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.meydoon;
 
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
@@ -9,11 +10,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.meydoon.BottomNavigation.AddProductFragment;
 import com.example.meydoon.BottomNavigation.HomeFragment;
+import com.example.meydoon.BottomNavigation.NotificationsInboxFragment;
+import com.example.meydoon.BottomNavigation.ProfileFragment;
+import com.example.meydoon.BottomNavigation.SearchFragment;
 import com.example.meydoon.Intro.IntroFragment;
 import com.example.meydoon.Intro.UserSignUpActivity;
 import com.example.meydoon.mainTabs.BottomNavigationTabFragment;
@@ -66,6 +72,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /** Bottom navigation menu configurations*/
+        bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                bottomNavSelectedItem(item);
+                return true;
+            }
+        });
+
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+
 
         /** Initialize Home Fragment */
         // Check that the activity is using the layout version with
@@ -91,6 +111,71 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.main_container, goToHome).commit();
         }
 
+    }
+
+    public void bottomNavSelectedItem(MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.btm_nav_profile:
+                ProfileFragment goToProfile = new ProfileFragment();
+
+                // In case this activity was started with special instructions from an
+                // Intent, pass the Intent's extras to the fragment as arguments
+                goToProfile.setArguments(getIntent().getExtras());
+
+                // Add the fragment to the 'fragment_container' FrameLayout
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.navigation_container, goToProfile).commit();
+                break;
+
+            case R.id.btm_nav_notifications_inbox:
+                NotificationsInboxFragment goToNotificationInbox = new NotificationsInboxFragment();
+
+                // In case this activity was started with special instructions from an
+                // Intent, pass the Intent's extras to the fragment as arguments
+                goToNotificationInbox.setArguments(getIntent().getExtras());
+
+                // Add the fragment to the 'fragment_container' FrameLayout
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.navigation_container, goToNotificationInbox).commit();
+                break;
+
+            case R.id.btm_nav_add_item:
+                AddProductFragment goToAddProduct = new AddProductFragment();
+
+                // In case this activity was started with special instructions from an
+                // Intent, pass the Intent's extras to the fragment as arguments
+                goToAddProduct.setArguments(getIntent().getExtras());
+
+                // Add the fragment to the 'fragment_container' FrameLayout
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.navigation_container, goToAddProduct).commit();
+                break;
+
+            case R.id.btm_nav_search:
+                SearchFragment gotToSearch = new SearchFragment();
+
+                // In case this activity was started with special instructions from an
+                // Intent, pass the Intent's extras to the fragment as arguments
+                gotToSearch.setArguments(getIntent().getExtras());
+
+                // Add the fragment to the 'fragment_container' FrameLayout
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.navigation_container, gotToSearch).commit();
+                break;
+
+            case R.id.btm_nav_home:
+                // Create a new Fragment to be placed in the activity layout
+                HomeFragment goToHome = new HomeFragment();
+
+                // In case this activity was started with special instructions from an
+                // Intent, pass the Intent's extras to the fragment as arguments
+                goToHome.setArguments(getIntent().getExtras());
+
+                // Add the fragment to the 'fragment_container' FrameLayout
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.main_container, goToHome).commit();
+                break;
+        }
     }
 
     private void setupViewPager(ViewPager viewPager) {

@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.meydoon.BottomNavigationViewHelper;
+import com.example.meydoon.Intro.IntroFragment;
 import com.example.meydoon.R;
 import com.example.meydoon.adapter.FeedListAdapter;
 import com.example.meydoon.app.AppController;
@@ -62,19 +63,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        /** Bottom navigation menu configurations*/
-        bottomNavigationView = (BottomNavigationView)view.
-                findViewById(R.id.bottom_navigation);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                bottomNavSelectedItem(item);
-                return true;
-            }
-        });
-
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
         listView = (ListView)view.findViewById(R.id.list);
 
@@ -133,38 +122,7 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public void bottomNavSelectedItem(MenuItem item){
-        switch (item.getItemId()) {
-            case R.id.btm_nav_profile:
-                // =========================> Do sth like MenuFragment <=========================
-                break;
-            case R.id.btm_nav_notifications_inbox:
 
-                break;
-            case R.id.btm_nav_add_item:
-
-                break;
-            case R.id.btm_nav_search:
-
-                break;
-            case R.id.btm_nav_home:
-
-                HomeFragment goToHome = new HomeFragment();
-                Bundle args = new Bundle();
-                goToHome.setArguments(args);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                transaction.replace(R.id.navigation_container, goToHome);
-                transaction.addToBackStack(null);
-
-                // Commit the transaction
-                transaction.commit();
-                break;
-        }
-    }
 
     /**
      * Parsing json reponse and passing the data to feed view list adapter
