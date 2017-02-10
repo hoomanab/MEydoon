@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
 
-        /** Initialize Home Fragment */
+        /** Initialize Home Fragment
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout
         if (findViewById(R.id.main_container) != null) {
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             // Add the fragment to the 'fragment_container' FrameLayout
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.main_container, goToHome).commit();
-        }
+        }*/
 
     }
 

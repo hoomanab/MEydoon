@@ -4,18 +4,53 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/meydoonRed">
+    android:background="@color/feed_bg">
+
+    <!-- Editext for Search -->
+    <RelativeLayout
+        android:id="@+id/search_box_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
 
-    <TextView
+        <EditText android:id="@+id/inputSearch"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search"
+            android:imeOptions="actionSearch"
+            android:gravity="center_horizontal"
+            android:drawableRight="@android:drawable/ic_menu_search"
+            android:inputType="text"
+            android:paddingTop="10dp"
+            android:background="@drawable/bg_parent_rounded_corner" />
+    </RelativeLayout>
+
+
+
+    <!-- List View -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello, world!"
-        android:background=""/>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/ic_meydoon_tab"/>
+        android:layout_height="fill_parent"
+        android:layout_below="@id/search_box_container"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="نتایج جستجو"
+            android:paddingRight="10dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginBottom="5dp"/>
+        <ListView
+            android:id="@+id/search_result_list_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
    <!-- <ListView
         android:id="@+id/list"
         android:layout_width="fill_parent"

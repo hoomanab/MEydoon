@@ -5,10 +5,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
@@ -17,6 +22,7 @@ import com.example.meydoon.R;
  * Created by hooma on 2/8/2017.
  */
 public class SearchFragment extends Fragment {
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +56,19 @@ public class SearchFragment extends Fragment {
         ((MainActivity)getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
         ((MainActivity)getActivity()).getSupportActionBar().setCustomView(R.layout.search_actionbar);
+
+
+        EditText search = (EditText)view.findViewById(R.id.inputSearch);
+        search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    /******************************************performSearch();**************************/
+                    return true;
+                }
+                return false;
+            }
+        });
 
     }
 }
