@@ -31,9 +31,9 @@ public class ShopSearchResultListAdapter extends BaseAdapter {
     private List<SearchItem> searchItems;
     ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
-    public ShopSearchResultListAdapter(Activity activity, List<SearchItem> feedItems) {
+    public ShopSearchResultListAdapter(Activity activity, List<SearchItem> searchItems) {
         this.activity = activity;
-        this.searchItems = feedItems;
+        this.searchItems = searchItems;
     }
 
 

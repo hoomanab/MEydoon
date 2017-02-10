@@ -47,7 +47,7 @@ public class SearchFragment extends Fragment {
     private List<SearchItem> searchItems;
 
 
-    private String URL_SHOP_SEARCH = "https://api.myjson.com/bins/wg40t";
+    private String URL_SHOP_SEARCH = "https://api.myjson.com/bins/1a36c9";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

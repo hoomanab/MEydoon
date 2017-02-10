@@ -64,7 +64,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         /** Custom Action Bar*/
         ((MainActivity)getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);

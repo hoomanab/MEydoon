@@ -144,8 +144,7 @@
                 android:scaleType="fitCenter"
                 android:layout_gravity="right"
                 android:gravity="right"
-                android:src="@drawable/ic_profile"
-                android:background="@color/gray">
+                android:src="@drawable/ic_profile">
             </com.android.volley.toolbox.NetworkImageView>
 
 
