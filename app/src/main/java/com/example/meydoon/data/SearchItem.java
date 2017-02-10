@@ -21,51 +21,51 @@ public class SearchItem {
         this.shopUrl = shopUrl;
     }
 
-    public int getId() {
+    public int getShopId() {
         return shopId;
     }
 
-    public void setId(int id) {
+    public void setShopId(int id) {
         this.shopId = shopId;
     }
 
-    public String getName() {
+    public String getShopName() {
         return shopName;
     }
 
-    public void setName(String name) {
+    public void setShopName(String name) {
         this.shopName = shopName;
     }
 
-    public String getImge() {
+    public String getShopCategory() {
         return shopCategory;
     }
 
-    public void setImge(String image) {
+    public void setShopCategory(String image) {
         this.shopCategory = shopCategory;
     }
 
-    public String getStatus() {
+    public String getShopProfilePic() {
         return shopProfilePic;
     }
 
-    public void setStatus(String status) {
+    public void setShopProfilePic(String status) {
         this.shopProfilePic = shopProfilePic;
     }
 
-    public String getProfilePic() {
+    public String getShopCity() {
         return shopCity;
     }
 
-    public void setProfilePic(String profilePic) {
+    public void setShopCity(String profilePic) {
         this.shopCity = shopCity;
     }
 
-    public String getTimeStamp() {
+    public String getShopUrl() {
         return shopUrl;
     }
 
-    public void setTimeStamp(String timeStamp) {
+    public void setShopUrl(String timeStamp) {
         this.shopUrl = shopUrl;
     }
 

@@ -1,0 +1,61 @@
+{
+    "search": [
+        {
+            "shopId": 1,
+            "shopName": "???????????",
+            "shopCategory": "?????",
+            "shopProfilePic": "http://api.androidhive.info/feed/img/nat.jpg",
+            "shopCity": "?????",
+            "shopUrl": null
+        },
+        {
+            "shopId": 2,
+            "shopName": "?????",
+            "shopCategory": "?????",
+            "shopProfilePic": "http://api.androidhive.info/feed/img/nat.jpg",
+            "shopCity": "?????",
+            "shopUrl": null
+        },
+        {
+            "shopId": 3,
+            "shopName": "?????",
+            "shopCategory": "?????",
+            "shopProfilePic": "http://api.androidhive.info/feed/img/nat.jpg",
+            "shopCity": "?????",
+            "shopUrl": null
+        },
+        {
+            "shopId": 3,
+            "shopName": "?????",
+            "shopCategory": "????? ?????????",
+            "shopProfilePic": "http://api.androidhive.info/feed/img/nat.jpg",
+            "shopCity": "?????",
+            "shopUrl": null
+        },
+        {
+            "shopId": 4,
+            "shopName": "?? ?? ???????",
+            "shopCategory": "?????",
+            "shopProfilePic": "http://api.androidhive.info/feed/img/nat.jpg",
+            "shopCity": "?????",
+            "shopUrl": null
+        },
+        {
+            "shopId": 5,
+            "shopName": "?????",
+            "shopCategory": "???????",
+            "shopProfilePic": "http://api.androidhive.info/feed/img/nat.jpg",
+            "shopCity": "?????",
+            "shopUrl": null
+        },
+        {
+            "shopId": 6,
+            "shopName": "????",
+            "shopCategory": "?????",
+            "shopProfilePic": "http://api.androidhive.info/feed/img/nat.jpg",
+            "shopCity": "?????",
+            "shopUrl": null
+        }
+        
+    ]
+}

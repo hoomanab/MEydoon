@@ -23,7 +23,8 @@
             android:drawableRight="@android:drawable/ic_menu_search"
             android:inputType="text"
             android:paddingTop="10dp"
-            android:background="@drawable/bg_parent_rounded_corner" />
+            android:background="@drawable/bg_parent_rounded_corner"
+            android:textColor="@color/gray_btm_nav_bar_icon"/>
     </RelativeLayout>
 
 
@@ -45,7 +46,7 @@
             android:textSize="20sp"
             android:layout_marginBottom="5dp"/>
         <ListView
-            android:id="@+id/search_result_list_view"
+            android:id="@+id/shop_search_result_list_view"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
