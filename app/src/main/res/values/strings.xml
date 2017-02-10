@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Meydoon</string>
+    <string name="profile_text">پروفایل</string>
+    <string name="notification_text">اعلانها</string>
+    <string name="add_product_text">افزودن محصول</string>
+    <string name="search_text">جستجو</string>
+    <string name="home_text">خانه</string>
+    <string name="btn_sign_in_text">ورود</string>
+    <string name="btn_sign_up_text">ثبت نام</string>
+    <string name="btn_guest_signin_text">ورود به عنوان مهمان</string>
+    <string name="input_username">شماره تلفن همراه</string>
+    <string name="input_password">کلمه عبور</string>
+    <string name="text_password_recovery">کلمه عبورت یادت نمیاد؟ اینجا رو بزن</string>
+    <string name="text_sign_up">عضو میدون نیستی؟ از اینجا ثبت نام کن</string>
+    <string name="txt_sign_up_later">میخوای بعدا ثبت نام کنی؟</string>
+    <string name="btn_guest_enter">ورود مهمان</string>
+    <string name="txt_sign_up_header">ثبت نام</string>
+    <string name="set_profile_pic">انتخاب تصویر پروفایل</string>
+    <string name="txt_back">بازگشت</string>
+    <string name="name">نام</string>
+    <string name="txt_abort_sign_up">لغو ثبت نام</string>
+    <string name="next">بعدی</string>
+    <string name="mobile_phone_hint">0912 222 2222</string>
+    <string name="shop_sign_in_message">برای ورود به فروشگاه، نام کاربری و کلمه عبورتون رو وارد کنید!</string>
+    <string name="create_a_shop">فروشگاه نداری؟ بیا یکی بساز!</string>
+    <string name="txt_set_shop_profile">انتخاب تصویر نماد فروشگاه</string>
+    <string name="shop_name">نام فروشگاه</string>
+    <string name="shop_category">زمینه کاری</string>
+    <string name="city">شهر</string>
+    <string name="address">آدرس</string>
+    <string name="submit_shop">ایجاد فروشگاه</string>
+    <string name="abort">لغو</string>
+    <string name="description">توضیحات</string>
+</resources>

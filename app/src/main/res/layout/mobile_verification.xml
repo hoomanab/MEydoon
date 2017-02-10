@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+
+
+
+        <!--  Header Starts-->
+        <RelativeLayout android:id="@+id/header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/meydoonRed">
+
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dip"
+                android:paddingBottom="15dip"
+                android:text="@string/txt_sign_up_header"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+        <!--  Header Ends -->
+
+        <!-- Login Form -->
+        <LinearLayout
+            android:id="@+id/register_main"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="215dip"
+            android:padding="10dip"
+            android:layout_below="@id/header">
+
+
+            <!--  Name Label -->
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="یک کد 6 رقمی براتون پیامک شد. اون کد رو در کادر زیر وارد کنید!"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
+            <EditText
+                android:id="@+id/txt_set_verification_code"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="10dip"
+                android:singleLine="true"
+                android:background="@color/gray"
+                android:maxLength="6"/>
+
+            <!-- Register button -->
+            <Button
+                style="@style/Btn"
+                android:id="@+id/btn_go_to_submit_page"
+                android:layout_marginTop="20dip"
+                android:text="@string/next"
+                android:background="@color/greenSignIn"/>
+
+
+            <TextView
+                android:id="@+id/link_resend_verification_code"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dip"
+                android:text="کد به دستتون نرسید؟ اینجا روبزنید!"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/blue" />
+
+
+
+
+
+        </LinearLayout>
+        <!-- Login Form Ends -->
+
+
+        <!-- Footer Starts -->
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+
+            android:background="@color/gray">
+
+            <!-- Text for Guest Enter -->
+            <TextView android:id="@+id/txt_back_to_phone_verification"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dip"
+
+                android:text="@string/txt_back"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/blue" />
+
+
+
+
+        </LinearLayout>
+
+        <!-- Footer Ends -->
+
+
+    </RelativeLayout>
+</ScrollView>

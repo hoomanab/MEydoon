@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.TransNav" parent="AppTheme">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="MainTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/meydoonRed</item>
+        <item name="colorPrimaryDark">@color/meydoonRed</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:navigationBarColor">@color/material_grey_300</item>
+        <item name="colorAccent">@color/greenSignIn</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+
+
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+    </style>
+
+</resources>

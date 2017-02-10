@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:background="#ffffff">
+
+        <!--  Header Starts-->
+        <RelativeLayout android:id="@+id/header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/meydoonRed">
+
+
+
+            <!--<TextView android:id="@+id/txt_register"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dip"
+                android:paddingBottom="15dip"
+                android:text="@string/txt_sign_up_header"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:textColor="@color/white" />-->
+        </RelativeLayout>
+        <!--  Header Ends -->
+
+        <!-- Setting Profile -->
+        <RelativeLayout
+            android:id="@+id/set_profile_pic"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:layout_marginTop="80dip">
+
+            <!-- Set Profile Pic Start-->
+            <ImageView android:src="@drawable/default_profile"
+                android:id="@+id/user_sing_up_profile_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <!-- Set Profile Pic Link -->
+            <TextView android:id="@+id/txt_set_profile_pic"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/set_profile_pic"
+                android:layout_marginTop="5dip"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/blue"
+                android:layout_below="@+id/user_sing_up_profile_pic"/>
+
+        </RelativeLayout>
+
+
+        <!-- Login Form -->
+        <LinearLayout
+            android:id="@+id/register_main"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:layout_below="@id/set_profile_pic">
+
+
+            <!--  Name Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip"
+                android:textColor="#372c24"
+                android:text="@string/name"/>
+            <EditText
+                android:id="@+id/txt_set_name"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="10dip"
+                android:gravity="right"
+                android:singleLine="true"
+                android:background="@color/gray"
+                android:textColor="@color/black"/>
+
+
+            <!--  Password Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dip"
+                android:textColor="#372c24"
+                android:text="@string/input_password"/>
+            <EditText
+                android:id="@+id/txt_set_password"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="5dip"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:password="true"
+                android:background="@color/gray"
+                android:gravity="right"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+
+
+        <!-- Register button -->
+        <LinearLayout
+            android:id="@+id/register_buttons"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:layout_below="@+id/register_main">
+
+            <Button
+                style="@style/Btn"
+                android:id="@+id/btn_sign_up"
+                android:layout_marginTop="50dip"
+                android:text="@string/btn_sign_up_text"
+                android:background="@color/greenSignIn"/>
+
+            <!-- Abort button -->
+            <Button
+                style="@style/Btn"
+                android:id="@+id/btn_abort_sign_up"
+                android:layout_marginTop="10dip"
+                android:text="@string/txt_abort_sign_up"
+                android:background="@color/meydoonRed" />
+        </LinearLayout>
+
+
+
+
+
+        <!-- Login Form Ends -->
+
+
+        <!-- Footer Starts
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+
+            android:background="@color/gray">
+
+            Text for Guest Enter
+            <TextView android:id="@+id/txt_back_to_intro"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dip"
+
+                android:text="@string/txt_back"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/blue"
+                />
+
+
+
+
+        </LinearLayout>-->
+
+        <!-- Footer Ends -->
+
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/feed_bg"
+    android:layout_gravity="right"
+    android:gravity="right">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="@dimen/feed_item_margin"
+        android:layout_marginRight="@dimen/feed_item_margin"
+        android:layout_marginTop="@dimen/feed_item_margin"
+        android:background="@drawable/bg_parent_rounded_corner"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/feed_item_padding_top_bottom"
+        android:paddingTop="@dimen/feed_item_padding_top_bottom"
+        android:layout_gravity="right"
+        android:gravity="right">
+
+        <!-- profile pic, name and date -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/feed_item_padding_left_right"
+            android:paddingRight="@dimen/feed_item_padding_left_right"
+            android:layout_gravity="right"
+            android:gravity="right">
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingRight="@dimen/feed_item_profile_info_padd"
+                android:layout_gravity="right"
+                android:gravity="right">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/feed_item_profile_name"
+                    android:textStyle="bold"
+                    android:layout_gravity="right"
+                    android:gravity="right"/>
+
+                <TextView
+                    android:id="@+id/timestamp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/timestamp"
+                    android:textSize="@dimen/feed_item_timestamp"
+                    android:layout_gravity="right"
+                    android:gravity="right"/>
+                <TextView
+                    android:id="@+id/feed_item_city"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/timestamp"
+                    android:textSize="@dimen/feed_item_timestamp"
+                    android:textStyle="bold"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:text="شهر"/>
+
+            </LinearLayout>
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/profilePic"
+                android:layout_width="@dimen/feed_item_profile_pic"
+                android:layout_height="@dimen/feed_item_profile_pic"
+                android:scaleType="fitCenter"
+                android:layout_gravity="right"
+                android:gravity="right">
+            </com.android.volley.toolbox.NetworkImageView>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txt_product_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/feed_item_product_title"
+            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+            android:paddingRight="@dimen/feed_item_status_pad_left_right"
+            android:paddingTop="@dimen/feed_item_status_pad_top"
+            android:textStyle="bold"
+            android:gravity="right"
+            android:text="عنوان محصول"/>
+        <!-- Message of the feed-->
+        <TextView
+            android:id="@+id/txtStatusMsg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+            android:paddingRight="@dimen/feed_item_status_pad_left_right"
+            android:layout_gravity="right"
+            android:gravity="right"/>
+
+        <!-- URL
+        <TextView
+            android:id="@+id/txtUrl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:linksClickable="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+            android:paddingRight="@dimen/feed_item_status_pad_left_right"
+            android:textColorLink="@color/link"
+            android:layout_gravity="right"/>-->
+        <!-- The Feed image -->
+        <com.example.meydoon.FeedImageView
+            android:id="@+id/feedImage1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:scaleType="fitXY"
+            android:visibility="visible"
+            android:layout_gravity="right" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+            android:paddingRight="@dimen/feed_item_status_pad_left_right">
+            <Button
+                android:id="@+id/btn_feed_details"
+                android:layout_width="@dimen/feed_item_button_width"
+                android:layout_height="@dimen/feed_item_button_height"
+                android:background="@color/meydoonRed"
+                android:text="مشاهده جزئیات"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/feed_price"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:textSize="@dimen/feed_item_profile_name"
+                android:textStyle="bold"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="100000 تومان"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

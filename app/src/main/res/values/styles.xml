@@ -1,0 +1,75 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+
+    <style name="AppTheme.TransNav" parent="AppTheme" />
+<!--
+    <style name="MainTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/meydoonRed</item>
+        <item name="colorPrimaryDark">@color/meydoonRed</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="colorAccent">@color/greenSignIn</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+-->
+    <style name="Btn">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="EditText">
+        <item name="android:layout_height">40dip</item>
+        <item name="android:layout_marginTop">5dip</item>
+        <item name="android:background">@color/gray</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">#aaaaaa</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+    </style>
+
+
+
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base"/>
+
+
+
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/meydoonRed</item>
+        <item name="colorPrimaryDark">@color/meydoonRed</item>
+        <item name="colorAccent">@color/meydoonRed</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+    </style>
+
+    <style name="CustomTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/meydoonRed</item>
+        <item name="colorPrimaryDark">@color/meydoonRed</item>
+        <item name="colorAccent">@color/meydoonRed</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+    </style>
+
+
+
+
+</resources>
