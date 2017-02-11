@@ -7,12 +7,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,6 +25,7 @@ import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.adapter.ShopSearchResultListAdapter;
 import com.example.meydoon.app.AppController;
+import com.example.meydoon.data.FeedItem;
 import com.example.meydoon.data.SearchItem;
 
 import org.json.JSONArray;
@@ -47,7 +47,7 @@ public class SearchFragment extends Fragment {
     private List<SearchItem> searchItems;
 
 
-    private String URL_SHOP_SEARCH = "https://api.myjson.com/bins/1a36c9";
+    private String URL_SHOP_SEARCH = "https://api.myjson.com/bins/q9p5l";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,34 +77,14 @@ public class SearchFragment extends Fragment {
 
     @SuppressLint("NewApi")
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         /** Custom Action Bar*/
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
         ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.search_actionbar);
-        /** Search box **/
-        final EditText search = (EditText) view.findViewById(R.id.inputSearch);
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                String results = search.getText().toString().toLowerCase(Locale.getDefault());
-
-            }
-        });
-
-
-/*
+        /*
         search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
@@ -118,14 +98,123 @@ public class SearchFragment extends Fragment {
         });
 */
 
-        listView = (ListView) view.findViewById(R.id.shop_search_result_list_view);
 
+
+
+
+
+        //shopSearchResultListAdapter = new ShopSearchResultListAdapter(getActivity(), searchItems);
+
+
+        // We first check for cached request
+        //Cache cache = AppController.getInstance().getRequestQueue().getCache();
+        //Cache.Entry entry = cache.get(URL_SHOP_SEARCH);
+        /*if (entry != null) {
+            // fetch the data from cache
+            try {
+                String data = new String(entry.data, "UTF-8");
+                try {
+                    parseJsonShopSearch(new JSONObject(data));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            // making fresh volley request and getting json
+            JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
+                    URL_SHOP_SEARCH, null, new Response.Listener<JSONObject>() {
+
+                @Override
+                public void onResponse(JSONObject response) {
+                    VolleyLog.d(TAG, "Response: " + response.toString());
+                    if (response != null) {
+                        parseJsonShopSearch(response);
+                    }
+                }
+            }, new Response.ErrorListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    VolleyLog.d(TAG, "Error: " + error.getMessage());
+                }
+            });
+
+            // Adding request to volley request queue
+            AppController.getInstance().addToRequestQueue(jsonReq);*/
+        //}
+        listView = (ListView) view.findViewById(R.id.shop_search_result_list_view);
         searchItems = new ArrayList<SearchItem>();
 
-
         shopSearchResultListAdapter = new ShopSearchResultListAdapter(getActivity(), searchItems);
-        listView.setAdapter(shopSearchResultListAdapter);
 
+        JsonReq();
+        /** Search box **/
+        final EditText search = (EditText) view.findViewById(R.id.inputSearch);
+        if(search.getText().length() >= 3){
+
+        }
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                ShopSearchResultListAdapter filteredAdapter = shopSearchResultListAdapter;
+
+                filteredAdapter.getFilter().filter(charSequence);
+                //shopSearchResultListAdapter = new ShopSearchResultListAdapter(getActivity(), searchItems);
+
+                listView.setAdapter(shopSearchResultListAdapter);
+
+
+                //shopSearchResultListAdapter = new ShopSearchResultListAdapter(getActivity(), searchItems);
+                //listView.setAdapter(shopSearchResultListAdapter);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+
+            }
+        });
+        search.removeTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+    }
+
+
+    public void JsonReq(){
+
+        //final String cs = charSequence.toString().toLowerCase();
+        //ArrayList<SearchItem> filteredItem = shopSearchResultListAdapter.getFilter(charSequence);
+        //shopSearchResultListAdapter = new ShopSearchResultListAdapter(getActivity(), filteredItem);
         // We first check for cached request
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
         Cache.Entry entry = cache.get(URL_SHOP_SEARCH);
@@ -165,32 +254,36 @@ public class SearchFragment extends Fragment {
             // Adding request to volley request queue
             AppController.getInstance().addToRequestQueue(jsonReq);
         }
-
     }
 
 
 
     /**
-     * Parsing json reponse and passing the data to shop search results view list adapter
+     * Parsing json reponse and passing the data to feed view list adapter
      * */
     private void parseJsonShopSearch(JSONObject response) {
         try {
-            JSONArray shopResultSearchArray = response.getJSONArray("shopSearch");
+            JSONArray shopSearchArray = response.getJSONArray("search");
 
-            for (int i = 0; i < shopResultSearchArray.length(); i++) {
-                JSONObject shopSearchObject = (JSONObject) shopResultSearchArray.get(i);
+            for (int i = 0; i < shopSearchArray.length(); i++) {
+                JSONObject shopSearchObj = (JSONObject) shopSearchArray.get(i);
 
-                SearchItem item = new SearchItem();
-                item.setShopId(shopSearchObject.getInt("shopId"));
-                item.setShopName(shopSearchObject.getString("shopName"));
-                item.setShopCategory(shopSearchObject.getString("shopCategory"));
-                item.setShopProfilePic(shopSearchObject.getString("shopProfilePic"));
-                item.setShopCity(shopSearchObject.getString("shopCity"));
+                SearchItem item = new SearchItem(shopSearchObj.getInt("shopId"), shopSearchObj.getString("shopName"), shopSearchObj.getString("shopCategory"), shopSearchObj.getString("shopProfilePic"), shopSearchObj.getString("shopCity"), shopSearchObj
+                        .getString("shopUrl"));
+                /*item.setShopCategory(shopSearchObj.getString("shopCategory"));
+                item.setShopId(shopSearchObj.getInt("shopId"));
+
+                item.setShopName(shopSearchObj.getString("shopName"));
+
+                System.out.println("اینجا!");
+
+                item.setShopProfilePic(shopSearchObj.getString("shopProfilePic"));
+                item.setShopCity(shopSearchObj.getString("shopCity"));
 
                 // url might be null sometimes
-                String shopSearchUrl = shopSearchObject.isNull("shopUrl") ? null : shopSearchObject
-                        .getString("shopUrl");
-                item.setShopUrl(shopSearchUrl);
+                String shopUrl = shopSearchObj.isNull("shopUrl") ? null : shopSearchObj
+                        .getString("url");
+                item.setShopUrl(shopUrl);*/
 
                 searchItems.add(item);
             }

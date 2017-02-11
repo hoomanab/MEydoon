@@ -25,7 +25,7 @@ public class SearchItem {
         return shopId;
     }
 
-    public void setShopId(int id) {
+    public void setShopId(int shopId) {
         this.shopId = shopId;
     }
 
@@ -33,7 +33,7 @@ public class SearchItem {
         return shopName;
     }
 
-    public void setShopName(String name) {
+    public void setShopName(String shopName) {
         this.shopName = shopName;
     }
 
@@ -41,7 +41,7 @@ public class SearchItem {
         return shopCategory;
     }
 
-    public void setShopCategory(String image) {
+    public void setShopCategory(String shopCategory) {
         this.shopCategory = shopCategory;
     }
 
@@ -49,7 +49,7 @@ public class SearchItem {
         return shopProfilePic;
     }
 
-    public void setShopProfilePic(String status) {
+    public void setShopProfilePic(String shopProfilePic) {
         this.shopProfilePic = shopProfilePic;
     }
 
@@ -57,7 +57,7 @@ public class SearchItem {
         return shopCity;
     }
 
-    public void setShopCity(String profilePic) {
+    public void setShopCity(String shopCity) {
         this.shopCity = shopCity;
     }
 
@@ -65,7 +65,7 @@ public class SearchItem {
         return shopUrl;
     }
 
-    public void setShopUrl(String timeStamp) {
+    public void setShopUrl(String shopUrl) {
         this.shopUrl = shopUrl;
     }
 
