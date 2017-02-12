@@ -84,6 +84,7 @@ public class SearchFragment extends Fragment {
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
         ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.search_actionbar);
 
+
         /*
         search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -177,7 +178,7 @@ public class SearchFragment extends Fragment {
                 filteredAdapter.getFilter().filter(charSequence);
                 //shopSearchResultListAdapter = new ShopSearchResultListAdapter(getActivity(), searchItems);
 
-                listView.setAdapter(shopSearchResultListAdapter);
+                listView.setAdapter(filteredAdapter);
 
 
                 //shopSearchResultListAdapter = new ShopSearchResultListAdapter(getActivity(), searchItems);

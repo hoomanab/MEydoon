@@ -75,7 +75,8 @@
                 android:layout_height="@dimen/feed_item_profile_pic"
                 android:scaleType="fitCenter"
                 android:layout_gravity="right"
-                android:gravity="right">
+                android:gravity="right"
+                android:src="@drawable/default_shop">
             </com.android.volley.toolbox.NetworkImageView>
         </LinearLayout>
 

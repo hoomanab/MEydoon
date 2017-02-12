@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:background="#ffffff">
+        android:layout_height="wrap_content" android:background="#ffffff"
+        android:orientation="vertical">
 
         <!--  Header Starts-->
-        <RelativeLayout android:id="@+id/header"
+        <LinearLayout android:id="@+id/header"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -18,12 +19,13 @@
             android:paddingBottom="20dip">
             <!-- Logo Start-->
             <ImageView android:src="@drawable/in_app_logo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"/>
             <!-- Logo Ends -->
-        </RelativeLayout>
+        </LinearLayout>
         <!--  Header Ends -->
 
 
@@ -139,8 +141,8 @@
         </LinearLayout>
         <!-- Footer Ends -->
 
-    </RelativeLayout>
-</ScrollView>
+    </LinearLayout>
+</LinearLayout>
 
 
 

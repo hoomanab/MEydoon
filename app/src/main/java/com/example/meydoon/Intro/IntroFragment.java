@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 
 /**
@@ -131,6 +132,7 @@ public class IntroFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // ==============> Fragment for the main page <===============
+                startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
 
