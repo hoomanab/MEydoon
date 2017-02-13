@@ -86,7 +86,7 @@
                 android:background="@color/gray"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
-                android:prompt="@string/prduct_category"
+                android:prompt="@string/product_category"
                 android:layout_marginTop="10dip"/>
 
 
