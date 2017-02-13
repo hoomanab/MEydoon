@@ -19,5 +19,7 @@
     <color name="link">#0a80d1</color>
     <color name="timestamp">#a0a3a7</color>
 
+    <color name="hint">#807E7E</color>
+
 
 </resources>
