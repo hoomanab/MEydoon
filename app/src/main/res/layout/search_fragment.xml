@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/feed_bg">
+    android:background="@color/feed_bg"
+    >
 
         <!-- Editext for Search -->
         <LinearLayout
@@ -12,7 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="20dip">
 
 
             <EditText android:id="@+id/inputSearch"
@@ -37,7 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/search_box_container"
             android:orientation="vertical"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:paddingBottom="20dip">
 
             <TextView
                 android:layout_width="match_parent"
@@ -51,7 +54,8 @@
             <ListView
                 android:id="@+id/shop_search_result_list_view"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingBottom="40dip"/>
 
         </LinearLayout>
 

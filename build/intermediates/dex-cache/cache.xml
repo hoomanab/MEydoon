@@ -6,112 +6,112 @@
         jumboMode="true"
         revision="25.0.2"
         sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.1.1_996707d7d6f6f6db6f08a88153bb6bfe85379c90\classes.dex" />
-    </item>
-    <item
-        jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        revision="25.0.2"
-        sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.1.1_685e64d745af313b2f24d8e0541a4404942ff6bb\classes.dex" />
-    </item>
-    <item
-        jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        revision="25.0.2"
-        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.1.1_dd6b1461ba90b68990305f1d2610b719214076ee\classes.dex" />
-    </item>
-    <item
-        jar="G:\Projects\Meydoon\Android\Meydoon\app\libs\volley.jar"
-        jumboMode="true"
-        revision="25.0.2"
-        sha1="d4aaa36e04ee71a83444f8367c97a46fda662d2c">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\2\volley_ebda5d165162283d5f7305bf7b2013224a28be43\classes.dex" />
-    </item>
-    <item
-        jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        revision="25.0.2"
-        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.1.1_eb4ee41a168f2d9f9d31a01d36b889e8588a2da9\classes.dex" />
-    </item>
-    <item
-        jar="G:\Programming\Android\SDK\extras\android\m2repository\com\android\support\support-annotations\25.1.1\support-annotations-25.1.1.jar"
-        jumboMode="true"
-        revision="25.0.2"
-        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.1_666ce24437cba70ee21f6e8daadaa6de519b8414\classes.dex" />
-    </item>
-    <item
-        jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        revision="25.0.2"
-        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.1_16db28b22bba9688cd281ae43fff5cbd78c192fb\classes.dex" />
-    </item>
-    <item
-        jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.1\jars\classes.jar"
-        jumboMode="true"
-        revision="25.0.2"
-        sha1="15b049fedbd8e3926bf99d9e45dfc9b2a1043bb9">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.1.1_e6ae232e848e7bd058bd1d96f12b11d771344059\classes.dex" />
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.1.1_996707d7d6f6f6db6f08a88153bb6bfe85379c90.jar" />
     </item>
     <item
         jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\jars\classes.jar"
         jumboMode="true"
         revision="25.0.2"
         sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.1.1_57c68fd615406958020400e714fa52a7e4b7dc85\classes.dex" />
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.1.1_57c68fd615406958020400e714fa52a7e4b7dc85.jar" />
+    </item>
+    <item
+        jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.2"
+        sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.1.1_685e64d745af313b2f24d8e0541a4404942ff6bb.jar" />
     </item>
     <item
         jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="25.0.2"
-        sha1="7c6ad6dbe1fc02803fca083ec306f2d607401988">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_35d0b885ca291543f2b7abe34cdd1fb667b4d0fc\classes.dex" />
+        sha1="19aa4459acefc3370efe90b87158bece303a9de1">
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_35d0b885ca291543f2b7abe34cdd1fb667b4d0fc.jar" />
     </item>
     <item
         jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\jars\classes.jar"
         jumboMode="true"
         revision="25.0.2"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.1.1_de20dc1e1fec56e1b7d954283077ee868deb798a\classes.dex" />
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.1.1_de20dc1e1fec56e1b7d954283077ee868deb798a.jar" />
     </item>
     <item
         jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\jars\classes.jar"
         jumboMode="true"
         revision="25.0.2"
         sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.1.1_d29eb538792ae7b133730076194a523fce91e128\classes.dex" />
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.1.1_d29eb538792ae7b133730076194a523fce91e128.jar" />
+    </item>
+    <item
+        jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.2"
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.1.1_dd6b1461ba90b68990305f1d2610b719214076ee.jar" />
+    </item>
+    <item
+        jar="G:\Projects\Meydoon\Android\Meydoon\app\libs\volley.jar"
+        jumboMode="true"
+        revision="25.0.2"
+        sha1="d4aaa36e04ee71a83444f8367c97a46fda662d2c">
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\volley_ebda5d165162283d5f7305bf7b2013224a28be43.jar" />
+    </item>
+    <item
+        jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.2"
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.1.1_eb4ee41a168f2d9f9d31a01d36b889e8588a2da9.jar" />
     </item>
     <item
         jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\jars\classes.jar"
         jumboMode="true"
         revision="25.0.2"
         sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.1.1_c65354bae3a0d54e89675b05df7d3be03856f3b6\classes.dex" />
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.1.1_c65354bae3a0d54e89675b05df7d3be03856f3b6.jar" />
+    </item>
+    <item
+        jar="G:\Programming\Android\SDK\extras\android\m2repository\com\android\support\support-annotations\25.1.1\support-annotations-25.1.1.jar"
+        jumboMode="true"
+        revision="25.0.2"
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\support-annotations-25.1.1_666ce24437cba70ee21f6e8daadaa6de519b8414.jar" />
     </item>
     <item
         jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\jars\classes.jar"
         jumboMode="true"
         revision="25.0.2"
         sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.1_d9b4070452998cb9a30d57648f253ab9ace4ba05\classes.dex" />
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.1.1_d9b4070452998cb9a30d57648f253ab9ace4ba05.jar" />
     </item>
     <item
         jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="25.0.2"
-        sha1="a9b404c51eb33368eb5200d6020e2e10612402ba">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_67626f047a4133b57ce1f9d3710f8564c01142b5\classes.dex" />
+        sha1="c9460347a8ebd936d60898dc5a20ecbb7e305d78">
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\instant-run_67626f047a4133b57ce1f9d3710f8564c01142b5.jar" />
+    </item>
+    <item
+        jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.2"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.1.1_16db28b22bba9688cd281ae43fff5cbd78c192fb.jar" />
     </item>
     <item
         jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.1\jars\classes.jar"
         jumboMode="true"
         revision="25.0.2"
         sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
-        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.1.1_9598dba448ced9237c05f3470e72bdc63067bd2c\classes.dex" />
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.1.1_9598dba448ced9237c05f3470e72bdc63067bd2c.jar" />
+    </item>
+    <item
+        jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="25.0.2"
+        sha1="15b049fedbd8e3926bf99d9e45dfc9b2a1043bb9">
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\com.android.support-transition-25.1.1_e6ae232e848e7bd058bd1d96f12b11d771344059.jar" />
     </item>
 
 </items>

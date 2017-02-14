@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:paddingBottom="50dip"
+    android:background="@color/feed_bg">
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:background="#ffffff"
+        android:layout_height="fill_parent"
         android:orientation="vertical">
 
         <!--  Header Starts
@@ -29,7 +31,8 @@
         <!--  Header Ends -->
 
 
-        <!-- Login Form -->
+
+        <!--  Form -->
         <LinearLayout
             android:id="@+id/addp_product_main"
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -39,19 +42,26 @@
             android:padding="10dip">
 
 
-            <!--  Product Category -->
+            <!--  Product Picture -->
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#372c24"
                 android:text="@string/pic_select"
-                android:layout_marginTop="40dip"
+                android:layout_marginTop="20dip"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"/>
             <ImageButton
+                android:id="@+id/img_add_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:src="@android:drawable/ic_menu_camera"/>
+
+            <ImageView
+                android:id="@+id/img_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
 
 
             <!--  Product Name Label -->
@@ -67,7 +77,7 @@
                 android:layout_height="40dip"
                 android:layout_marginTop="10dip"
                 android:singleLine="true"
-                android:background="@color/gray"
+                android:background="@color/white"
                 android:gravity="right"
                 android:textColorHint="@color/hint"
                 android:inputType="phone"
@@ -82,12 +92,13 @@
                 android:layout_marginTop="20dip"/>
 
             <Spinner
-                android:id="@+id/select_product_category"
-                android:background="@color/gray"
+                android:id="@+id/spinner_product_category"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:prompt="@string/product_category"
-                android:layout_marginTop="10dip"/>
+                android:layout_marginTop="10dip"
+                style="@style/EditText"/>
 
 
             <!--  Product Price Label -->
@@ -105,7 +116,7 @@
                 android:singleLine="true"
                 android:inputType="textPassword"
                 android:password="true"
-                android:background="@color/gray"
+                android:background="@color/white"
                 android:gravity="right"
                 android:textColor="@color/black"/>
 
@@ -128,7 +139,7 @@
                 android:isScrollContainer="true"
                 android:scrollbars="vertical"
                 android:inputType="textLongMessage"
-                android:background="@color/gray"
+                android:background="@color/white"
                 android:gravity="right"
                 android:textColor="@color/black"/>
 
@@ -159,7 +170,7 @@
             <Button
                 style="@style/Btn"
                 android:id="@+id/btn_abort_add_product"
-                android:text="@string/add_to_shop"
+                android:text="@string/abort"
                 android:background="@color/meydoonRed"
                 android:layout_marginTop="10dip"/>
 
@@ -167,7 +178,7 @@
         <!-- Footer Ends -->
 
     </LinearLayout>
-</LinearLayout>
+</ScrollView>
 
 
 
