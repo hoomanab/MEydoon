@@ -82,13 +82,14 @@ public class AddProductFragment extends Fragment {
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
         ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.add_product_actionbar);
 
-        addProductImage = (ImageButton)view.findViewById(R.id.img_add_product);
+        addProductImage = (ImageButton)view.findViewById(R.id.img_add_product_capture);
         productName = (EditText)view.findViewById(R.id.txt_product_name);
         spinnerProductCategory = (Spinner)view.findViewById(R.id.spinner_product_category);
         productPrice = (EditText)view.findViewById(R.id.product_price);
         productDescription = (EditText)view.findViewById(R.id.product_description);
         imgPreview = (ImageView)view.findViewById(R.id.img_preview);
 
+        /** Getting Image **/
         addProductImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

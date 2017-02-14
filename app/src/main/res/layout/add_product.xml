@@ -50,12 +50,46 @@
                 android:layout_marginTop="20dip"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"/>
-            <ImageButton
-                android:id="@+id/img_add_product"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@android:drawable/ic_menu_camera"/>
+                android:layout_marginBottom="0dip">
+
+                <ImageButton
+                    android:id="@+id/img_add_product_capture"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@android:drawable/ic_menu_camera"
+                    android:layout_marginRight="5dip"/>
+                <ImageButton
+                    android:id="@+id/img_add_product_import"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_add_item"/>
+            </LinearLayout>
+
+            <!-- image buttons text -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/from_camera"
+                    android:layout_marginRight="15dip"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/from_gallery"/>
+            </LinearLayout>
+
 
             <ImageView
                 android:id="@+id/img_preview"
