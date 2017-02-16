@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.meydoon.MainActivity;
@@ -44,19 +45,19 @@ import java.util.Locale;
  * Created by hooma on 2/8/2017.
  */
 public class AddProductFragment extends Fragment {
-    private ImageButton addProductImage;
+    private ImageButton addProductImageCapture, addProductImageImport;
     private EditText productName, productPrice, productDescription;
     private Spinner spinnerProductCategory;
     private ImageView imgPreview;
 
     // directory name to store captured images and videos
-    private static final String IMAGE_DIRECTORY_NAME = "Hello Camera";
+    private static final String IMAGE_DIRECTORY_NAME = "Meydoon";
 
-    private Uri fileUri; // file url to store image/video
+    private Uri fileUri, selectedImage; // file url to store image/video
 
     // Activity request codes
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
-    private static final int CAMERA_CAPTURE_VIDEO_REQUEST_CODE = 200;
+    private static final int IMPORT_IMAGE_REQUEST_CODE = 200;
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
 
@@ -82,7 +83,8 @@ public class AddProductFragment extends Fragment {
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
         ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.add_product_actionbar);
 
-        addProductImage = (ImageButton)view.findViewById(R.id.img_add_product_capture);
+        addProductImageCapture = (ImageButton)view.findViewById(R.id.img_add_product_capture);
+        addProductImageImport = (ImageButton)view.findViewById(R.id.img_add_product_import);
         productName = (EditText)view.findViewById(R.id.txt_product_name);
         spinnerProductCategory = (Spinner)view.findViewById(R.id.spinner_product_category);
         productPrice = (EditText)view.findViewById(R.id.product_price);
@@ -90,13 +92,22 @@ public class AddProductFragment extends Fragment {
         imgPreview = (ImageView)view.findViewById(R.id.img_preview);
 
         /** Getting Image **/
-        addProductImage.setOnClickListener(new View.OnClickListener() {
+        addProductImageCapture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(isDeviceSupportCamera()){
                     captureImage();
                 }
+                else
+                    Toast.makeText(getActivity(), "دوربین دستگاه شما درست کار نمیکنه!", Toast.LENGTH_LONG).show();
 
+            }
+        });
+
+        addProductImageImport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                importImage();
             }
         });
 
@@ -129,6 +140,17 @@ public class AddProductFragment extends Fragment {
 
         // start the image capture Intent
         startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
+    }
+
+    /** Importing image from gallery */
+    private void importImage(){
+        Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+
+        //pickPhoto.putExtra(MediaStore.EXTRA_OUTPUT, selectedImage);
+
+
+        startActivityForResult(pickPhoto, IMPORT_IMAGE_REQUEST_CODE);
     }
 
     /**
@@ -176,23 +198,33 @@ public class AddProductFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // if the result is capturing Image
-        if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
-            if (resultCode == getActivity().RESULT_OK) {
-                // successfully captured the image
-                // display it in image view
-                previewCapturedImage();
-            } else if (resultCode == getActivity().RESULT_CANCELED) {
-                // user cancelled Image capture
-                Toast.makeText(getActivity().getApplicationContext(),
-                        "لغو عملیات گرفتن تصویر", Toast.LENGTH_SHORT)
-                        .show();
-            } else {
-                // failed to capture image
-                Toast.makeText(getActivity().getApplicationContext(),
-                        "عملیات ضبط تصویر ناموفق بود :(", Toast.LENGTH_SHORT)
-                        .show();
-            }
+        switch (requestCode){
+            case CAMERA_CAPTURE_IMAGE_REQUEST_CODE:
+                if (resultCode == getActivity().RESULT_OK) {
+                    // successfully captured the image
+                    // display it in image view
+                    previewCapturedImage();
+                } else if (resultCode == getActivity().RESULT_CANCELED) {
+                    // user cancelled Image capture
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "لغو عملیات گرفتن تصویر", Toast.LENGTH_SHORT)
+                            .show();
+                } else {
+                    // failed to capture image
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "عملیات ضبط تصویر ناموفق بود :(", Toast.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+
+            case IMPORT_IMAGE_REQUEST_CODE:
+                if(resultCode == getActivity().RESULT_OK){
+                    selectedImage = data.getData();
+                    previewImportedImage();
+                }
+                break;
         }
+
     }
 
     /**
@@ -212,7 +244,37 @@ public class AddProductFragment extends Fragment {
             // images
             options.inSampleSize = 8;
 
+
             Bitmap bitmap = BitmapFactory.decodeFile(fileUri.getPath(),
+                    options);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos);
+            bitmap = getResizedBitmap(bitmap, 480, 480);
+            //InputStream in = new ByteArrayInputStream(bos.toByteArray());
+
+            imgPreview.setImageBitmap(bitmap);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void previewImportedImage (){
+        try {
+            // hide video preview
+            //videoPreview.setVisibility(View.GONE);
+
+            imgPreview.setVisibility(View.VISIBLE);
+
+            // bimatp factory
+            BitmapFactory.Options options = new BitmapFactory.Options();
+
+            // downsizing image as it throws OutOfMemory Exception for larger
+            // images
+            options.inSampleSize = 8;
+
+
+            Bitmap bitmap = BitmapFactory.decodeFile(selectedImage.getPath(),
                     options);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos);
