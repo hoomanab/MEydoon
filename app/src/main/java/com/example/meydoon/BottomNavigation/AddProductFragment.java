@@ -15,20 +15,29 @@ import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
+import com.example.meydoon.adapter.CustomSpinnerAdapter;
+import com.example.meydoon.data.ProductCategoryItem;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -43,14 +52,25 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Created by hooma on 2/8/2017.
+ *  This is the page where a shop user can add a product!
  */
 public class AddProductFragment extends Fragment {
     private ImageButton addProductImageCapture, addProductImageImport;
     private EditText productName, productPrice, productDescription;
     private Spinner spinnerProductCategory;
     private ImageView imgPreview;
+    private Button submitProduct;
 
+    private String productCategoryName;
+    private int productCategoryId;
+
+    //List<ProductCategoryItem> productCategoryItems;
+    //ProductCategoryItem cloths, food, sports, jewelry, cosmetic;
+
+
+    /** Service Values must be assinged to the string! */
+    private static final String[] productCategories = {"پوشاک", "خوراک", "ورزشی", "زیور آلات", "آرایشی بهداشتی"};
+    private String defaultTextForSpinner = "انتخاب کنید!";
     // directory name to store captured images and videos
     private static final String IMAGE_DIRECTORY_NAME = "Meydoon";
 
@@ -91,6 +111,8 @@ public class AddProductFragment extends Fragment {
         productPrice = (EditText)view.findViewById(R.id.product_price);
         productDescription = (EditText)view.findViewById(R.id.product_description);
         imgPreview = (ImageView)view.findViewById(R.id.img_preview);
+        submitProduct = (Button)view.findViewById(R.id.btn_add_product);
+
 
         /** Getting Image **/
         addProductImageCapture.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +133,96 @@ public class AddProductFragment extends Fragment {
                 importImage();
             }
         });
+
+        /** Setting Adapter for product category Spinner */
+        /*    ===> This will be for future <===
+
+        cloths = new ProductCategoryItem();
+        cloths.setProductCategoryId(1);
+        cloths.setProductCategoryName("پوشاک");
+
+        food = new ProductCategoryItem();
+        food.setProductCategoryId(2);
+        food.setProductCategoryName("خوراکی");
+
+        sports = new ProductCategoryItem();
+        sports.setProductCategoryId(3);
+        sports.setProductCategoryName("ورزشی");
+
+        jewelry = new ProductCategoryItem();
+        jewelry.setProductCategoryId(4);
+        jewelry.setProductCategoryName("زیور آلات");
+
+        cosmetic = new ProductCategoryItem();
+        cosmetic.setProductCategoryId(1);
+        cosmetic.setProductCategoryName("آرایشی بهداشتی");
+
+        productCategoryItems = new ArrayList<ProductCategoryItem>();
+        productCategoryItems.add(1, cloths);
+        productCategoryItems.add(2, food);
+        productCategoryItems.add(3, sports);
+        productCategoryItems.add(4,jewelry);
+        productCategoryItems.add(5, cosmetic);*/
+
+        //ArrayAdapter<String> adapter =  new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, productCategories);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+        spinnerProductCategory.setAdapter(new CustomSpinnerAdapter(getActivity(), R.layout.spinner_row, productCategories, defaultTextForSpinner));
+
+        spinnerProductCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        productCategoryName = "cloths";
+                        productCategoryId = 1;
+                        break;
+
+                    case 1:
+                        productCategoryName = "food";
+                        productCategoryId = 2;
+                        break;
+
+                    case 2:
+                        productCategoryName = "sports";
+                        productCategoryId = 3;
+                        break;
+
+                    case 3:
+                        productCategoryName = "jewelry";
+                        productCategoryId = 4;
+                        break;
+
+                    case 4:
+                        productCategoryName = "cosmetic";
+                        productCategoryId = 5;
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        /** Add Product Button */
+        submitProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Upload product
+            }
+        });
+
+
+
+
+
+
+
+
 
     }
 

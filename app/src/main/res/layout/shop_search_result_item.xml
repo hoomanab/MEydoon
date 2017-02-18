@@ -144,7 +144,7 @@
                 android:scaleType="fitCenter"
                 android:layout_gravity="right"
                 android:gravity="right"
-                android:src="@drawable/ic_profile">
+                android:src="@drawable/default_shop">
             </com.android.volley.toolbox.NetworkImageView>
 
 
