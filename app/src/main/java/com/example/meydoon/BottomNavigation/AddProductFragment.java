@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -220,6 +221,7 @@ public class AddProductFragment extends Fragment {
             case IMPORT_IMAGE_REQUEST_CODE:
                 if(resultCode == getActivity().RESULT_OK){
                     selectedImage = data.getData();
+
                     previewImportedImage();
                 }
                 break;
@@ -249,7 +251,7 @@ public class AddProductFragment extends Fragment {
                     options);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos);
-            bitmap = getResizedBitmap(bitmap, 480, 480);
+            bitmap = getResizedBitmap(bitmap, 360, 360);
             //InputStream in = new ByteArrayInputStream(bos.toByteArray());
 
             imgPreview.setImageBitmap(bitmap);
@@ -273,12 +275,18 @@ public class AddProductFragment extends Fragment {
             // images
             options.inSampleSize = 8;
 
+            String[] filePath = {MediaStore.Images.Media.DATA};
+            Cursor c = getActivity().getContentResolver().query(selectedImage, filePath, null, null, null);
+            c.moveToFirst();
+            int columnIndex = c.getColumnIndex(filePath[0]);
+            String picturePath = c.getString(columnIndex);
+            c.close();
 
-            Bitmap bitmap = BitmapFactory.decodeFile(selectedImage.getPath(),
-                    options);
+            Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
+
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos);
-            bitmap = getResizedBitmap(bitmap, 480, 480);
+            bitmap = getResizedBitmap(bitmap, 360, 360);
             //InputStream in = new ByteArrayInputStream(bos.toByteArray());
 
             imgPreview.setImageBitmap(bitmap);
