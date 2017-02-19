@@ -6,7 +6,8 @@
     android:fillViewport="true">
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:background="@color/white">
+        android:layout_height="wrap_content"
+        android:background="@color/feed_bg">
 
         <!--  Header Starts-->
         <RelativeLayout android:id="@+id/header"
@@ -37,13 +38,14 @@
             android:layout_marginTop="80dip">
 
             <!-- Set Profile Pic Start-->
-            <ImageView
+            <ImageButton
                 android:src="@drawable/default_shop"
                 android:id="@+id/shop_sing_up_profile_pic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:background="@color/feed_bg"/>
 
             <!-- Set Profile Pic Link -->
             <TextView
@@ -85,7 +87,7 @@
                 android:layout_marginTop="10dip"
                 android:gravity="right"
                 android:singleLine="true"
-                android:background="@color/gray"
+                android:background="@color/white"
                 android:textColor="@color/black"/>
 
 
@@ -117,13 +119,14 @@
                 android:textColor="#372c24"
                 android:text="@string/shop_category"/>
             <Spinner
-                android:id="@+id/shop_category_list"
-                android:layout_width="fill_parent"
+                android:id="@+id/spinner_shop_category"
+                android:background="@color/white"
+                android:layout_width="match_parent"
                 android:layout_height="40dip"
-                android:layout_marginTop="5dip"
-                android:background="@color/gray"
-                android:spinnerMode="dropdown"
-                />
+                android:prompt="@string/product_category"
+                android:layout_marginTop="10dip"
+                android:spinnerMode="dropdown" />
+
 
             <!--  City Label -->
             <TextView android:layout_width="fill_parent"
@@ -132,13 +135,13 @@
                 android:textColor="#372c24"
                 android:text="@string/city"/>
             <Spinner
-                android:id="@+id/city_list"
-                android:layout_width="fill_parent"
+                android:id="@+id/spinner_city"
+                android:background="@color/white"
+                android:layout_width="match_parent"
                 android:layout_height="40dip"
-                android:layout_marginTop="5dip"
-                android:background="@color/gray"
-                android:spinnerMode="dropdown"
-                />
+                android:prompt="@string/product_category"
+                android:layout_marginTop="10dip"
+                android:spinnerMode="dropdown" />
 
 
             <!-- Shop Address -->
@@ -150,14 +153,17 @@
             <EditText
                 android:id="@+id/shop_txt_address"
                 android:layout_width="fill_parent"
-                android:layout_height="80dip"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dip"
                 android:isScrollContainer="true"
                 android:scrollbars="vertical"
-                android:inputType="textLongMessage"
-                android:background="@color/gray"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:background="@color/white"
                 android:gravity="right"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:paddingRight="5dip"
+                android:paddingLeft="5dip"/>
 
 
             <!-- Shop Description -->
@@ -170,14 +176,17 @@
             <EditText
                 android:id="@+id/shop_description"
                 android:layout_width="fill_parent"
-                android:layout_height="80dip"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dip"
                 android:isScrollContainer="true"
                 android:scrollbars="vertical"
-                android:inputType="textLongMessage"
-                android:background="@color/gray"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:background="@color/white"
                 android:gravity="right"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:paddingRight="5dip"
+                android:paddingLeft="5dip"/>
 
 
         </LinearLayout>

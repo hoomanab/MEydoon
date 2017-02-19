@@ -3,6 +3,7 @@ package com.example.meydoon.BottomNavigation.AddProduct;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,19 @@ public class NormalUserAddProductFragment extends Fragment {
         submitShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Go to Submit Shop!
+                ShopRegisterFragment shopRegisterFragment = new ShopRegisterFragment();
+                Bundle args = new Bundle();
+                shopRegisterFragment.setArguments(args);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack so the user can navigate back
+                transaction.replace(R.id.add_product_container, shopRegisterFragment);
+                transaction.addToBackStack(null);
+
+                // Commit the transaction
+                transaction.commit();
             }
         });
 

@@ -43,6 +43,7 @@
     <string name="from_camera">از دوربین</string>
     <string name="isNormalUser">شما کاربر عادی هستید و هنوز فروشگاهتون رو افتتاح نکردید!</string>
     <string name="enter_meydoon">ورود به میدون</string>
+    <string name="register_shop">ثبت فروشگاه</string>
 
     <string-array name="product_category_array">
         <item>خوراک</item>

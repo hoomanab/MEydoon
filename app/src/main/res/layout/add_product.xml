@@ -175,7 +175,7 @@
                 android:isScrollContainer="true"
                 android:scrollbars="vertical"
                 android:inputType="textMultiLine"
-                android:lines="8"
+                android:lines="5"
                 android:background="@color/white"
                 android:gravity="right"
                 android:textColor="@color/black"
