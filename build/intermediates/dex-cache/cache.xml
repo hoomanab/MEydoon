@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="25.0.2"
+        sha1="9d4887d9533f677ef9dc14c9845d93b402060f5d">
+        <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_35d0b885ca291543f2b7abe34cdd1fb667b4d0fc.jar" />
+    </item>
+
+</items>

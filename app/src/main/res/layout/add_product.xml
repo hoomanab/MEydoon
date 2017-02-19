@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
@@ -206,6 +205,14 @@
                 android:id="@+id/btn_add_product"
                 android:text="@string/add_to_shop"
                 android:background="@color/greenSignIn"/>
+
+            <!-- Abort Button -->
+            <Button
+                style="@style/Btn"
+                android:id="@+id/btn_abort_add_product"
+                android:text="@string/abort"
+                android:background="@color/meydoonRed"
+                android:layout_marginTop="10dip"/>
 
 
         </LinearLayout>

@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.meydoon.BottomNavigation.AddProductActivity;
 import com.example.meydoon.BottomNavigation.AddProductFragment;
 import com.example.meydoon.BottomNavigation.HomeFragment;
 import com.example.meydoon.BottomNavigation.NotificationsInboxFragment;
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         /** Custom Action Bar */
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setCustomView(R.layout.home_actionbar);
+        getSupportActionBar().setCustomView(R.layout.actionbar_home);
 
         View view =getSupportActionBar().getCustomView();
         ImageButton imageButton= (ImageButton)view.findViewById(R.id.meydoon_tab);
@@ -141,7 +142,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.btm_nav_add_item:
-                AddProductFragment goToAddProduct = new AddProductFragment();
+                startActivity(new Intent(MainActivity.this, AddProductActivity.class));
+
+                /*AddProductFragment goToAddProduct = new AddProductFragment();
 
                 // In case this activity was started with special instructions from an
                 // Intent, pass the Intent's extras to the fragment as arguments
@@ -149,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Add the fragment to the 'fragment_container' FrameLayout
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.main_container, goToAddProduct).commit();
+                        .add(R.id.main_container, goToAddProduct).commit();*/
                 break;
 
             case R.id.btm_nav_search:

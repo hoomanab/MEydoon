@@ -21,6 +21,8 @@ import com.example.meydoon.R;
  * It is built in order to sign-in /sign-up or enter as a guest.
  */
 public class IntroFragment extends Fragment {
+    private Button sign_in;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class IntroFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button sign_in = (Button)view.findViewById(R.id.btn_sign_in);
+        sign_in = (Button)view.findViewById(R.id.btn_sign_in);
 
         //Clicking on Sign-in button
         sign_in.setOnClickListener(new View.OnClickListener() {

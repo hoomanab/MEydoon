@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
         /** Custom Action Bar*/
         ((MainActivity)getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((MainActivity)getActivity()).getSupportActionBar().setCustomView(R.layout.home_actionbar);
+        ((MainActivity)getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_home);
 
 
         listView = (ListView)view.findViewById(R.id.list);

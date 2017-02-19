@@ -1,9 +1,7 @@
 package com.example.meydoon.BottomNavigation;
 
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,44 +9,30 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
+import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.adapter.CustomSpinnerAdapter;
-import com.example.meydoon.data.ProductCategoryItem;
-
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 /**
@@ -59,7 +43,7 @@ public class AddProductFragment extends Fragment {
     private EditText productName, productPrice, productDescription;
     private Spinner spinnerProductCategory;
     private ImageView imgPreview;
-    private Button submitProduct;
+    private Button submitProduct, abort;
 
     private String productCategoryName;
     private int productCategoryId;
@@ -86,6 +70,8 @@ public class AddProductFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /** Moving the layout up to soft keyboard! */
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
     }
 
     @Nullable
@@ -100,9 +86,9 @@ public class AddProductFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         /** Custom Action Bar*/
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.add_product_actionbar);
+        ((AddProductActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
+        ((AddProductActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((AddProductActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_add_product);
 
         addProductImageCapture = (ImageButton)view.findViewById(R.id.img_add_product_capture);
         addProductImageImport = (ImageButton)view.findViewById(R.id.img_add_product_import);
@@ -112,7 +98,7 @@ public class AddProductFragment extends Fragment {
         productDescription = (EditText)view.findViewById(R.id.product_description);
         imgPreview = (ImageView)view.findViewById(R.id.img_preview);
         submitProduct = (Button)view.findViewById(R.id.btn_add_product);
-
+        abort = (Button)view.findViewById(R.id.btn_abort_add_product);
 
         /** Getting Image **/
         addProductImageCapture.setOnClickListener(new View.OnClickListener() {
@@ -217,6 +203,13 @@ public class AddProductFragment extends Fragment {
         });
 
 
+        /** Abort adding product button */
+        abort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
 
 
 
