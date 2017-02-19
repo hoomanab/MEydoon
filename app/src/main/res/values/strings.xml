@@ -11,7 +11,7 @@
     <string name="input_username">شماره تلفن همراه</string>
     <string name="input_password">کلمه عبور</string>
     <string name="text_password_recovery">کلمه عبورت یادت نمیاد؟ اینجا رو بزن</string>
-    <string name="text_sign_up">عضو میدون نیستی؟ از اینجا ثبت نام کن</string>
+    <string name="txt_sign_up">عضو میدون نیستی؟ از اینجا ثبت نام کن!</string>
     <string name="txt_sign_up_later">میخوای بعدا ثبت نام کنی؟</string>
     <string name="btn_guest_enter">ورود مهمان</string>
     <string name="txt_sign_up_header">ثبت نام</string>
@@ -22,7 +22,7 @@
     <string name="next">بعدی</string>
     <string name="mobile_phone_hint">0912 222 2222</string>
     <string name="shop_sign_in_message">برای ورود به فروشگاه، نام کاربری و کلمه عبورتون رو وارد کنید!</string>
-    <string name="create_a_shop">فروشگاه نداری؟ بیا یکی بساز!</string>
+    <string name="create_a_shop">کاربر عادی هستی و فروشگاه نداری؟ بیا یکی بساز!</string>
     <string name="txt_set_shop_profile">انتخاب تصویر نماد فروشگاه</string>
     <string name="shop_name">نام فروشگاه</string>
     <string name="shop_category">زمینه کاری</string>
@@ -41,6 +41,8 @@
     <string name="add_to_shop">به فروشگاه اضافه کن!</string>
     <string name="from_gallery">از گالری</string>
     <string name="from_camera">از دوربین</string>
+    <string name="isNormalUser">شما کاربر عادی هستید و هنوز فروشگاهتون رو افتتاح نکردید!</string>
+    <string name="enter_meydoon">ورود به میدون</string>
 
     <string-array name="product_category_array">
         <item>خوراک</item>

@@ -151,7 +151,6 @@
                 android:layout_marginTop="5dip"
                 android:singleLine="true"
                 android:inputType="number"
-                android:password="true"
                 android:background="@color/white"
                 android:gravity="right"
                 android:textColor="@color/black"

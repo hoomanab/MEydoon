@@ -38,16 +38,16 @@
 
 
 
-            <!-- Message for Sign up or sign in to the shop -->
+            <!-- Message for Sign up or sign in to the shop
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dip"
-                android:text="@string/shop_sign_in_message"
+                android:text="@string"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textColor="@color/black"/>
-
+-->
             <!--  Mobile Phone Label -->
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -108,10 +108,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dip"
                 android:layout_marginBottom="40dip"
-                android:text="@string/create_a_shop"
+                android:text="@string/txt_sign_up"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:textColor="@color/blue"/>
+                android:textColor="@color/blue" />
 
         </LinearLayout>
         <!-- Login Form Ends -->

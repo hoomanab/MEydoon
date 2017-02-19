@@ -1,4 +1,4 @@
-package com.example.meydoon.BottomNavigation;
+package com.example.meydoon.BottomNavigation.AddProduct;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;

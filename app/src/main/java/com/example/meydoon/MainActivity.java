@@ -2,11 +2,10 @@ package com.example.meydoon;
 
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentTransaction;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,16 +15,14 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.meydoon.BottomNavigation.AddProductActivity;
-import com.example.meydoon.BottomNavigation.AddProductFragment;
+import com.example.meydoon.BottomNavigation.AddProduct.AddProductActivity;
 import com.example.meydoon.BottomNavigation.HomeFragment;
 import com.example.meydoon.BottomNavigation.NotificationsInboxFragment;
 import com.example.meydoon.BottomNavigation.ProfileFragment;
 import com.example.meydoon.BottomNavigation.SearchFragment;
-import com.example.meydoon.Intro.IntroFragment;
 import com.example.meydoon.Intro.UserSignUpActivity;
-import com.example.meydoon.mainTabs.BottomNavigationTabFragment;
 import com.example.meydoon.adapter.ViewPagerAdapter;
+import com.example.meydoon.mainTabs.BottomNavigationTabFragment;
 
 public class MainActivity extends AppCompatActivity {
     private static final String SELECTED_ITEM = "arg_selected_item";

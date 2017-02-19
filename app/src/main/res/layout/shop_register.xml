@@ -89,7 +89,7 @@
                 android:textColor="@color/black"/>
 
 
-            <!--  Password Label -->
+            <!--  Password Label
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                 android:gravity="right"
                 android:textColor="@color/black"/>
 
-
+                -->
 
             <!--  Category Label -->
             <TextView android:layout_width="fill_parent"
