@@ -83,6 +83,8 @@
                 android:layout_below="@+id/timestamp"
                 android:layout_marginRight="5dip"/>
 
+            <!-- =======================> Add option button here! <======================= -->
+
         </RelativeLayout>
 
 
@@ -129,6 +131,9 @@
             android:visibility="visible"
             android:layout_gravity="right" />
 
+
+
+        <!-- Feed Footer -->
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
