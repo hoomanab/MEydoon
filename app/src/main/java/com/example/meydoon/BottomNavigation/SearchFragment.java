@@ -61,8 +61,7 @@ public class SearchFragment extends Fragment {
         //imageButton.setOnClickListener(new View.OnClickListener() {
         //    @Override
         //    public void onClick(View v) {
-                /** We should make it act like a tab
-                 *  Note: After adding other icons to the action bar, by clicking on them, main_container must change!*/
+
 
          //   }
         //});

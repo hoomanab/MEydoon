@@ -64,7 +64,7 @@ public class NotificationInboxAdapter extends BaseAdapter {
         TextView timeStamp = (TextView) convertView
                 .findViewById(R.id.notification_inbox_timestamp);
         TextView notificationMessage = (TextView) convertView
-                .findViewById(R.id.notification_partial_text);
+                .findViewById(R.id.notification_title);
         // TextView url = (TextView) convertView.findViewById(R.id.txtUrl);
         NetworkImageView ShopProfilePic = (NetworkImageView) convertView
                 .findViewById(R.id.notification_inbox_shop_profile_pic);
@@ -75,7 +75,7 @@ public class NotificationInboxAdapter extends BaseAdapter {
 
         timeStamp.setText(item.getNotificationTime());
 
-        notificationMessage.setText(item.getNotificationMessage());
+        notificationMessage.setText(item.getNotificationMessageTitle());
 
         // user profile pic
         ShopProfilePic.setImageUrl(item.getShopProfilePic(), imageLoader);
