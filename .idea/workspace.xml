@@ -73,45 +73,9 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="146" column="23" selection-start-line="146" selection-start-column="23" selection-end-line="146" selection-end-column="23" />
+              <caret line="141" column="93" selection-start-line="141" selection-start-column="93" selection-end-line="141" selection-end-column="93" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search_fragment.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/search_fragment.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.5555553">
-              <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NotificationInboxItem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/data/NotificationInboxItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
-              <folding>
-                <element signature="e#845#846#0" expanded="true" />
-                <element signature="e#881#882#0" expanded="true" />
-                <element signature="e#919#920#0" expanded="true" />
-                <element signature="e#956#957#0" expanded="true" />
-                <element signature="e#1013#1014#0" expanded="true" />
-                <element signature="e#1065#1066#0" expanded="true" />
-                <element signature="e#1341#1342#0" expanded="true" />
-                <element signature="e#1373#1374#0" expanded="true" />
-                <element signature="e#1811#1812#0" expanded="true" />
-                <element signature="e#1841#1842#0" expanded="true" />
-                <element signature="e#1898#1899#0" expanded="true" />
-                <element signature="e#1936#1937#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/NotificationInboxAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="70" selection-start-line="77" selection-start-column="70" selection-end-line="77" selection-end-column="70" />
+              <caret line="85" column="44" selection-start-line="85" selection-start-column="44" selection-end-line="85" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -129,12 +93,75 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="NotificationInboxItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/data/NotificationInboxItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="notification_inbox_item.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_item.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.0694447">
-              <caret line="110" column="54" selection-start-line="110" selection-start-column="54" selection-end-line="110" selection-end-column="59" />
-              <folding />
+            <state vertical-scroll-proportion="-5.9027777">
+              <caret line="146" column="16" selection-start-line="146" selection-start-column="16" selection-end-line="146" selection-end-column="41" />
+              <folding>
+                <element signature="e#529#554#0" expanded="true" />
+                <element signature="e#590#615#0" expanded="true" />
+                <element signature="e#649#674#0" expanded="true" />
+                <element signature="e#808#845#0" expanded="true" />
+                <element signature="e#873#910#0" expanded="true" />
+                <element signature="e#1208#1245#0" expanded="true" />
+                <element signature="e#1279#1316#0" expanded="true" />
+                <element signature="e#2141#2171#0" expanded="true" />
+                <element signature="e#2214#2244#0" expanded="true" />
+                <element signature="e#4098#4126#0" expanded="true" />
+                <element signature="e#4613#4641#0" expanded="true" />
+                <element signature="e#4758#4786#0" expanded="true" />
+                <element signature="e#5293#5325#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="feed_item.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/feed_item.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.511811">
+              <caret line="75" column="50" selection-start-line="75" selection-start-column="50" selection-end-line="75" selection-end-column="50" />
+              <folding>
+                <element signature="e#472#497#0" expanded="true" />
+                <element signature="e#533#558#0" expanded="true" />
+                <element signature="e#592#617#0" expanded="true" />
+                <element signature="e#751#788#0" expanded="true" />
+                <element signature="e#816#853#0" expanded="true" />
+                <element signature="e#1168#1205#0" expanded="true" />
+                <element signature="e#1239#1276#0" expanded="true" />
+                <element signature="e#1590#1626#0" expanded="true" />
+                <element signature="e#1835#1865#0" expanded="true" />
+                <element signature="e#1908#1938#0" expanded="true" />
+                <element signature="e#2332#2363#0" expanded="true" />
+                <element signature="e#2434#2448#0" expanded="true" />
+                <element signature="e#2883#2911#0" expanded="true" />
+                <element signature="e#3386#3414#0" expanded="true" />
+                <element signature="e#3892#3924#0" expanded="true" />
+                <element signature="e#3957#3997#0" expanded="true" />
+                <element signature="e#4031#4071#0" expanded="true" />
+                <element signature="e#4103#4136#0" expanded="true" />
+                <element signature="e#4517#4557#0" expanded="true" />
+                <element signature="e#4591#4631#0" expanded="true" />
+                <element signature="e#5777#5817#0" expanded="true" />
+                <element signature="e#5851#5891#0" expanded="true" />
+                <element signature="e#6001#6032#0" expanded="true" />
+                <element signature="e#6071#6103#0" expanded="true" />
+                <element signature="e#6493#6524#0" expanded="true" />
+              </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer">
@@ -165,39 +192,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="feed_item.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/feed_item.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.708334">
-              <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="58" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notification_inbox_fragment.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="notification_inbox_fragment.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_fragment.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5443235">
+            <state vertical-scroll-proportion="-4.861111">
               <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
               <folding />
             </state>
           </provider>
           <provider editor-type-id="android-designer">
             <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShopSearchResultListAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/ShopSearchResultListAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-              <folding />
-            </state>
           </provider>
         </entry>
       </file>
@@ -1905,7 +1909,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/ShopSearchResultListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/search_actionbar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/add_product_actionbar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/feed_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/data/ProductCategoryItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/feed_fragment.xml" />
@@ -1937,7 +1940,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/add_product_guest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/AddProduct/GuestUserAddProductFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_actionbar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/add_product.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/shop_register.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/AddProduct/ShopRegisterFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/AddProduct/NormalUserAddProductFragment.java" />
@@ -1945,10 +1947,12 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/actionbar_notification_inbox.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/SearchFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/data/NotificationInboxItem.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/add_product.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/NotificationInboxAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/feed_item.xml" />
       </list>
     </option>
   </component>
@@ -2044,46 +2048,6 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles.xml" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meydoon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meydoon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
@@ -2128,6 +2092,28 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="meydoon" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Meydoon" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="meydoon" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2497,7 +2483,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.077300616" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08711656" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32955772" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883435" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12269939" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -3030,19 +3016,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>142</line>
+          <line>143</line>
           <properties />
           <option name="timeStamp" value="266" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>145</line>
+          <line>146</line>
           <properties />
           <option name="timeStamp" value="267" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>146</line>
+          <line>147</line>
           <properties />
           <option name="timeStamp" value="268" />
         </line-breakpoint>
@@ -3263,17 +3249,6 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_product.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.029411">
-          <caret line="177" column="32" selection-start-line="177" selection-start-column="32" selection-end-line="177" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
@@ -3500,53 +3475,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/data/NotificationInboxItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
-          <folding>
-            <element signature="e#845#846#0" expanded="true" />
-            <element signature="e#881#882#0" expanded="true" />
-            <element signature="e#919#920#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1341#1342#0" expanded="true" />
-            <element signature="e#1373#1374#0" expanded="true" />
-            <element signature="e#1811#1812#0" expanded="true" />
-            <element signature="e#1841#1842#0" expanded="true" />
-            <element signature="e#1898#1899#0" expanded="true" />
-            <element signature="e#1936#1937#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/app/libs/volley.jar!/com/android/volley/Cache.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7407407">
           <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.0694447">
-          <caret line="110" column="54" selection-start-line="110" selection-start-column="54" selection-end-line="110" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/NotificationInboxAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="70" selection-start-line="77" selection-start-column="70" selection-end-line="77" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3566,27 +3499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="146" column="23" selection-start-line="146" selection-start-column="23" selection-end-line="146" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/search_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5555553">
-          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.0833333">
@@ -3598,10 +3510,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/feed_item.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_fragment.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.708334">
-          <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="58" selection-end-column="45" />
+        <state vertical-scroll-proportion="-4.861111">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -3609,11 +3521,112 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_fragment.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/data/NotificationInboxItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5443235">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="49" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_product.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34937888">
+          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/search_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.621118">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/NotificationInboxAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="44" selection-start-line="85" selection-start-column="44" selection-end-line="85" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="141" column="93" selection-start-line="141" selection-start-column="93" selection-end-line="141" selection-end-column="93" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.9027777">
+          <caret line="146" column="16" selection-start-line="146" selection-start-column="16" selection-end-line="146" selection-end-column="41" />
+          <folding>
+            <element signature="e#529#554#0" expanded="true" />
+            <element signature="e#590#615#0" expanded="true" />
+            <element signature="e#649#674#0" expanded="true" />
+            <element signature="e#808#845#0" expanded="true" />
+            <element signature="e#873#910#0" expanded="true" />
+            <element signature="e#1208#1245#0" expanded="true" />
+            <element signature="e#1279#1316#0" expanded="true" />
+            <element signature="e#2141#2171#0" expanded="true" />
+            <element signature="e#2214#2244#0" expanded="true" />
+            <element signature="e#4098#4126#0" expanded="true" />
+            <element signature="e#4613#4641#0" expanded="true" />
+            <element signature="e#4758#4786#0" expanded="true" />
+            <element signature="e#5293#5325#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/feed_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.511811">
+          <caret line="75" column="50" selection-start-line="75" selection-start-column="50" selection-end-line="75" selection-end-column="50" />
+          <folding>
+            <element signature="e#472#497#0" expanded="true" />
+            <element signature="e#533#558#0" expanded="true" />
+            <element signature="e#592#617#0" expanded="true" />
+            <element signature="e#751#788#0" expanded="true" />
+            <element signature="e#816#853#0" expanded="true" />
+            <element signature="e#1168#1205#0" expanded="true" />
+            <element signature="e#1239#1276#0" expanded="true" />
+            <element signature="e#1590#1626#0" expanded="true" />
+            <element signature="e#1835#1865#0" expanded="true" />
+            <element signature="e#1908#1938#0" expanded="true" />
+            <element signature="e#2332#2363#0" expanded="true" />
+            <element signature="e#2434#2448#0" expanded="true" />
+            <element signature="e#2883#2911#0" expanded="true" />
+            <element signature="e#3386#3414#0" expanded="true" />
+            <element signature="e#3892#3924#0" expanded="true" />
+            <element signature="e#3957#3997#0" expanded="true" />
+            <element signature="e#4031#4071#0" expanded="true" />
+            <element signature="e#4103#4136#0" expanded="true" />
+            <element signature="e#4517#4557#0" expanded="true" />
+            <element signature="e#4591#4631#0" expanded="true" />
+            <element signature="e#5777#5817#0" expanded="true" />
+            <element signature="e#5851#5891#0" expanded="true" />
+            <element signature="e#6001#6032#0" expanded="true" />
+            <element signature="e#6071#6103#0" expanded="true" />
+            <element signature="e#6493#6524#0" expanded="true" />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer">

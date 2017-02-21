@@ -139,6 +139,7 @@ public class NotificationsInboxFragment extends Fragment {
                 item.setShopProfilePic(notificationObject.getString("shopProfilePic"));
                 item.setNotificationTime(notificationObject.getString("time"));
                 item.setNotificationMessageTitle(notificationObject.getString("notificationMessageTile"));
+                item.setNotificationMessage(notificationObject.getString("notificationMessage"));
                 notificationInboxItems.add(item);
             }
 
