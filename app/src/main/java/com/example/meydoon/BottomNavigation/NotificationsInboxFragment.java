@@ -37,7 +37,7 @@ import java.util.List;
  * Fragment for notification inbox!
  */
 public class NotificationsInboxFragment extends Fragment {
-    private static final String TAG = SearchFragment.class.getSimpleName();
+    private static final String TAG = NotificationsInboxFragment.class.getSimpleName();
     private ListView listView;
     private NotificationInboxAdapter notificationInboxAdapter;
     private List<NotificationInboxItem> notificationInboxItems;

@@ -59,7 +59,7 @@ public class MenuFragment extends Fragment {
         }
 
         // initialize views
-        mContent = view.findViewById(R.id.fragment_content);
+        //mContent = view.findViewById(R.id.fragment_content);
         mTextView = (TextView) view.findViewById(R.id.text);
 
         // set text and background color

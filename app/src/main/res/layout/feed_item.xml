@@ -44,8 +44,7 @@
                     android:layout_width="@dimen/feed_item_profile_pic"
                     android:layout_height="@dimen/feed_item_profile_pic"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/default_shop"
-                    android:background="@color/black"/>
+                    android:src="@drawable/default_shop"/>
 
 
             </LinearLayout>
