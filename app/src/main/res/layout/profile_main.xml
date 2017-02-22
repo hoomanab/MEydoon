@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/feed_bg">
+
+
+    <!-- top of the profile which contains image, button and followers -->
+    <RelativeLayout
+        android:id="@+id/profile_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dip"
+        android:paddingRight="20dip"
+        android:layout_marginTop="40dip"
+        android:paddingBottom="10dip">
+
+
+        <!-- shop profile pic -->
+        <LinearLayout
+            android:id="@+id/profile_image_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dip">
+
+            <ImageButton
+                android:id="@+id/imgBtn_shop_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/default_shop" />
+
+        </LinearLayout>
+
+
+
+        <Button
+            style="@style/Btn"
+            android:background="@color/white"
+            android:layout_toLeftOf="@+id/profile_image_container"
+            android:layout_below="@+id/above_btn_container"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit/ Follow/ Unfollow"
+            android:textColor="@color/black" />
+
+
+
+        <!-- Above Button Container -->
+        <RelativeLayout
+            android:id="@+id/above_btn_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/profile_image_container"
+            android:paddingRight="10dip"
+            android:paddingLeft="10dip">
+
+
+            <!-- products counter -->
+            <LinearLayout
+                android:id="@+id/followers_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="5dip">
+
+                <TextView
+                    android:id="@+id/txt_followers_number"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="12"/>
+                <TextView
+
+                    android:layout_below="@+id/txt_followers_number"
+                    android:id="@+id/txt_followers_label"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="محصولات"/>
+            </LinearLayout>
+
+
+            <!-- Following counter -->
+            <LinearLayout
+                android:id="@+id/products_following_container"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="5dip">
+
+                <TextView
+                    android:id="@+id/txt_following_number"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="123"/>
+                <TextView
+
+                    android:layout_below="@+id/txt_products_number"
+                    android:id="@+id/txt_following_label"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="دنبال شونده"/>
+            </LinearLayout>
+
+
+            <!-- Followers counter -->
+            <LinearLayout
+                android:id="@+id/products_counter_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dip">
+
+                <TextView
+                    android:id="@+id/txt_products_number"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="123"/>
+                <TextView
+
+                    android:layout_below="@+id/txt_products_number"
+                    android:id="@+id/txt_products_label"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="دنبال کننده"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+        <!-- End of above button container -->
+
+
+    </RelativeLayout>
+    <!-- End of Profile top -->
+
+
+    <!-- shop information -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dip">
+
+        <LinearLayout
+            android:id="@+id/shop_name_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+            <TextView
+                android:text="نام فروشگاه"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txt_shop_city"
+            android:text="تهران"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/txt_shop_category_hint"
+            android:text="زمینه فعالیت:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shop_name_container"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dip"/>
+        <TextView
+            android:id="@+id/txt_shop_category"
+            android:text="پوشاک"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/txt_shop_category_hint"
+            android:layout_below="@+id/shop_name_container"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="5dip"/>
+
+
+        <TextView
+            android:text="توضیحات فروشگاه"
+            android:id="@+id/txt_shop_desctiption"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/txt_shop_category"
+            android:layout_marginTop="15dip"
+            android:textSize="15sp"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
+    <!-- Shop Information Ends -->
+
+
+    <!-- gridview of profile -->
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/profile_grid_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:numColumns="auto_fit"
+        android:columnWidth="90dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:gravity="center"
+        android:stretchMode="columnWidth"
+        android:padding="10dip"/>
+
+
+
+</LinearLayout>
