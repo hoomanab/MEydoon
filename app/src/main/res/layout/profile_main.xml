@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/feed_bg">
+    android:background="@color/feed_bg"
+    android:paddingBottom="50dip">
 
 
     <!-- top of the profile which contains image, button and followers -->
@@ -36,14 +37,14 @@
 
 
         <Button
-            style="@style/Btn"
-            android:background="@color/white"
+            android:background="@drawable/btn"
             android:layout_toLeftOf="@+id/profile_image_container"
             android:layout_below="@+id/above_btn_container"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Edit/ Follow/ Unfollow"
-            android:textColor="@color/black" />
+            android:text="آزمایش"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
 
@@ -125,7 +126,7 @@
                 android:layout_marginBottom="5dip">
 
                 <TextView
-                    android:id="@+id/txt_products_number"
+                    android:id="@+id/txt_products_counter"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -134,7 +135,7 @@
                     android:text="123"/>
                 <TextView
 
-                    android:layout_below="@+id/txt_products_number"
+                    android:layout_below="@+id/txt_products_counter"
                     android:id="@+id/txt_products_label"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
@@ -156,7 +157,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dip">
+        android:padding="20dip"
+        android:paddingBottom="0dip">
 
         <LinearLayout
             android:id="@+id/shop_name_container"
@@ -210,6 +212,7 @@
             android:layout_marginTop="15dip"
             android:textSize="15sp"
             android:textColor="@color/black"/>
+        
 
     </RelativeLayout>
     <!-- Shop Information Ends -->
@@ -218,15 +221,15 @@
     <!-- gridview of profile -->
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/profile_grid_view"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:numColumns="auto_fit"
-        android:columnWidth="90dp"
+        android:columnWidth="120dip"
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"
         android:gravity="center"
         android:stretchMode="columnWidth"
-        android:padding="10dip"/>
+        android:padding="10dip" />
 
 
 

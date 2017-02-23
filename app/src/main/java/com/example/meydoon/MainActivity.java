@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setCustomView(R.layout.actionbar_home);
 
-        View view =getSupportActionBar().getCustomView();
+        View view = getSupportActionBar().getCustomView();
         ImageButton imageButton= (ImageButton)view.findViewById(R.id.meydoon_tab);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
