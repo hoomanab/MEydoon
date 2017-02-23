@@ -85,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
+        /** Making Home the initial selected item */
+        bottomNavigationView.getMenu().getItem(4).setChecked(true);
+        bottomNavSelectedItem(bottomNavigationView.getMenu().getItem(4));
+
 
         /** Initialize Home Fragment
         // Check that the activity is using the layout version with
@@ -139,6 +143,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.btm_nav_add_item:
+                //Intent goToAddProduct = new Intent(getBaseContext(), AddProductActivity.class);
+                //goToAddProduct.putExtra("Previously Selected Menu Item", bottomNavigationView.getMenu().getItem(4).toString());
+
+                /** ===============> On back-press menu item selected previously not implemented! */
                 startActivity(new Intent(MainActivity.this, AddProductActivity.class));
 
                 /*AddProductFragment goToAddProduct = new AddProductFragment();

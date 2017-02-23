@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/feed_bg"
-    android:paddingBottom="50dip">
+    android:background="@color/feed_bg">
 
 
     <!-- top of the profile which contains image, button and followers -->
@@ -212,7 +211,7 @@
             android:layout_marginTop="15dip"
             android:textSize="15sp"
             android:textColor="@color/black"/>
-        
+
 
     </RelativeLayout>
     <!-- Shop Information Ends -->
@@ -229,7 +228,10 @@
         android:verticalSpacing="10dp"
         android:gravity="center"
         android:stretchMode="columnWidth"
-        android:padding="10dip" />
+        android:paddingBottom="0dip"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip"/>
 
 
 
