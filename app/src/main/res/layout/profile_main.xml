@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/feed_bg">
+    android:background="@color/white">
 
 
     <!-- top of the profile which contains image, button and followers -->
@@ -29,7 +29,8 @@
                 android:id="@+id/imgBtn_shop_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/default_shop" />
+                android:src="@drawable/default_shop"
+                android:background="@color/white"/>
 
         </LinearLayout>
 

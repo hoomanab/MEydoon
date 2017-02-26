@@ -110,7 +110,7 @@
                 android:layout_height="40dip"
                 android:layout_marginTop="10dip"
                 android:singleLine="true"
-                android:background="@color/white"
+                android:background="@drawable/btn"
                 android:gravity="right"
                 android:textColorHint="@color/hint"
                 android:inputType="text"
@@ -128,7 +128,7 @@
 
             <Spinner
                 android:id="@+id/spinner_product_category"
-                android:background="@color/white"
+                android:background="@drawable/btn"
                 android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:prompt="@string/product_category"
@@ -150,7 +150,7 @@
                 android:layout_marginTop="5dip"
                 android:singleLine="true"
                 android:inputType="number"
-                android:background="@color/white"
+                android:background="@drawable/btn"
                 android:gravity="right"
                 android:textColor="@color/black"
                 android:paddingRight="5dip"/>
@@ -175,7 +175,7 @@
                 android:scrollbars="vertical"
                 android:inputType="textMultiLine"
                 android:lines="5"
-                android:background="@color/white"
+                android:background="@drawable/btn"
                 android:gravity="right"
                 android:textColor="@color/black"
                 android:paddingRight="5dip"

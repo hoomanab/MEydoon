@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/meydoonRed"
+    android:paddingRight="10dip"
+    android:paddingLeft="10dip">
+
+
+
+    <ImageButton
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/header_product_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="نام محصول"
+        android:textColor="@color/white"
+        android:gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_weight="1" />
+
+
+
+
+</LinearLayout>

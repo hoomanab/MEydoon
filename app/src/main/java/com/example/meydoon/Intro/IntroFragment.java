@@ -20,9 +20,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
@@ -35,6 +38,7 @@ import com.example.meydoon.service.HttpService;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -305,24 +309,45 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
      * @param mobile user valid mobile number
      */
     private void requestForSMS(final String mobile) {
-        StringRequest strReq = new StringRequest(Request.Method.POST,
-                Config.URL_REQUEST_SMS, new Response.Listener<String>() {
+        //JSONObject js = new JSONObject();
+        JSONObject jsonobject_one = new JSONObject();
+        try {
+
+
+            jsonobject_one.put("user_phone_number", mobile);
+
+            //JSONObject jsonobject = new JSONObject();
+
+
+
+            //js.put("data", jsonobject_one.toString());
+
+            //String requestBody = js.toString();
+
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+        JsonObjectRequest strReq = new JsonObjectRequest(Request.Method.POST,
+                Config.URL_REQUEST_SMS, jsonobject_one, new Response.Listener<JSONObject>() {
 
             @Override
-            public void onResponse(String response) {
-                Log.d(TAG, response.toString());
+            public void onResponse(JSONObject responseObj) {
+                Log.d(TAG, responseObj.toString());
 
                 try {
-                    JSONObject responseObj = new JSONObject(response);
+
 
                     // Parsing json object response
                     // response will be a json object
-                    boolean error = responseObj.getBoolean("error");
-                    String message = responseObj.getString("message");
+                    //boolean error = responseObj.getBoolean("error");
+                    String message = responseObj.getString("Message");
 
                     // checking for error, if not error SMS is initiated
                     // device should receive it shortly
-                    if (!error) {
+                    //if (!error) {
                         // boolean flag saying device is waiting for sms
                         pref.setIsWaitingForSms(true);
 
@@ -333,11 +358,11 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
 
                         Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 
-                    } else {
-                        Toast.makeText(getActivity().getApplicationContext(),
-                                "Error: " + message,
-                                Toast.LENGTH_LONG).show();
-                    }
+                    //} else {
+                     //   Toast.makeText(getActivity().getApplicationContext(),
+                      //          "Error: " + message,
+                      //          Toast.LENGTH_LONG).show();
+                    //}
 
                     // hiding the progress bar
                     progressBar.setVisibility(View.GONE);
@@ -362,10 +387,20 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
             }
         }) {
 
+
+
+            @Override
+            public String getBodyContentType() {
+                return String.format("application/json; charset=utf-8");
+            }
+
+
+
+
             /**
              * Passing user parameters to our server
              * @return
-             */
+
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
@@ -374,7 +409,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
                 Log.e(TAG, "Posting params: " + params.toString());
 
                 return params;
-            }
+            }*/
 
         };
 
