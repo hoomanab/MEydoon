@@ -75,7 +75,7 @@
         jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="25.0.2"
-        sha1="3b268f7cc351b49f6d5135f2077529cfc2ca2e04">
+        sha1="7b7bd2202f6845a5ce1c6b899b89255ec0b9ba48">
         <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_35d0b885ca291543f2b7abe34cdd1fb667b4d0fc\classes.dex" />
     </item>
     <item
@@ -110,7 +110,7 @@
         jar="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="25.0.2"
-        sha1="953f33ecd9c43f493d27ed5d901f6690d8fbef68">
+        sha1="fcae865a5690d89b8e0e1b142f7be7e54f0594b1">
         <dex dex="G:\Projects\Meydoon\Android\Meydoon\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_67626f047a4133b57ce1f9d3710f8564c01142b5\classes.dex" />
     </item>
     <item

@@ -6,6 +6,7 @@
     android:background="@color/white">
 
     <LinearLayout
+        android:id="@+id/profile_grid_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_parent_rounded_corner"

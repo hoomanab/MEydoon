@@ -88,14 +88,14 @@
 
 
         <com.example.meydoon.FeedImageView
-            android:layout_marginTop="20dip"
             android:id="@+id/feedImage1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:scaleType="fitXY"
             android:visibility="visible"
-            android:layout_gravity="right" />
+            android:layout_gravity="right"
+            android:layout_marginTop="20dip"/>
 
         <TextView
             android:id="@+id/txt_product_title"

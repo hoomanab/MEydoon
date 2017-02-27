@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -70,6 +71,16 @@ public class ProfileGridAdapter extends BaseAdapter {
 
         productPrice.setText(item.getProductPrice());
         gridImageView.setImageUrl(item.getProductImage(), imageLoader);
+
+
+        int productId = item.getProductId();
+        LinearLayout profileGridContainer = (LinearLayout) convertView.findViewById(R.id.profile_grid_container);
+        profileGridContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Go to product details
+            }
+        });
 
         return convertView;
     }

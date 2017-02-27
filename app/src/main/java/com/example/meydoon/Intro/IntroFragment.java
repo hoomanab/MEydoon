@@ -338,8 +338,6 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
                 Log.d(TAG, responseObj.toString());
 
                 try {
-
-
                     // Parsing json object response
                     // response will be a json object
                     //boolean error = responseObj.getBoolean("error");
@@ -349,14 +347,14 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
                     // device should receive it shortly
                     //if (!error) {
                         // boolean flag saying device is waiting for sms
-                        pref.setIsWaitingForSms(true);
+                    pref.setIsWaitingForSms(true);
 
                         // moving the screen to next pager item i.e otp screen
-                        viewPager.setCurrentItem(1);
-                        txtEditMobile.setText(pref.getMobileNumber());
-                        layoutEditMobile.setVisibility(View.VISIBLE);
+                    viewPager.setCurrentItem(1);
+                    txtEditMobile.setText(pref.getMobileNumber());
+                    layoutEditMobile.setVisibility(View.VISIBLE);
 
-                        Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 
                     //} else {
                      //   Toast.makeText(getActivity().getApplicationContext(),
@@ -422,13 +420,18 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
      */
     private void verifyOtp() {
         String otp = inputOtp.getText().toString().trim();
+        String mobile = txtEditMobile.getText().toString().trim();
+
 
         if (!otp.isEmpty()) {
             Intent grapprIntent = new Intent(getActivity().getApplicationContext(), HttpService.class);
-            grapprIntent.putExtra("otp", otp);
+            Bundle extras = new Bundle();
+            extras.putString("otp", otp);
+            extras.putString("mobile_number",mobile);
+            grapprIntent.putExtras(extras);
             getActivity().startService(grapprIntent);
         } else {
-            Toast.makeText(getActivity().getApplicationContext(), "لطفا کدی که دریافت کردید رو وارد کنید!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity().getApplicationContext(), "لطفا کدی که دریافت کردید رو به صورت کامل وارد کنید!", Toast.LENGTH_SHORT).show();
         }
     }
 

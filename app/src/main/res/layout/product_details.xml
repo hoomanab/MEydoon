@@ -76,6 +76,17 @@
     </RelativeLayout>
 
 
+    <!-- Product image -->
+    <com.example.meydoon.FeedImageView
+        android:id="@+id/product_details_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:scaleType="fitXY"
+        android:visibility="visible"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dip"/>
+
     <!-- product title -->
     <TextView
         android:id="@+id/product_Details_txt_product_title"
@@ -89,6 +100,19 @@
         android:gravity="right"
         android:text="عنوان محصول"/>
 
+    <TextView
+        android:id="@+id/product_details_txt_shipable_status"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/feed_item_timestamp"
+        android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+        android:paddingRight="@dimen/feed_item_status_pad_left_right"
+        android:layout_marginBottom="5dip"
+        android:textStyle="bold"
+        android:gravity="right"
+        android:text="@string/shipable"
+        android:textColor="@color/greenSignIn"/>
+
     <!-- product details -->
     <TextView
         android:id="@+id/product_details_txt_status_msg"
@@ -99,6 +123,8 @@
         android:paddingRight="@dimen/feed_item_status_pad_left_right"
         android:layout_gravity="right"
         android:gravity="right" />
+
+
 
     <!-- URL
     <TextView
@@ -111,19 +137,6 @@
         android:paddingRight="@dimen/feed_item_status_pad_left_right"
         android:textColorLink="@color/link"
         android:layout_gravity="right"/>-->
-
-
-    <!-- Product image -->
-    <com.example.meydoon.FeedImageView
-        android:id="@+id/product_details_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:scaleType="fitXY"
-        android:visibility="visible"
-        android:layout_gravity="right" />
-
-
 
     <!-- Footer -->
     <LinearLayout
