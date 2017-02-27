@@ -71,6 +71,7 @@
     </style>
 
 
+    <!-- for showing a single line of text view -->
     <style name="autoscroll">
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">marquee</item>

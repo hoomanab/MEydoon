@@ -46,6 +46,8 @@
     <string name="register_shop">ثبت فروشگاه</string>
     <string name="notifications">اعلان های فروشگاه ها</string>
     <string name="notification_title">عنوان پیام</string>
+    <string name="order_product">سفارش محصول</string>
+    <string name="shipable">قابل ارسال با پیک</string>
 
     <string-array name="product_category_array">
         <item>خوراک</item>

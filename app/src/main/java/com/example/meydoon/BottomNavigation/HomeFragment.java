@@ -79,6 +79,8 @@ public class HomeFragment extends Fragment {
         listView.setAdapter(listAdapter);
 
 
+
+
         // These two lines not needed,
         // just to get the look of facebook (changing background color & hiding the icon)
         //getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3b5998")));
@@ -150,6 +152,7 @@ public class HomeFragment extends Fragment {
                 item.setStatus(feedObj.getString("status"));
                 item.setProfilePic(feedObj.getString("profilePic"));
                 item.setTimeStamp(feedObj.getString("timeStamp"));
+                //item.setShipableStatus(feedObj.getBoolean("shipable"));
 
                 // url might be null sometimes
                 String feedUrl = feedObj.isNull("url") ? null : feedObj

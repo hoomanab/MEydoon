@@ -6,12 +6,13 @@ package com.example.meydoon.data;
 public class FeedItem {
     private int id;
     private String name, status, image, profilePic, timeStamp, url;
+    private Boolean isShipable;
 
     public FeedItem() {
     }
 
     public FeedItem(int id, String name, String image, String status,
-                    String profilePic, String timeStamp, String url) {
+                    String profilePic, String timeStamp, String url, Boolean isShipable) {
         super();
         this.id = id;
         this.name = name;
@@ -20,6 +21,7 @@ public class FeedItem {
         this.profilePic = profilePic;
         this.timeStamp = timeStamp;
         this.url = url;
+        this.isShipable = isShipable;
     }
 
     public int getId() {
@@ -76,5 +78,13 @@ public class FeedItem {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Boolean getShipableStatus(){
+        return isShipable;
+    }
+
+    public void setShipableStatus(Boolean isShipable){
+        this.isShipable = isShipable;
     }
 }

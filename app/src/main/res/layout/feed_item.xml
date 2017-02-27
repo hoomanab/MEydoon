@@ -87,6 +87,16 @@
         </RelativeLayout>
 
 
+        <com.example.meydoon.FeedImageView
+            android:layout_marginTop="20dip"
+            android:id="@+id/feedImage1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:scaleType="fitXY"
+            android:visibility="visible"
+            android:layout_gravity="right" />
+
         <TextView
             android:id="@+id/txt_product_title"
             android:layout_width="fill_parent"
@@ -98,12 +108,25 @@
             android:textStyle="bold"
             android:gravity="right"
             android:text="عنوان محصول"/>
+
+        <TextView
+            android:id="@+id/txt_shipable_status"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/feed_item_timestamp"
+            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+            android:paddingRight="@dimen/feed_item_status_pad_left_right"
+            android:layout_marginBottom="5dip"
+            android:textStyle="bold"
+            android:gravity="right"
+            android:text="@string/shipable"
+            android:textColor="@color/greenSignIn"/>
+
         <!-- Message of the feed-->
         <TextView
             android:id="@+id/txtStatusMsg"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
             android:paddingLeft="@dimen/feed_item_status_pad_left_right"
             android:paddingRight="@dimen/feed_item_status_pad_left_right"
             android:layout_gravity="right"
@@ -121,14 +144,7 @@
             android:textColorLink="@color/link"
             android:layout_gravity="right"/>-->
         <!-- The Feed image -->
-        <com.example.meydoon.FeedImageView
-            android:id="@+id/feedImage1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:scaleType="fitXY"
-            android:visibility="visible"
-            android:layout_gravity="right" />
+
 
 
 
@@ -144,7 +160,7 @@
                 android:layout_width="@dimen/feed_item_button_width"
                 android:layout_height="@dimen/feed_item_button_height"
                 android:background="@color/meydoonRed"
-                android:text="مشاهده جزئیات"
+                android:text="@string/order_product"
                 android:gravity="center"/>
 
             <TextView
