@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -20,27 +19,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
-import com.example.meydoon.adapter.ViewPagerAdapter;
 import com.example.meydoon.app.AppController;
 import com.example.meydoon.app.Config;
 import com.example.meydoon.helper.PrefManager;
-import com.example.meydoon.service.HttpService;
+import com.example.meydoon.service.VerifyOtpHttpService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * This layout appears on the first run of the application.
@@ -100,16 +91,6 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
 
         pref = new PrefManager(getActivity());
 
-        // Checking for user session
-        // if user is already logged in, take him to main activity
-        if (pref.isLoggedIn()) {
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-
-            getActivity().finish();
-        }
-
         adapter = new IntroViewPagerAdapter();
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -127,7 +108,6 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-
         /**
          * Checking if the device is waiting for sms
          * showing the user OTP screen
@@ -136,119 +116,6 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
             viewPager.setCurrentItem(1);
             layoutEditMobile.setVisibility(View.VISIBLE);
         }
-
-
-        //btnRequestSms = (Button)view.findViewById(R.id.btn_sign_in);
-
-        /*Clicking on Sign-in button
-        btnRequestSms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                final EditText user_name = (EditText)view.findViewById(R.id.txt_sign_in_mobile_phone);
-                final String user_name_string = user_name.getText().toString();
-
-                if (user_name.getText() == null){
-                    Toast.makeText(getActivity(), "شماره موبایل نمیتونه خالی باشه!", Toast.LENGTH_LONG).show();
-                } else {
-
-                }
-
-                //final EditText password = (EditText)view.findViewById(R.id.txt_password);
-                //final String password_string = password.getText().toString();
-
-               /* if(user_name_string.equals("09197248440") && password_string.equals("salam")){
-
-                    //  ===================> make main page a Fragment <======================
-
-
-
-                    VerifyMobileFragment newFragment = new VerifyMobileFragment();
-                    Bundle args = new Bundle();
-                    newFragment.setArguments(args);
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-                    // Replace whatever is in the fragment_container view with this fragment,
-                    // and add the transaction to the back stack so the user can navigate back
-                    transaction.replace(R.id.user_sign_up_container, newFragment);
-                    transaction.addToBackStack(null);
-
-                    // Commit the transaction
-                    transaction.commit();
-
-                }else {
-                    if(!(user_name_string.equals("09197248440"))) {
-                        Toast.makeText(LoginActivity.this, "نام کاربری اشتباه است!", Toast.LENGTH_LONG)
-                                .show();
-                    }
-                    else{
-                        Toast.makeText(LoginActivity.this, "کلمه عبور اشتباه است!", Toast.LENGTH_LONG)
-                                .show();
-                    }
-                }
-
-
-            }
-        });*/
-
-
-        /*Clicking on password recovery link
-        TextView password_recovery = (TextView)view.findViewById(R.id.link_password_recovery);
-        password_recovery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                 ===================> make Fragment for password recovery <=================
-                VerifyMobileFragment newFragment = new VerifyMobileFragment();
-                Bundle args = new Bundle();
-                newFragment.setArguments(args);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                transaction.replace(R.id.user_sign_up_container, newFragment);
-                transaction.addToBackStack(null);
-
-                // Commit the transaction
-                transaction.commit();
-            }
-        });
-
-*/
-
-        /*Clicking on sing-up link
-        TextView sign_up = (TextView)view.findViewById(R.id.user_link_to_sign_up);
-        sign_up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                SignUpMobileFragment gotToSignUp = new SignUpMobileFragment();
-                Bundle args = new Bundle();
-                gotToSignUp.setArguments(args);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                transaction.replace(R.id.user_sign_up_container, gotToSignUp);
-                transaction.addToBackStack(null);
-
-                // Commit the transaction
-                transaction.commit();
-            }
-        });
-
-*/
-        /*Clicking on guest button
-        Button guest_enter = (Button)view.findViewById(R.id.btn_guest_enter);
-        guest_enter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // ==============> Fragment for the main page <===============
-                startActivity(new Intent(getActivity(), MainActivity.class));
-            }
-        });
-
-*/
 
     }
 
@@ -424,7 +291,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
 
 
         if (!otp.isEmpty()) {
-            Intent grapprIntent = new Intent(getActivity().getApplicationContext(), HttpService.class);
+            Intent grapprIntent = new Intent(getActivity().getApplicationContext(), VerifyOtpHttpService.class);
             Bundle extras = new Bundle();
             extras.putString("otp", otp);
             extras.putString("mobile_number",mobile);

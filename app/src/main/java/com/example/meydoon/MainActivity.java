@@ -22,7 +22,10 @@ import com.example.meydoon.BottomNavigation.ProfileFragment;
 import com.example.meydoon.BottomNavigation.SearchFragment;
 import com.example.meydoon.Intro.UserSignUpActivity;
 import com.example.meydoon.adapter.ViewPagerAdapter;
+import com.example.meydoon.helper.PrefManager;
 import com.example.meydoon.mainTabs.BottomNavigationTabFragment;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     private static final String SELECTED_ITEM = "arg_selected_item";
@@ -33,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
+    private PrefManager pref;
+    private HashMap<String, String> user;
+    private String user_id;
+    private String user_name;
+    private String user_phone_number;
+
+    private Bundle extras;
+
 
     // =====================> Products and shops tabs will not be in the MVP
     private int[] tabIcons = {
@@ -58,6 +70,16 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setCustomView(R.layout.actionbar_home);
+
+
+        /** Setting sessions **/
+        pref = new PrefManager(getApplicationContext());
+
+        user = pref.getUserDetails();
+        user_id = user.get("user_id");
+        user_phone_number = user.get("user_phone_number");
+        user_name = user.get("user_name");
+
 
         View view = getSupportActionBar().getCustomView();
         ImageButton imageButton= (ImageButton)view.findViewById(R.id.meydoon_tab);
@@ -90,29 +112,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavSelectedItem(bottomNavigationView.getMenu().getItem(4));
 
 
-        /** Initialize Home Fragment
-        // Check that the activity is using the layout version with
-        // the fragment_container FrameLayout
-        if (findViewById(R.id.main_container) != null) {
-
-            // However, if we're being restored from a previous state,
-            // then we don't need to do anything and should return or else
-            // we could end up with overlapping fragments.
-            if (savedInstanceState != null) {
-                return;
-            }
-
-            // Create a new Fragment to be placed in the activity layout
-            HomeFragment goToHome = new HomeFragment();
-
-            // In case this activity was started with special instructions from an
-            // Intent, pass the Intent's extras to the fragment as arguments
-            goToHome.setArguments(getIntent().getExtras());
-
-            // Add the fragment to the 'fragment_container' FrameLayout
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.main_container, goToHome).commit();
-        }*/
 
     }
 
@@ -120,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.btm_nav_profile:
                 ProfileFragment goToProfile = new ProfileFragment();
+                putExtrasForFragment();
+                goToProfile.setArguments(extras);
+                /** Continue from here */
+
 
                 // In case this activity was started with special instructions from an
                 // Intent, pass the Intent's extras to the fragment as arguments
@@ -242,5 +245,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
+    }
+
+
+    private void putExtrasForFragment(){
+        extras = new Bundle();
+        extras.putString("user id", user_id);
+        extras.putString("user name", user_name);
+        extras.putString("user phone number", user_phone_number);
     }
 }

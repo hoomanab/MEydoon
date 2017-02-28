@@ -26,7 +26,7 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a2437d2-3f3a-442e-bd68-ad84d0b38525" name="Default" comment="" />
@@ -69,60 +69,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="ProfileFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/ProfileFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfileGridAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/ProfileGridAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
-              <folding>
-                <element signature="e#2567#2727#0" expanded="true" />
-                <element signature="e#2726#2727#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfileGridItem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/data/ProfileGridItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
-              <folding>
-                <element signature="e#910#911#0" expanded="true" />
-                <element signature="e#958#959#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile_grid_item.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/profile_grid_item.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.6805556">
-              <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="IntroFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-63.636364">
-              <caret line="426" column="86" selection-start-line="426" selection-start-column="86" selection-end-line="426" selection-end-column="86" />
+            <state vertical-scroll-proportion="-4.785714">
+              <caret line="220" column="49" selection-start-line="220" selection-start-column="47" selection-end-line="220" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,26 +81,58 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="intro.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/intro.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.8888888">
-              <caret line="151" column="44" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.38080496">
+              <caret line="123" column="41" selection-start-line="123" selection-start-column="41" selection-end-line="123" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3052#3343#0" expanded="true" />
+                <element signature="e#3342#3343#0" expanded="true" />
+                <element signature="e#3573#3832#0" expanded="true" />
+                <element signature="e#3831#3832#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BottomNavigationTabFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/mainTabs/BottomNavigationTabFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="76" column="43" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HttpService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/service/HttpService.java">
+      <file leaf-file-name="intro.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/intro.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62624586">
-              <caret line="86" column="22" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="151" column="44" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrefManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/helper/PrefManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.5454545">
+              <caret line="33" column="69" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="69" />
               <folding>
-                <element signature="e#3974#3990#0" expanded="true" />
+                <element signature="e#1337#1338#0" expanded="true" />
+                <element signature="e#1406#1407#0" expanded="true" />
+                <element signature="e#1590#1591#0" expanded="true" />
+                <element signature="e#1651#1652#0" expanded="true" />
+                <element signature="e#2273#2274#0" expanded="true" />
+                <element signature="e#2336#2337#0" expanded="true" />
+                <element signature="e#2532#2548#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,8 +142,26 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="73" />
-              <folding />
+              <caret line="96" column="111" selection-start-line="96" selection-start-column="111" selection-end-line="96" selection-end-column="111" />
+              <folding>
+                <element signature="e#4694#5041#0" expanded="true" />
+                <element signature="e#5040#5041#0" expanded="true" />
+                <element signature="e#5043#5267#0" expanded="true" />
+                <element signature="e#5266#5267#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NotificationsInboxFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <folding>
+                <element signature="e#3971#4326#0" expanded="true" />
+                <element signature="e#4325#4326#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -169,17 +170,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/app/Config.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrefManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/helper/PrefManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+              <caret line="8" column="92" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -191,9 +182,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="Class" />
         <option value="resourceFile" />
         <option value="layoutResourceFile_vertical" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -1893,16 +1884,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/test_actionbar.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/shop_register.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/AddProduct/ShopRegisterFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/AddProduct/NormalUserAddProductFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/actionbar_notification_inbox.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/SearchFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/data/NotificationInboxItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/NotificationInboxAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/helper/MyViewPager.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/mobile_verification.xml" />
@@ -1911,7 +1898,6 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/UserSignUpActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/helper/PrefManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/profile_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/data/ProfileProductsItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/ProfileProductsAdapter.java" />
@@ -1926,7 +1912,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/actionbar_home.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/splash_screen.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/profile_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/add_product.xml" />
@@ -1935,15 +1920,21 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/actionbar_product_details.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/data/FeedItem.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/FeedListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/feed_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/product_details.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/profile_grid_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/ProfileGridAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/app/Config.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/service/HttpService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/session/AlertDialogManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/session/SessionManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/service/VerifyOtpHttpService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/helper/PrefManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -1997,7 +1988,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
@@ -2034,64 +2026,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles.xml" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meydoon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meydoon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meydoon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2143,7 +2077,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Intro" />
+              <option name="myItemId" value="session" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2165,7 +2099,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
+              <option name="myItemId" value="mainTabs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2191,54 +2125,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meydoon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meydoon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Meydoon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="meydoon" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adapter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2567,7 +2456,6 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1619632" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32955772" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883435" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20981595" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883435" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -2587,6 +2475,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32955772" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883435" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.044247787" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -2715,25 +2604,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java</url>
-          <line>78</line>
+          <line>84</line>
           <properties />
           <option name="timeStamp" value="173" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java</url>
-          <line>77</line>
+          <line>83</line>
           <properties />
           <option name="timeStamp" value="174" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java</url>
-          <line>74</line>
+          <line>80</line>
           <properties />
           <option name="timeStamp" value="175" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java</url>
-          <line>72</line>
+          <line>78</line>
           <properties />
           <option name="timeStamp" value="176" />
         </line-breakpoint>
@@ -2949,169 +2838,169 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/MainActivity.java</url>
-          <line>149</line>
+          <line>152</line>
           <properties />
           <option name="timeStamp" value="240" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>59</line>
+          <line>64</line>
           <properties />
           <option name="timeStamp" value="242" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>74</line>
+          <line>79</line>
           <properties />
           <option name="timeStamp" value="243" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>76</line>
+          <line>81</line>
           <properties />
           <option name="timeStamp" value="244" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>79</line>
+          <line>84</line>
           <properties />
           <option name="timeStamp" value="245" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>80</line>
+          <line>85</line>
           <properties />
           <option name="timeStamp" value="246" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>84</line>
+          <line>89</line>
           <properties />
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>85</line>
+          <line>90</line>
           <properties />
           <option name="timeStamp" value="248" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>86</line>
+          <line>91</line>
           <properties />
           <option name="timeStamp" value="249" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>88</line>
+          <line>93</line>
           <properties />
           <option name="timeStamp" value="250" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>91</line>
+          <line>96</line>
           <properties />
           <option name="timeStamp" value="251" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>94</line>
+          <line>99</line>
           <properties />
           <option name="timeStamp" value="252" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>101</line>
+          <line>106</line>
           <properties />
           <option name="timeStamp" value="253" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>108</line>
+          <line>113</line>
           <properties />
           <option name="timeStamp" value="254" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>115</line>
+          <line>120</line>
           <properties />
           <option name="timeStamp" value="255" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>120</line>
+          <line>125</line>
           <properties />
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>129</line>
+          <line>134</line>
           <properties />
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>131</line>
+          <line>136</line>
           <properties />
           <option name="timeStamp" value="258" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>132</line>
+          <line>137</line>
           <properties />
           <option name="timeStamp" value="259" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>134</line>
+          <line>139</line>
           <properties />
           <option name="timeStamp" value="260" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>135</line>
+          <line>140</line>
           <properties />
           <option name="timeStamp" value="261" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>136</line>
+          <line>141</line>
           <properties />
           <option name="timeStamp" value="262" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>138</line>
+          <line>143</line>
           <properties />
           <option name="timeStamp" value="263" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>139</line>
+          <line>144</line>
           <properties />
           <option name="timeStamp" value="264" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>140</line>
+          <line>145</line>
           <properties />
           <option name="timeStamp" value="265" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>143</line>
+          <line>148</line>
           <properties />
           <option name="timeStamp" value="266" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>146</line>
+          <line>151</line>
           <properties />
           <option name="timeStamp" value="267" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>147</line>
+          <line>152</line>
           <properties />
           <option name="timeStamp" value="268" />
         </line-breakpoint>
@@ -3315,253 +3204,253 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>332</line>
+          <line>199</line>
           <properties />
           <option name="timeStamp" value="318" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>333</line>
+          <line>200</line>
           <properties />
           <option name="timeStamp" value="319" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>337</line>
+          <line>204</line>
           <properties />
           <option name="timeStamp" value="320" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>339</line>
+          <line>206</line>
           <properties />
           <option name="timeStamp" value="321" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>342</line>
+          <line>209</line>
           <properties />
           <option name="timeStamp" value="323" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>343</line>
+          <line>210</line>
           <properties />
           <option name="timeStamp" value="324" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>347</line>
+          <line>214</line>
           <properties />
           <option name="timeStamp" value="325" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>349</line>
+          <line>216</line>
           <properties />
           <option name="timeStamp" value="326" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>353</line>
+          <line>220</line>
           <properties />
           <option name="timeStamp" value="327" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>352</line>
+          <line>219</line>
           <properties />
           <option name="timeStamp" value="328" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>354</line>
+          <line>221</line>
           <properties />
           <option name="timeStamp" value="329" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>356</line>
+          <line>223</line>
           <properties />
           <option name="timeStamp" value="330" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>359</line>
+          <line>226</line>
           <properties />
           <option name="timeStamp" value="331" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>361</line>
+          <line>228</line>
           <properties />
           <option name="timeStamp" value="332" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>360</line>
+          <line>227</line>
           <properties />
           <option name="timeStamp" value="333" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>364</line>
+          <line>231</line>
           <properties />
           <option name="timeStamp" value="334" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>365</line>
+          <line>232</line>
           <properties />
           <option name="timeStamp" value="335" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>367</line>
+          <line>234</line>
           <properties />
           <option name="timeStamp" value="336" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>368</line>
+          <line>235</line>
           <properties />
           <option name="timeStamp" value="337" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>370</line>
+          <line>237</line>
           <properties />
           <option name="timeStamp" value="338" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>369</line>
+          <line>236</line>
           <properties />
           <option name="timeStamp" value="339" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>372</line>
+          <line>239</line>
           <properties />
           <option name="timeStamp" value="340" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>376</line>
+          <line>243</line>
           <properties />
           <option name="timeStamp" value="341" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>381</line>
+          <line>248</line>
           <properties />
           <option name="timeStamp" value="343" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>382</line>
+          <line>249</line>
           <properties />
           <option name="timeStamp" value="344" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>380</line>
+          <line>247</line>
           <properties />
           <option name="timeStamp" value="345" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>383</line>
+          <line>250</line>
           <properties />
           <option name="timeStamp" value="346" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>403</line>
+          <line>270</line>
           <properties />
           <option name="timeStamp" value="347" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>404</line>
+          <line>271</line>
           <properties />
           <option name="timeStamp" value="348" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>406</line>
+          <line>273</line>
           <properties />
           <option name="timeStamp" value="349" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>408</line>
+          <line>275</line>
           <properties />
           <option name="timeStamp" value="350" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>414</line>
+          <line>281</line>
           <properties />
           <option name="timeStamp" value="351" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>421</line>
+          <line>288</line>
           <properties />
           <option name="timeStamp" value="353" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>425</line>
+          <line>292</line>
           <properties />
           <option name="timeStamp" value="354" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>430</line>
+          <line>297</line>
           <properties />
           <option name="timeStamp" value="355" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>431</line>
+          <line>298</line>
           <properties />
           <option name="timeStamp" value="356" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>426</line>
+          <line>293</line>
           <properties />
           <option name="timeStamp" value="357" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>432</line>
+          <line>299</line>
           <properties />
           <option name="timeStamp" value="358" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>433</line>
+          <line>300</line>
           <properties />
           <option name="timeStamp" value="359" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>445</line>
+          <line>312</line>
           <properties />
           <option name="timeStamp" value="361" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>446</line>
+          <line>313</line>
           <properties />
           <option name="timeStamp" value="362" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>451</line>
+          <line>318</line>
           <properties />
           <option name="timeStamp" value="363" />
         </line-breakpoint>
@@ -3585,25 +3474,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>310</line>
-          <properties class="com.example.meydoon.Intro.IntroFragment" />
+          <line>177</line>
+          <properties class="com.example.meydoon.Intro.IntroFragment" method="requestForSMS" />
           <option name="timeStamp" value="317" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>420</line>
+          <line>287</line>
           <properties class="com.example.meydoon.Intro.IntroFragment" method="verifyOtp" />
           <option name="timeStamp" value="352" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java</url>
-          <line>444</line>
+          <line>311</line>
           <properties class="com.example.meydoon.Intro.IntroFragment" method="isValidPhoneNumber" />
           <option name="timeStamp" value="360" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java</url>
-          <line>45</line>
+          <line>48</line>
           <properties field="URL_NOTIFICATION_INBOX" class="com.example.meydoon.BottomNavigation.NotificationsInboxFragment" />
           <option name="timeStamp" value="241" />
         </line-breakpoint>
@@ -3613,44 +3502,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="46" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/test.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5106036">
-          <caret line="31" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="207" selection-end-column="17" />
-          <folding>
-            <element signature="e#1674#1698#0" expanded="true" />
-            <element signature="e#2470#2484#0" expanded="true" />
-            <element signature="e#7382#7409#0" expanded="true" />
-            <element signature="e#7680#7705#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://G:/Programming/Android/SDK/platforms/android-25/android.jar!/java/lang/Throwable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37685952">
-          <caret line="32" column="18" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://G:/Programming/Android/SDK/platforms/android-25/android.jar!/android/content/Intent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37685952">
-          <caret line="288" column="28" selection-start-line="288" selection-start-column="28" selection-end-line="288" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/AddProduct/AddProductFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3660,14 +3511,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actionbar_notification_inbox.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.7361112">
           <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/FeedImageView.java">
@@ -3678,14 +3529,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bottom_navigation.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.00491">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/app/libs/volley.jar!/com/android/volley/toolbox/NetworkImageView.class">
@@ -3710,58 +3561,58 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actionbar_home.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.22950819">
           <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_product_fragment.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_product_fragment.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_product_guest.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/feed_fragment.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_fragment.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_fragment.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25466892">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/btn.xml">
@@ -3772,25 +3623,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/shop_search_result_item.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/splash_screen.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/splash_screen.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/volly/LruBitmapCache.java">
@@ -3804,16 +3655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2415459">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="136" column="80" selection-start-line="136" selection-start-column="80" selection-end-line="136" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3833,36 +3674,36 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="38" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="38" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_product.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_product.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/search_fragment.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/search_fragment.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/receiver/SmsReceiver.java">
@@ -3881,47 +3722,36 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actionbar_shop_profile.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.7777777">
           <caret line="8" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="44" selection-end-column="15" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actionbar_product_details.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actionbar_product_details.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5226481">
           <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/profile_main.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/profile_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.12229102">
-          <caret line="102" column="50" selection-start-line="102" selection-start-column="50" selection-end-line="102" selection-end-column="50" />
-          <folding>
-            <element signature="e#3795#4150#0" expanded="true" />
-            <element signature="e#4149#4150#0" expanded="true" />
-          </folding>
-        </state>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
@@ -3933,21 +3763,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/notification_inbox_item.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.72648084">
           <caret line="114" column="35" selection-start-line="114" selection-start-column="31" selection-end-line="114" selection-end-column="35" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="jar://G:/Programming/Android/SDK/platforms/android-25/android.jar!/android/view/View.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42402828">
           <caret line="106" column="45" selection-start-line="106" selection-start-column="45" selection-end-line="106" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3960,9 +3789,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/feed_item.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.444445">
           <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="122" selection-end-column="52" />
@@ -4000,6 +3826,9 @@
           </folding>
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/data/FeedItem.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -4017,9 +3846,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/product_details.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.125">
           <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
@@ -4053,23 +3879,28 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/profile_grid_item.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/profile_grid_item.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6805556">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/ProfileFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4078,8 +3909,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
           <folding>
-            <element signature="e#910#911#0" expanded="true" />
-            <element signature="e#958#959#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="false" />
+            <element signature="e#513#514#0" expanded="false" />
+            <element signature="e#560#561#0" expanded="false" />
+            <element signature="e#602#603#0" expanded="false" />
+            <element signature="e#641#642#0" expanded="false" />
+            <element signature="e#676#677#0" expanded="false" />
+            <element signature="e#732#733#0" expanded="false" />
+            <element signature="e#780#781#0" expanded="false" />
+            <element signature="e#819#820#0" expanded="false" />
+            <element signature="e#854#855#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -4089,17 +3928,14 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
           <folding>
-            <element signature="e#2567#2727#0" expanded="true" />
-            <element signature="e#2726#2727#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1246#1247#0" expanded="false" />
+            <element signature="e#1292#1293#0" expanded="false" />
+            <element signature="e#1349#1350#0" expanded="false" />
+            <element signature="e#1402#1403#0" expanded="false" />
+            <element signature="e#1459#1460#0" expanded="false" />
+            <element signature="e#1490#1491#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/helper/PrefManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4111,49 +3947,129 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/app/Config.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/intro.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/intro.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8888888">
           <caret line="151" column="44" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="44" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/app/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="73" />
+          <caret line="8" column="92" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="92" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/session/AlertDialogManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-63.636364">
-          <caret line="426" column="86" selection-start-line="426" selection-start-column="86" selection-end-line="426" selection-end-column="86" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/service/HttpService.java">
+    <entry file="jar://G:/Programming/Android/SDK/platforms/android-25/android.jar!/android/content/Intent.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62624586">
-          <caret line="86" column="22" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
+        <state vertical-scroll-proportion="-2.6875">
+          <caret line="288" column="28" selection-start-line="288" selection-start-column="28" selection-end-line="288" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/service/VerifyOtpHttpService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="42" selection-start-line="96" selection-start-column="42" selection-end-line="96" selection-end-column="42" />
           <folding>
-            <element signature="e#3974#3990#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/NotificationsInboxFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="e#3971#4326#0" expanded="true" />
+            <element signature="e#4325#4326#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="111" selection-start-line="96" selection-start-column="111" selection-end-line="96" selection-end-column="111" />
+          <folding>
+            <element signature="e#4694#5041#0" expanded="true" />
+            <element signature="e#5040#5041#0" expanded="true" />
+            <element signature="e#5043#5267#0" expanded="true" />
+            <element signature="e#5266#5267#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigationViewHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27089784">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/helper/PrefManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.5454545">
+          <caret line="33" column="69" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="69" />
+          <folding>
+            <element signature="e#1337#1338#0" expanded="true" />
+            <element signature="e#1406#1407#0" expanded="true" />
+            <element signature="e#1590#1591#0" expanded="true" />
+            <element signature="e#1651#1652#0" expanded="true" />
+            <element signature="e#2273#2274#0" expanded="true" />
+            <element signature="e#2336#2337#0" expanded="true" />
+            <element signature="e#2532#2548#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/mainTabs/BottomNavigationTabFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="43" selection-start-line="76" selection-start-column="43" selection-end-line="76" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/Intro/IntroFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.785714">
+          <caret line="220" column="49" selection-start-line="220" selection-start-column="47" selection-end-line="220" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38080496">
+          <caret line="123" column="41" selection-start-line="123" selection-start-column="41" selection-end-line="123" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3052#3343#0" expanded="true" />
+            <element signature="e#3342#3343#0" expanded="true" />
+            <element signature="e#3573#3832#0" expanded="true" />
+            <element signature="e#3831#3832#0" expanded="true" />
           </folding>
         </state>
       </provider>

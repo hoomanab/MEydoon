@@ -10,7 +10,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.app.AppController;
 import com.example.meydoon.app.Config;
@@ -25,11 +24,15 @@ import java.util.Map;
 /**
  * Created by hooma on 2/21/2017.
  */
-public class HttpService extends IntentService {
-    private static String TAG = HttpService.class.getSimpleName();
+public class VerifyOtpHttpService extends IntentService {
+    // Session Manager Class
+    PrefManager pref;
 
-    public HttpService() {
-        super(HttpService.class.getSimpleName());
+
+    private static String TAG = VerifyOtpHttpService.class.getSimpleName();
+
+    public VerifyOtpHttpService() {
+        super(VerifyOtpHttpService.class.getSimpleName());
     }
 
     @Override
@@ -81,12 +84,15 @@ public class HttpService extends IntentService {
 
                     int user_id = response.getInt("user_id");
                     String user_mobile_mobile = response.getString("user_phone_number");
+                    String user_name = response.getString("user_name");
 
                     /**  =================> Need to continue from here <=================**/
-                    PrefManager pref = new PrefManager(getApplicationContext());
+
+                    pref = new PrefManager(getApplicationContext());
+                    pref.createLogin(user_id,user_name,user_mobile_mobile);
                     //pref.createLogin(mobile);
 
-                    Intent intent = new Intent(HttpService.this, MainActivity.class);
+                    Intent intent = new Intent(VerifyOtpHttpService.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
 

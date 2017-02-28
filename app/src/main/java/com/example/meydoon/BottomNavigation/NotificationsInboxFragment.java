@@ -24,6 +24,7 @@ import com.example.meydoon.app.AppController;
 import com.example.meydoon.data.FeedItem;
 import com.example.meydoon.data.NotificationInboxItem;
 import com.example.meydoon.data.SearchItem;
+import com.example.meydoon.helper.PrefManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,6 +43,8 @@ public class NotificationsInboxFragment extends Fragment {
     private NotificationInboxAdapter notificationInboxAdapter;
     private List<NotificationInboxItem> notificationInboxItems;
 
+    private PrefManager pref;
+
 
     private String URL_NOTIFICATION_INBOX = "https://api.myjson.com/bins/1ezj9d";
 
@@ -49,7 +52,9 @@ public class NotificationsInboxFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        pref = new PrefManager(getActivity().getApplicationContext());
 
+        pref.checkLogin();
         /** Here I should send a request to getNotifications for the user! **/
         // Request for notifications!
     }

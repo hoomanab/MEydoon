@@ -26,6 +26,7 @@ import com.example.meydoon.R;
 import com.example.meydoon.adapter.FeedListAdapter;
 import com.example.meydoon.app.AppController;
 import com.example.meydoon.data.FeedItem;
+import com.example.meydoon.helper.PrefManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,10 +47,15 @@ public class HomeFragment extends Fragment {
     private List<FeedItem> feedItems;
     private String URL_FEED = "http://api.androidhive.info/feed/feed.json";
 
+    private PrefManager pref;
+    private Boolean logginStatus;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        pref = new PrefManager(getActivity().getApplicationContext());
+        logginStatus = pref.isLoggedIn();
     }
 
 
@@ -79,7 +85,16 @@ public class HomeFragment extends Fragment {
         listView.setAdapter(listAdapter);
 
 
-
+        /** ========> If logginStatus == false then
+         *              show Home for Guest
+         *
+         *            else
+         *              pref.checkLogin();
+         *              HashMap<String, String> user = getUserDetails();
+         *
+         *              String user_id = user.get(PrefManager.KEY_ID);
+         *
+         *              Then send user_id as JSONObject to server and get it's latest following shops products!**/
 
         // These two lines not needed,
         // just to get the look of facebook (changing background color & hiding the icon)
