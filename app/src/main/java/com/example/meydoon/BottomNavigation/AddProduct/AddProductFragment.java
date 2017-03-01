@@ -208,6 +208,7 @@ public class AddProductFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getActivity().finish();
+                startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
 

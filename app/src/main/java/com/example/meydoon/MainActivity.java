@@ -18,8 +18,9 @@ import android.widget.Toast;
 import com.example.meydoon.BottomNavigation.AddProduct.AddProductActivity;
 import com.example.meydoon.BottomNavigation.HomeFragment;
 import com.example.meydoon.BottomNavigation.NotificationsInboxFragment;
-import com.example.meydoon.BottomNavigation.ProfileFragment;
+import com.example.meydoon.BottomNavigation.profile.ProfileFragment;
 import com.example.meydoon.BottomNavigation.SearchFragment;
+import com.example.meydoon.BottomNavigation.profile.ProfileNotificationsActivity;
 import com.example.meydoon.Intro.ProceedActivity;
 import com.example.meydoon.Intro.ProceedFragment;
 import com.example.meydoon.Intro.UserSignUpActivity;
@@ -125,16 +126,16 @@ public class MainActivity extends AppCompatActivity {
                 loginStatus = pref.isLoggedIn();
 
                 /** If the is logged in, he can proceed! */
-                if(loginStatus){
+                //if(loginStatus){
                     ProfileFragment goToProfile = new ProfileFragment();
-                    putExtrasForFragment();
-                    goToProfile.setArguments(extras);
+                //    putExtrasForFragment();
+                //    goToProfile.setArguments(extras);
 
                     getSupportFragmentManager().beginTransaction().add(R.id.main_container, goToProfile).commit();
-                }else {
+              //  }else {
                     /** If the user is a guest, he will be redirected to loggin fragment */
-                    startActivity(new Intent(this, ProceedActivity.class));
-                }
+                  //  startActivity(new Intent(this, ProceedActivity.class));
+              //  }
                 break;
 
             case R.id.btm_nav_notifications_inbox:
@@ -160,6 +161,9 @@ public class MainActivity extends AppCompatActivity {
 
                 /** If the is logged in, he can proceed! */
                 if(loginStatus){
+
+                    /** ====================> Check if the user has shop! <====================*/
+
                     Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
                     putExtrasForFragment();
                     intent.putExtras(extras);
@@ -227,8 +231,6 @@ public class MainActivity extends AppCompatActivity {
         if (isFirstRun) {
             //show start activity
             startActivity(new Intent(MainActivity.this, UserSignUpActivity.class));
-            Toast.makeText(MainActivity.this, "First Run", Toast.LENGTH_LONG)
-                    .show();
         }
         getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
                 .putBoolean("isFirstRun", false).commit();
@@ -253,4 +255,31 @@ public class MainActivity extends AppCompatActivity {
         extras.putString("user_name", user_name);
         extras.putString("user_phone_number", user_phone_number);
     }
+
+
+
+    /** Handling clicks on actionbar icons */
+    public void mainActivityClickEvent(View view){
+        switch (view.getId()){
+
+            /** For shop profile actionbar,
+             * @param img_setting
+             * @param img_send_notification**/
+            case R.id.img_settings:
+                Toast.makeText(this, "تنظیمات", Toast.LENGTH_LONG).show();
+                break;
+
+            case R.id.img_send_notification:
+                startActivity(new Intent(MainActivity.this, ProfileNotificationsActivity.class));
+                break;
+
+
+            /** For product details,
+             * @param img_back **/
+            case R.id.img_back:
+                this.getSupportFragmentManager().popBackStackImmediate();
+                break;
+        }
+    }
+
 }

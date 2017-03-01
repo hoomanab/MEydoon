@@ -17,7 +17,8 @@
         android:layout_gravity="center_vertical"
         android:background="@android:color/transparent"
         android:layout_alignParentTop="true"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:onClick="mainActivityClickEvent"/>
 
     <TextView
         android:id="@+id/txt_shop_name"
@@ -39,7 +40,8 @@
         android:layout_gravity="center_vertical"
         android:background="@android:color/transparent"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="mainActivityClickEvent"/>
 
 
 </LinearLayout>

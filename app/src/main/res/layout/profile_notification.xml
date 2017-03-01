@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/feed_bg">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="55dip">
+        <ListView
+            android:id="@+id/profile_notifications_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/new_notification"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btn"
+        android:gravity="center_horizontal"
+        android:padding="10dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@android:drawable/ic_input_add" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="اعلان جدید"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>
