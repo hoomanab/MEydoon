@@ -8,7 +8,7 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 
 import com.example.meydoon.app.Config;
-import com.example.meydoon.service.HttpService;
+import com.example.meydoon.service.VerifyOtpHttpService;
 
 /**
  * Created by hooma on 2/21/2017.
@@ -40,7 +40,7 @@ public class SmsReceiver extends BroadcastReceiver {
 
                     Log.e(TAG, "OTP received: " + verificationCode);
 
-                    Intent hhtpIntent = new Intent(context, HttpService.class);
+                    Intent hhtpIntent = new Intent(context, VerifyOtpHttpService.class);
                     hhtpIntent.putExtra("otp", verificationCode);
                     context.startService(hhtpIntent);
                 }

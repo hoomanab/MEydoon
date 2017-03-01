@@ -81,7 +81,7 @@ public class SearchFragment extends Fragment {
         /** Custom Action Bar*/
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_search);
+        ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_home);
 
 
         /*

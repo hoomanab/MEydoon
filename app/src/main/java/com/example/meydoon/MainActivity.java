@@ -20,6 +20,8 @@ import com.example.meydoon.BottomNavigation.HomeFragment;
 import com.example.meydoon.BottomNavigation.NotificationsInboxFragment;
 import com.example.meydoon.BottomNavigation.ProfileFragment;
 import com.example.meydoon.BottomNavigation.SearchFragment;
+import com.example.meydoon.Intro.ProceedActivity;
+import com.example.meydoon.Intro.ProceedFragment;
 import com.example.meydoon.Intro.UserSignUpActivity;
 import com.example.meydoon.adapter.ViewPagerAdapter;
 import com.example.meydoon.helper.PrefManager;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private String user_phone_number;
 
     private Bundle extras;
+    private Boolean loginStatus;
 
 
     // =====================> Products and shops tabs will not be in the MVP
@@ -114,42 +117,46 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /** Bottom navigation selection */
     public void bottomNavSelectedItem(MenuItem item){
         switch (item.getItemId()) {
             case R.id.btm_nav_profile:
-                ProfileFragment goToProfile = new ProfileFragment();
-                putExtrasForFragment();
-                goToProfile.setArguments(extras);
-                /** Continue from here */
+                loginStatus = pref.isLoggedIn();
 
+                /** If the is logged in, he can proceed! */
+                if(loginStatus){
+                    ProfileFragment goToProfile = new ProfileFragment();
+                    putExtrasForFragment();
+                    goToProfile.setArguments(extras);
 
-                // In case this activity was started with special instructions from an
-                // Intent, pass the Intent's extras to the fragment as arguments
-                goToProfile.setArguments(getIntent().getExtras());
-
-                // Add the fragment to the 'fragment_container' FrameLayout
-                getSupportFragmentManager().beginTransaction()
-                        .add(R.id.main_container, goToProfile).commit();
+                    getSupportFragmentManager().beginTransaction().add(R.id.main_container, goToProfile).commit();
+                }else {
+                    /** If the user is a guest, he will be redirected to loggin fragment */
+                    startActivity(new Intent(this, ProceedActivity.class));
+                }
                 break;
 
             case R.id.btm_nav_notifications_inbox:
-                NotificationsInboxFragment goToNotificationInbox = new NotificationsInboxFragment();
-                putExtrasForFragment();
-                goToNotificationInbox.setArguments(extras);
+                loginStatus = pref.isLoggedIn();
 
-                // In case this activity was started with special instructions from an
-                // Intent, pass the Intent's extras to the fragment as arguments
-                goToNotificationInbox.setArguments(getIntent().getExtras());
+                /** If the is logged in, he can proceed! */
+                if(loginStatus){
+                    NotificationsInboxFragment goToNotification = new NotificationsInboxFragment();
+                    putExtrasForFragment();
+                    goToNotification.setArguments(extras);
 
-                // Add the fragment to the 'fragment_container' FrameLayout
-                getSupportFragmentManager().beginTransaction()
-                        .add(R.id.main_container, goToNotificationInbox).commit();
+                    getSupportFragmentManager().beginTransaction().add(R.id.main_container, goToNotification).commit();
+                }else {
+                    /** If the user is a guest, he will be redirected to loggin fragment */
+                    startActivity(new Intent(this, ProceedActivity.class));
+                }
                 break;
 
             case R.id.btm_nav_add_item:
                 //Intent goToAddProduct = new Intent(getBaseContext(), AddProductActivity.class);
                 //goToAddProduct.putExtra("Previously Selected Menu Item", bottomNavigationView.getMenu().getItem(4).toString());
-                Boolean loginStatus = pref.isLoggedIn();
+                loginStatus = pref.isLoggedIn();
 
                 /** If the is logged in, he can proceed! */
                 if(loginStatus){
@@ -159,21 +166,11 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }else {
                     /** If the user is a guest, he will be redirected to loggin fragment */
+                    startActivity(new Intent(this, ProceedActivity.class));
                 }
 
 
                 /** ===============> On back-press menu item selected previously not implemented! */
-
-
-                /*AddProductFragment goToAddProduct = new AddProductFragment();
-
-                // In case this activity was started with special instructions from an
-                // Intent, pass the Intent's extras to the fragment as arguments
-                goToAddProduct.setArguments(getIntent().getExtras());
-
-                // Add the fragment to the 'fragment_container' FrameLayout
-                getSupportFragmentManager().beginTransaction()
-                        .add(R.id.main_container, goToAddProduct).commit();*/
                 break;
 
             case R.id.btm_nav_search:
@@ -181,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // In case this activity was started with special instructions from an
                 // Intent, pass the Intent's extras to the fragment as arguments
-                gotToSearch.setArguments(getIntent().getExtras());
+                //gotToSearch.setArguments(getIntent().getExtras());
 
                 // Add the fragment to the 'fragment_container' FrameLayout
                 getSupportFragmentManager().beginTransaction()
@@ -189,31 +186,20 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.btm_nav_home:
-/*                HomeFragment goToHome = new HomeFragment();
-                Bundle homeArgs = new Bundle();
-                goToHome.setArguments(homeArgs);
-                FragmentTransaction homeTransaction = getSupportFragmentManager().beginTransaction();
 
-
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                homeTransaction.replace(R.id.navigation_container, goToHome);
-                homeTransaction.addToBackStack(null);
-
-                // Commit the transaction
-                homeTransaction.commit();*/
-
-
+                /** In Home, we should check if the user is guest or not to show products accordingly! */
                 // Create a new Fragment to be placed in the activity layout
                 HomeFragment goToHome = new HomeFragment();
-
+                putExtrasForFragment();
+                goToHome.setArguments(extras);
                 // In case this activity was started with special instructions from an
                 // Intent, pass the Intent's extras to the fragment as arguments
-                goToHome.setArguments(getIntent().getExtras());
+                //goToHome.setArguments(getIntent().getExtras());
 
                 // Add the fragment to the 'fragment_container' FrameLayout
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.main_container, goToHome).commit();
+                            .add(R.id.main_container, goToHome).commit();
+
                 break;
         }
     }

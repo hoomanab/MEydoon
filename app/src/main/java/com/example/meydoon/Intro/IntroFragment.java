@@ -42,8 +42,8 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
 
     private ViewPager viewPager;
     private IntroViewPagerAdapter adapter;
-    private Button btnRequestSms, btnVerifyOtp;
-    private EditText inputName, inputEmail, inputMobile, inputOtp;
+    private Button btnRequestSms, btnVerifyOtp, btnGuestEnter;
+    private EditText inputMobile, inputOtp;
     private ProgressBar progressBar;
     private PrefManager pref;
     private ImageButton btnEditMobile;
@@ -80,6 +80,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
         btnEditMobile = (ImageButton) view.findViewById(R.id.btn_edit_mobile);
         txtEditMobile = (TextView) view.findViewById(R.id.txt_edit_mobile);
         layoutEditMobile = (LinearLayout) view.findViewById(R.id.layout_edit_mobile);
+        btnGuestEnter = (Button) view.findViewById(R.id.btn_guest_enter);
 
         // view click listeners
         btnEditMobile.setOnClickListener(this);
@@ -116,6 +117,14 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
             viewPager.setCurrentItem(1);
             layoutEditMobile.setVisibility(View.VISIBLE);
         }
+
+
+        btnGuestEnter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), MainActivity.class));
+            }
+        });
 
     }
 

@@ -9,8 +9,7 @@
     <com.example.meydoon.helper.MyViewPager
         android:id="@+id/viewPagerVertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:padding="10dip">
+        android:layout_height="fill_parent">
 
         <!-- Enter Phone Number -->
         <LinearLayout
@@ -173,16 +172,6 @@
         android:padding="10dip"
         android:layout_alignParentBottom="true">
 
-        <!-- Text for Guest Enter -->
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:layout_marginBottom="5dip"
-            android:text="@string/txt_sign_up_later"
-            android:gravity="center"
-            android:textSize="15sp"
-            android:textColor="#372c24"/>
 
         <!-- Guest Enter Button -->
         <Button
