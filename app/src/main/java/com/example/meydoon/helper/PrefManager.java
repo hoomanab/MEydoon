@@ -50,8 +50,27 @@ public class PrefManager {
         return pref.getBoolean(KEY_IS_WAITING_FOR_SMS, false);
     }
 
-    public void setMobileNumber(String mobileNumber) {
-        editor.putString(KEY_PHONE_NUMBER, mobileNumber);
+    public void setUserId(int user_id) {
+        editor.putInt(KEY_USER_ID, user_id);
+        editor.commit();
+    }
+
+    public int getUserId() {
+        return pref.getInt(KEY_USER_ID, 0);
+    }
+
+
+    public void setUserName(String user_name) {
+        editor.putString(KEY_NAME, user_name);
+        editor.commit();
+    }
+
+    public String getUserName() {
+        return pref.getString(KEY_NAME, null);
+    }
+
+    public void setMobileNumber(String user_phone_number) {
+        editor.putString(KEY_PHONE_NUMBER, user_phone_number);
         editor.commit();
     }
 

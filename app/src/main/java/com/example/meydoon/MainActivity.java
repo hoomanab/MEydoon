@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     private PrefManager pref;
     private HashMap<String, String> user;
-    private String user_id;
+    private int user_id;
     private String user_name;
     private String user_phone_number;
 
@@ -75,10 +75,9 @@ public class MainActivity extends AppCompatActivity {
         /** Setting sessions **/
         pref = new PrefManager(getApplicationContext());
 
-        user = pref.getUserDetails();
-        user_id = user.get("user_id");
-        user_phone_number = user.get("user_phone_number");
-        user_name = user.get("user_name");
+        user_id = pref.getUserId();
+        user_phone_number = pref.getMobileNumber();
+        user_name = pref.getUserName();
 
 
         View view = getSupportActionBar().getCustomView();
@@ -135,6 +134,8 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.btm_nav_notifications_inbox:
                 NotificationsInboxFragment goToNotificationInbox = new NotificationsInboxFragment();
+                putExtrasForFragment();
+                goToNotificationInbox.setArguments(extras);
 
                 // In case this activity was started with special instructions from an
                 // Intent, pass the Intent's extras to the fragment as arguments
@@ -148,9 +149,21 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btm_nav_add_item:
                 //Intent goToAddProduct = new Intent(getBaseContext(), AddProductActivity.class);
                 //goToAddProduct.putExtra("Previously Selected Menu Item", bottomNavigationView.getMenu().getItem(4).toString());
+                Boolean loginStatus = pref.isLoggedIn();
+
+                /** If the is logged in, he can proceed! */
+                if(loginStatus){
+                    Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
+                    putExtrasForFragment();
+                    intent.putExtras(extras);
+                    startActivity(intent);
+                }else {
+                    /** If the user is a guest, he will be redirected to loggin fragment */
+                }
+
 
                 /** ===============> On back-press menu item selected previously not implemented! */
-                startActivity(new Intent(MainActivity.this, AddProductActivity.class));
+
 
                 /*AddProductFragment goToAddProduct = new AddProductFragment();
 
@@ -250,8 +263,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void putExtrasForFragment(){
         extras = new Bundle();
-        extras.putString("user id", user_id);
-        extras.putString("user name", user_name);
-        extras.putString("user phone number", user_phone_number);
+        extras.putInt("user_id", user_id);
+        extras.putString("user_name", user_name);
+        extras.putString("user_phone_number", user_phone_number);
     }
 }

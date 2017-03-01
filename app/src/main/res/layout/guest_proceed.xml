@@ -9,69 +9,42 @@
         android:layout_height="wrap_content"
         android:background="#ffffff">
 
-
-
-        <!--  Header Ends -->
-
-        <!-- Login Form -->
+        <!-- Proceed Form -->
         <LinearLayout
-            android:id="@+id/register_main"
+            android:id="@+id/proceed_main"
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dip"
+            android:layout_marginTop="190dip"
             android:padding="10dip"
             android:layout_below="@id/header">
 
 
-            <!--  Name Label -->
+            <!--  Proceed Message! -->
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="یک کد 6 رقمی برات پیامک کردیم. اون کد رو توی کادر زیر وارد کن و دکمه بعدی رو بزن!"
+                android:text="کاربر عزیز، شما مهمان میدون هستید و برای ادامه نیاز هست که عضو میدون باشید!"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textColor="@color/black" />
-            <EditText
-                android:id="@+id/txt_set_verification_code"
-                android:layout_width="fill_parent"
-                android:layout_height="40dip"
-                android:layout_marginTop="20dip"
-                android:singleLine="true"
-                android:background="@color/gray"
-                android:maxLength="6"/>
 
-            <!-- Register button -->
+            <!-- Proceed button -->
             <Button
                 style="@style/Btn"
-                android:id="@+id/btn_go_to_submit_page"
+                android:id="@+id/btn_proceed"
                 android:layout_marginTop="20dip"
-                android:text="@string/btn_sign_up_text"
+                android:text="بزن بریم!"
                 android:background="@color/greenSignIn"/>
 
-
-            <TextView
-                android:id="@+id/link_resend_verification_code"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dip"
-                android:text="برای ارسال مجدد کد اینجا رو بزن!"
-                android:gravity="center"
-                android:textSize="15sp"
-                android:textColor="@color/blue" />
-
-
-
-
-
         </LinearLayout>
-        <!-- Login Form Ends -->
+
 
 
         <!-- Footer Starts -->
         <LinearLayout
-            android:id="@+id/back"
+            android:id="@+id/proceed_abort_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -80,18 +53,14 @@
             android:background="@color/gray">
 
             <!-- Text for Guest Enter -->
-            <TextView android:id="@+id/txt_back_to_phone_verification"
+            <TextView android:id="@+id/proceed_abort"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dip"
-
                 android:text="@string/txt_back"
                 android:gravity="center"
                 android:textSize="15sp"
                 android:textColor="@color/blue" />
-
-
-
 
         </LinearLayout>
 

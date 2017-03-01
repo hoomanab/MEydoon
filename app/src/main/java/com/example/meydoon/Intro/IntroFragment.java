@@ -294,7 +294,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
             Intent grapprIntent = new Intent(getActivity().getApplicationContext(), VerifyOtpHttpService.class);
             Bundle extras = new Bundle();
             extras.putString("otp", otp);
-            extras.putString("mobile_number",mobile);
+            extras.putString("user_phone_number",mobile);
             grapprIntent.putExtras(extras);
             getActivity().startService(grapprIntent);
         } else {

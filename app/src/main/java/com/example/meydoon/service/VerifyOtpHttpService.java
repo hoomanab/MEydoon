@@ -41,9 +41,9 @@ public class VerifyOtpHttpService extends IntentService {
             Bundle extras = intent.getExtras();
 
             String otp = extras.getString("otp");
-            String mobile_number = extras.getString("mobile_number");
+            String user_phone_number = extras.getString("user_phone_number");
 
-            verifyOtp(otp, mobile_number);
+            verifyOtp(otp, user_phone_number);
         }
     }
 
@@ -52,10 +52,10 @@ public class VerifyOtpHttpService extends IntentService {
      *
      * @param otp otp received in the SMS
      */
-    private void verifyOtp(final String otp, final String mobile_number) {
+    private void verifyOtp(final String otp, final String user_phone_number) {
         JSONObject verificationJsonObj = new JSONObject();
         try {
-            verificationJsonObj.put("user_phone_number", mobile_number);
+            verificationJsonObj.put("user_phone_number", user_phone_number);
             verificationJsonObj.put("user_phone_number_validation_code", otp);
 
         }catch (JSONException e) {
@@ -75,7 +75,7 @@ public class VerifyOtpHttpService extends IntentService {
                     // Parsing json object response
                     // response will be a json object
                     boolean error = response.getBoolean("error");
-                    String message = response.getString("message");
+                    String message = response.getString("Message");
 
                     //if (!error) {
                         // parsing the user profile information
