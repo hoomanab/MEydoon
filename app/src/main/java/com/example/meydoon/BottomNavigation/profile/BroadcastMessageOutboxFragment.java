@@ -1,5 +1,6 @@
 package com.example.meydoon.BottomNavigation.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,7 +9,6 @@ import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -35,8 +35,11 @@ import java.util.List;
 /**
  * Created by hooma on 3/1/2017.
  */
-public class ProfileNotificationsFragment extends Fragment {
-    private static final String TAG = ProfileNotificationsFragment.class.getSimpleName();
+public class BroadcastMessageOutboxFragment extends Fragment {
+    private static final String TAG = BroadcastMessageOutboxFragment.class.getSimpleName();
+    private Bundle extras;
+
+    private int shopId;
 
     private ListView listView;
     private NotificationInboxAdapter notificationInboxAdapter;
@@ -62,9 +65,9 @@ public class ProfileNotificationsFragment extends Fragment {
         super.onResume();
 
         /** Custom Action Bar*/
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
     }
 
     @Nullable
@@ -79,9 +82,13 @@ public class ProfileNotificationsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         /** Custom Action Bar*/
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
+
+        /** Getting extras */
+        extras = getActivity().getIntent().getExtras();
+        shopId = extras.getInt("shop_id");
 
 
         newBroadcastMessage = (LinearLayout) view.findViewById(R.id.new_broadcast_message);

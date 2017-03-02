@@ -30,9 +30,9 @@ public class NewBroadcastMessage extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         /** Custom Actionbar */
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_broadcast_message);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_broadcast_message);
 
 
         txtBroadcastMessageTitle = (EditText) view.findViewById(R.id.txt_broadcast_message_title);
@@ -53,8 +53,8 @@ public class NewBroadcastMessage extends Fragment {
         super.onDestroy();
 
         /** Custom Action Bar for previous Fragment*/
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
     }
 }

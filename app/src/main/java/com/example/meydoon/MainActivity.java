@@ -18,9 +18,9 @@ import android.widget.Toast;
 import com.example.meydoon.BottomNavigation.AddProduct.AddProductActivity;
 import com.example.meydoon.BottomNavigation.HomeFragment;
 import com.example.meydoon.BottomNavigation.NotificationsInboxFragment;
+import com.example.meydoon.BottomNavigation.profile.BroadcastMessageOutboxActivity;
 import com.example.meydoon.BottomNavigation.profile.ProfileFragment;
 import com.example.meydoon.BottomNavigation.SearchFragment;
-import com.example.meydoon.BottomNavigation.profile.ProfileNotificationsActivity;
 import com.example.meydoon.Intro.ProceedActivity;
 import com.example.meydoon.Intro.ProceedFragment;
 import com.example.meydoon.Intro.UserSignUpActivity;
@@ -270,7 +270,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.img_send_notification:
-                startActivity(new Intent(MainActivity.this, ProfileNotificationsActivity.class));
+                Intent intent = new Intent(this, BroadcastMessageOutboxActivity.class);
+                extras = new Bundle();
+                putExtrasForFragment(); /** Which is for an activity here ;P */
+                intent.putExtras(extras);
+                startActivity(intent);
                 break;
 
 

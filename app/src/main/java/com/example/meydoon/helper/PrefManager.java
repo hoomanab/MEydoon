@@ -33,6 +33,7 @@ public class PrefManager {
     private static final String KEY_USER_ID = "user_id";
     private static final String KEY_PHONE_NUMBER = "user_phone_number";
     private static final String KEY_NAME = "user_name";
+    private static final String KEY_HAS_SHOP = "has_shop";
 
 
     public PrefManager(Context context) {
@@ -78,7 +79,17 @@ public class PrefManager {
         return pref.getString(KEY_PHONE_NUMBER, null);
     }
 
-    public void createLogin(int user_id, String user_name, String user_phone_number) {
+    public void setHasShop(Boolean has_shop) {
+        editor.putBoolean(KEY_HAS_SHOP, has_shop);
+        editor.commit();
+    }
+
+    public Boolean getHasShop() {
+        return pref.getBoolean(KEY_HAS_SHOP, false);
+    }
+
+
+    public void createLogin(int user_id, String user_name, String user_phone_number, Boolean has_shop) {
         //editor.putString(KEY_NAME, name);
         //editor.putString(KEY_EMAIL, email);
 
@@ -93,6 +104,8 @@ public class PrefManager {
 
         // Storing login value as TRUE
         editor.putBoolean(KEY_IS_LOGGED_IN, true);
+
+        editor.putBoolean(KEY_HAS_SHOP, true);
 
         // commit changes
         editor.commit();
@@ -118,6 +131,8 @@ public class PrefManager {
 
         // user phone number
         user.put(KEY_PHONE_NUMBER, pref.getString(KEY_PHONE_NUMBER, null));
+
+        user.put(KEY_HAS_SHOP, pref.getString(KEY_HAS_SHOP, null));
 
         // return user
         return user;

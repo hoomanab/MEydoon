@@ -19,10 +19,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.app.AppController;
@@ -32,6 +36,9 @@ import com.example.meydoon.service.VerifyOtpHttpService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This layout appears on the first run of the application.
@@ -206,7 +213,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
 
 
 
-        JsonObjectRequest strReq = new JsonObjectRequest(Request.Method.POST,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 Config.URL_REQUEST_SMS, jsonobject_one, new Response.Listener<JSONObject>() {
 
             @Override
@@ -216,12 +223,12 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
                 try {
                     // Parsing json object response
                     // response will be a json object
-                    //boolean error = responseObj.getBoolean("error");
+                    String error = responseObj.getString("error");
                     String message = responseObj.getString("Message");
 
                     // checking for error, if not error SMS is initiated
                     // device should receive it shortly
-                    //if (!error) {
+                    if (error.equals("0")) {
                         // boolean flag saying device is waiting for sms
                     pref.setIsWaitingForSms(true);
 
@@ -232,11 +239,11 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
 
                     Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 
-                    //} else {
-                     //   Toast.makeText(getActivity().getApplicationContext(),
-                      //          "Error: " + message,
-                      //          Toast.LENGTH_LONG).show();
-                    //}
+                    } else {
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Error: " + message,
+                               Toast.LENGTH_LONG).show();
+                    }
 
                     // hiding the progress bar
                     progressBar.setVisibility(View.GONE);
@@ -275,10 +282,10 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
              * Passing user parameters to our server
              * @return
 
-            @Override
+
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("mobile", mobile);
+                params.put("user_phone_number", mobile);
 
                 Log.e(TAG, "Posting params: " + params.toString());
 
@@ -287,20 +294,27 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
 
         };
 
+        int socketTimeout = 30000; // 30 seconds. You can change it
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
+        jsonObjectRequest.setRetryPolicy(policy);
         // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(strReq);
+        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
+
     }
 
     /**
      * sending the OTP to server and activating the user
      */
     private void verifyOtp() {
-        String otp = inputOtp.getText().toString().trim();
-        String mobile = txtEditMobile.getText().toString().trim();
+        String otp = inputOtp.getText().toString();
+        String mobile = txtEditMobile.getText().toString();
 
 
         if (!otp.isEmpty()) {
-            Intent grapprIntent = new Intent(getActivity().getApplicationContext(), VerifyOtpHttpService.class);
+            Intent grapprIntent = new Intent(getActivity(), VerifyOtpHttpService.class);
             Bundle extras = new Bundle();
             extras.putString("otp", otp);
             extras.putString("user_phone_number",mobile);

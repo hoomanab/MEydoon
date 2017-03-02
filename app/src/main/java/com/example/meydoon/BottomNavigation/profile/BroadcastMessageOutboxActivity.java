@@ -5,15 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
-
-import com.example.meydoon.Intro.IntroFragment;
 import com.example.meydoon.R;
 
 /**
  * Created by hooma on 3/1/2017.
  */
-public class ProfileNotificationsActivity extends AppCompatActivity {
+public class BroadcastMessageOutboxActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +28,7 @@ public class ProfileNotificationsActivity extends AppCompatActivity {
             }
 
             // Create a new Fragment to be placed in the activity layout
-            ProfileNotificationsFragment goToProfileNotifications = new ProfileNotificationsFragment();
+            BroadcastMessageOutboxFragment goToProfileNotifications = new BroadcastMessageOutboxFragment();
 
             // In case this activity was started with special instructions from an
             // Intent, pass the Intent's extras to the fragment as arguments
@@ -45,7 +42,7 @@ public class ProfileNotificationsActivity extends AppCompatActivity {
 
 
     /** Handling clicks on actionbar icons */
-    public void profileNotificationsClickEvent(View view){
+    public void broadcastMessageOutboxClickEvent(View view){
         switch (view.getId()){
 
             /** For product details,

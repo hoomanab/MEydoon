@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.meydoon.MainActivity;
@@ -26,7 +28,9 @@ import java.util.Map;
  */
 public class VerifyOtpHttpService extends IntentService {
     // Session Manager Class
-    PrefManager pref;
+    private PrefManager pref;
+
+    private String otp, user_phone_number;
 
 
     private static String TAG = VerifyOtpHttpService.class.getSimpleName();
@@ -40,8 +44,8 @@ public class VerifyOtpHttpService extends IntentService {
         if (intent != null) {
             Bundle extras = intent.getExtras();
 
-            String otp = extras.getString("otp");
-            String user_phone_number = extras.getString("user_phone_number");
+            otp = extras.getString("otp");
+            user_phone_number = extras.getString("user_phone_number");
 
             verifyOtp(otp, user_phone_number);
         }
@@ -49,21 +53,21 @@ public class VerifyOtpHttpService extends IntentService {
 
     /**
      * Posting the OTP to server and activating the user
-     *
+     * @param user_phone_number
      * @param otp otp received in the SMS
      */
     private void verifyOtp(final String otp, final String user_phone_number) {
         JSONObject verificationJsonObj = new JSONObject();
         try {
             verificationJsonObj.put("user_phone_number", user_phone_number);
-            verificationJsonObj.put("user_phone_number_validation_code", otp);
+            verificationJsonObj.put("user_phone_number_verification_code", otp);
 
         }catch (JSONException e) {
             e.printStackTrace();
         }
 
 
-        JsonObjectRequest strReq = new JsonObjectRequest(Request.Method.POST,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 Config.URL_VERIFY_OTP, verificationJsonObj, new Response.Listener<JSONObject>() {
 
             @Override
@@ -74,33 +78,34 @@ public class VerifyOtpHttpService extends IntentService {
 
                     // Parsing json object response
                     // response will be a json object
-                    boolean error = response.getBoolean("error");
+                    String error = response.getString("error");
                     String message = response.getString("Message");
 
-                    //if (!error) {
+                    if (error.equals("0")) {
                         // parsing the user profile information
 
 
 
-                    int user_id = response.getInt("user_id");
-                    String user_mobile_mobile = response.getString("user_phone_number");
-                    String user_name = response.getString("user_name");
+                        int user_id = response.getInt("user_id");
+                        String user_mobile_mobile = response.getString("user_phone_number");
+                        String user_name = response.getString("user_name");
+                        Boolean has_shop = response.getBoolean("has_shop");
 
                     /**  =================> Need to continue from here <=================**/
 
-                    pref = new PrefManager(getApplicationContext());
-                    pref.createLogin(user_id,user_name,user_mobile_mobile);
-                    //pref.createLogin(mobile);
+                        pref = new PrefManager(getApplicationContext());
+                        pref.createLogin(user_id,user_name,user_mobile_mobile, has_shop);
+                        //pref.createLogin(mobile);
 
-                    Intent intent = new Intent(VerifyOtpHttpService.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+                        Intent intent = new Intent(VerifyOtpHttpService.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
 
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-
-                   // } else {
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                   // }
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    }
 
                 } catch (JSONException e) {
                     Toast.makeText(getApplicationContext(),
@@ -119,6 +124,12 @@ public class VerifyOtpHttpService extends IntentService {
             }
         }) {
 
+
+            @Override
+            public String getBodyContentType() {
+                return String.format("application/json; charset=utf-8");
+            }
+            /*
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
@@ -126,11 +137,18 @@ public class VerifyOtpHttpService extends IntentService {
 
                 Log.e(TAG, "Posting params: " + params.toString());
                 return params;
-            }
+            }*/
 
         };
 
+
+        int socketTimeout = 30000; // 30 seconds. You can change it
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
+        jsonObjectRequest.setRetryPolicy(policy);
         // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(strReq);
+        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 }

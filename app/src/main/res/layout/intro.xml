@@ -78,7 +78,8 @@
             android:layout_height="fill_parent"
             android:background="@color/white"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dip">
 
             <TextView
                 android:id="@+id/link_resend_verification_code"
@@ -103,7 +104,9 @@
                 android:padding="5dp"
                 android:textCursorDrawable="@null"
                 android:textSize="18dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:layout_gravity="right"
+                android:gravity="right"/>
 
 
             <Button
