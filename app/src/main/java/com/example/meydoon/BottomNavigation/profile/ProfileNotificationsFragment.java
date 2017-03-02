@@ -18,7 +18,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.adapter.NotificationInboxAdapter;
 import com.example.meydoon.app.AppController;
@@ -63,9 +62,9 @@ public class ProfileNotificationsFragment extends Fragment {
         super.onResume();
 
         /** Custom Action Bar*/
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
+        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
     }
 
     @Nullable
@@ -80,9 +79,9 @@ public class ProfileNotificationsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         /** Custom Action Bar*/
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
+        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
 
 
         newBroadcastMessage = (LinearLayout) view.findViewById(R.id.new_broadcast_message);
@@ -143,7 +142,7 @@ public class ProfileNotificationsFragment extends Fragment {
                 goToNewBroadcastMessage.setArguments(getActivity().getIntent().getExtras());
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.add(R.id.main_container, goToNewBroadcastMessage);
+                transaction.add(R.id.profile_notification_container, goToNewBroadcastMessage);
                 transaction.addToBackStack(null);
 
                 // Commit the transaction
@@ -181,16 +180,6 @@ public class ProfileNotificationsFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-
-        /** Custom Action Bar for previous Fragment*/
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_shop_profile);
     }
 
 
