@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import com.example.meydoon.BottomNavigation.NotificationsInboxFragment;
 import com.example.meydoon.BottomNavigation.profile.ProfileFragment;
 import com.example.meydoon.BottomNavigation.SearchFragment;
 import com.example.meydoon.BottomNavigation.profile.ProfileNotificationsActivity;
+import com.example.meydoon.BottomNavigation.profile.ProfileNotificationsFragment;
 import com.example.meydoon.Intro.ProceedActivity;
 import com.example.meydoon.Intro.ProceedFragment;
 import com.example.meydoon.Intro.UserSignUpActivity;
@@ -270,7 +272,22 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.img_send_notification:
-                startActivity(new Intent(MainActivity.this, ProfileNotificationsActivity.class));
+                ProfileNotificationsFragment goToProfileNotifications = new ProfileNotificationsFragment();
+                goToProfileNotifications.setArguments(getIntent().getExtras());
+
+
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack so the user can navigate back
+                transaction.add(R.id.main_container, goToProfileNotifications);
+                transaction.addToBackStack(null);
+
+                // Commit the transaction
+                transaction.commit();
+
+                //startActivity(new Intent(MainActivity.this, ProfileNotificationsActivity.class));
                 break;
 
 
@@ -279,6 +296,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.img_back:
                 this.getSupportFragmentManager().popBackStackImmediate();
                 break;
+
+            /** For Profile notifications back icon,
+             * @param img_profile_notification_back **/
+            case R.id.img_profile_notification_back:
+                getSupportFragmentManager().popBackStackImmediate();
+                break;
+
+            case R.id.img_broadcast_message_back:
+                getSupportFragmentManager().popBackStackImmediate();
         }
     }
 
