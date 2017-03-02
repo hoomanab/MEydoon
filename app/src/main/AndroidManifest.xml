@@ -59,11 +59,13 @@
 
         <activity android:name=".Intro.ProceedActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/CustomTheme"/>
+            android:theme="@style/CustomTheme"
+            android:windowSoftInputMode="adjustPan"/>
 
         <activity android:name=".BottomNavigation.profile.ProfileNotificationsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/CustomTheme"/>
+            android:theme="@style/CustomTheme"
+            android:windowSoftInputMode="adjustPan"/>
 
 
         <!-- SMS Receiver -->

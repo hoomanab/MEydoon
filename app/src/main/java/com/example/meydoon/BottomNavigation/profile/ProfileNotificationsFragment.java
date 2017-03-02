@@ -3,10 +3,13 @@ package com.example.meydoon.BottomNavigation.profile;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.android.volley.Cache;
@@ -43,6 +46,7 @@ public class ProfileNotificationsFragment extends Fragment {
 
     private PrefManager pref;
 
+    private LinearLayout newBroadcastMessage;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +55,16 @@ public class ProfileNotificationsFragment extends Fragment {
         pref = new PrefManager(getActivity().getApplicationContext());
 
         //pref.checkLogin();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        /** Custom Action Bar*/
+        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
     }
 
     @Nullable
@@ -70,7 +84,7 @@ public class ProfileNotificationsFragment extends Fragment {
         ((ProfileNotificationsActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
 
 
-
+        newBroadcastMessage = (LinearLayout) view.findViewById(R.id.new_broadcast_message);
         listView = (ListView) view.findViewById(R.id.profile_notifications_list);
 
         notificationInboxItems = new ArrayList<NotificationInboxItem>();
@@ -119,6 +133,23 @@ public class ProfileNotificationsFragment extends Fragment {
             // Adding request to volley request queue
             AppController.getInstance().addToRequestQueue(jsonReq);
         }
+
+
+        newBroadcastMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NewBroadcastMessage goToNewBroadcastMessage = new NewBroadcastMessage();
+                goToNewBroadcastMessage.setArguments(getActivity().getIntent().getExtras());
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.add(R.id.profile_notification_container, goToNewBroadcastMessage);
+                transaction.addToBackStack(null);
+
+                // Commit the transaction
+                transaction.commit();
+
+            }
+        });
 
     }
 

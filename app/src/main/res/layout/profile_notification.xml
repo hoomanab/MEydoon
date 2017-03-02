@@ -18,7 +18,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/new_notification"
+        android:id="@+id/new_broadcast_message"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

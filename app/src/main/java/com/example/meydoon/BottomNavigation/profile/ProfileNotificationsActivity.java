@@ -53,6 +53,9 @@ public class ProfileNotificationsActivity extends AppCompatActivity {
             case R.id.img_profile_notification_back:
                 finish();
                 break;
+
+            case R.id.img_broadcast_message_back:
+                getSupportFragmentManager().popBackStackImmediate();
         }
     }
 
