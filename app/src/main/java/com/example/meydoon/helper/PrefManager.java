@@ -102,10 +102,13 @@ public class PrefManager {
         // Storing phone number in pref
         editor.putString(KEY_PHONE_NUMBER, user_phone_number);
 
+        // Storing shop ownership status in pref
+        editor.putBoolean(KEY_HAS_SHOP, has_shop);
+
         // Storing login value as TRUE
         editor.putBoolean(KEY_IS_LOGGED_IN, true);
 
-        editor.putBoolean(KEY_HAS_SHOP, true);
+
 
         // commit changes
         editor.commit();

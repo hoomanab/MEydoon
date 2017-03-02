@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.meydoon.BottomNavigation.AddProduct.AddProductActivity;
+import com.example.meydoon.BottomNavigation.AddProduct.ShopRegisterFragment;
 import com.example.meydoon.BottomNavigation.HomeFragment;
 import com.example.meydoon.BottomNavigation.NotificationsInboxFragment;
 import com.example.meydoon.BottomNavigation.profile.BroadcastMessageOutboxActivity;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private int user_id;
     private String user_name;
     private String user_phone_number;
+    private Boolean has_shop;
 
     private Bundle extras;
     private Boolean loginStatus;
@@ -82,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         user_id = pref.getUserId();
         user_phone_number = pref.getMobileNumber();
         user_name = pref.getUserName();
+        has_shop = pref.getHasShop();
 
 
         View view = getSupportActionBar().getCustomView();
@@ -161,9 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
                 /** If the is logged in, he can proceed! */
                 if(loginStatus){
-
                     /** ====================> Check if the user has shop! <====================*/
-
                     Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
                     putExtrasForFragment();
                     intent.putExtras(extras);
@@ -254,6 +256,7 @@ public class MainActivity extends AppCompatActivity {
         extras.putInt("user_id", user_id);
         extras.putString("user_name", user_name);
         extras.putString("user_phone_number", user_phone_number);
+        extras.putBoolean("has_shop", has_shop);
     }
 
 

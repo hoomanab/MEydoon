@@ -61,35 +61,9 @@ public class VerifyMobileFragment extends Fragment {
             }
         });
 
-        resend_verification_code = (TextView)view.findViewById(R.id.link_resend_verification_code);
-        resend_verification_code.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // ====================> Resend a Verification Code <=====================
-            }
-        });
 
 
-        // ********* Go back to Mobile Enter layout *********
-        back_to_phone_enter = (TextView)view.findViewById(R.id.txt_back_to_phone_verification);
-        back_to_phone_enter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                SignUpMobileFragment newFragment = new SignUpMobileFragment();
-                Bundle args = new Bundle();
-                newFragment.setArguments(args);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack so the user can navigate back
-                transaction.replace(R.id.user_sign_up_container, newFragment);
-                // Commit the transaction
-                transaction.commit();
-
-
-            }
-        });
 
     }
 

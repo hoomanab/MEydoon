@@ -25,6 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.adapter.CustomSpinnerAdapter;
 
@@ -57,6 +58,14 @@ public class ShopRegisterFragment extends Fragment {
     private static final String IMAGE_DIRECTORY_NAME = "Meydoon";
 
     private Uri fileUri, selectedImage; // file url to store image/video
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getActivity().finish();
+    }
+
 
     @Nullable
     @Override
@@ -173,13 +182,14 @@ public class ShopRegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //Submit shop!
+                // Then go to Add product
             }
         });
 
         abortSubmition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().finish();
+                startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
 
