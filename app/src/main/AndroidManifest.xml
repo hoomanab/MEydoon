@@ -67,6 +67,11 @@
             android:theme="@style/CustomTheme"
             android:windowSoftInputMode="adjustPan"/>
 
+        <activity android:name=".BottomNavigation.profile.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme"
+            android:windowSoftInputMode="adjustPan"/>
+
 
         <!-- SMS Receiver -->
         <receiver android:name=".receiver.SmsReceiver">

@@ -64,6 +64,8 @@ public class AddProductActivity extends AppCompatActivity {
 
     }
 
+
+
     public void setActionBarTitle(String title){
         getActionBar().setTitle(title);
     }

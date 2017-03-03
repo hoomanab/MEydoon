@@ -63,9 +63,14 @@ public class ShopRegisterFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        getActivity().finish();
+        startActivity(new Intent(getActivity(), MainActivity.class));
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().finish();
+    }
 
     @Nullable
     @Override
