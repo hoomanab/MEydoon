@@ -35,9 +35,9 @@ public class ProceedFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         /** Custom Action Bar*/
-        ((MainActivity)getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((MainActivity)getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_home);
+        ((ProceedActivity)getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ((ProceedActivity)getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((ProceedActivity)getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_home);
 
         proceed = (Button) view.findViewById(R.id.btn_proceed);
         abort = (TextView) view.findViewById(R.id.proceed_abort);
@@ -53,7 +53,7 @@ public class ProceedFragment extends Fragment {
         abort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().popBackStackImmediate();
+                startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
     }

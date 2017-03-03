@@ -17,11 +17,13 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.meydoon.BottomNavigation.AddProduct.AddProductActivity;
+import com.example.meydoon.BottomNavigation.AddProduct.ShopRegisterFragment;
 import com.example.meydoon.BottomNavigation.HomeFragment;
 import com.example.meydoon.BottomNavigation.NotificationsInboxFragment;
 import com.example.meydoon.BottomNavigation.profile.BroadcastMessageOutboxActivity;
 import com.example.meydoon.BottomNavigation.profile.ProfileFragment;
 import com.example.meydoon.BottomNavigation.SearchFragment;
+import com.example.meydoon.Intro.ProceedActivity;
 import com.example.meydoon.Intro.ProceedFragment;
 import com.example.meydoon.Intro.UserSignUpActivity;
 import com.example.meydoon.adapter.ViewPagerAdapter;
@@ -128,24 +130,16 @@ public class MainActivity extends AppCompatActivity {
                 loginStatus = pref.isLoggedIn();
 
                 /** If the is logged in, he can proceed! */
-                if(loginStatus){
+                //if(loginStatus){
                     ProfileFragment goToProfile = new ProfileFragment();
-                    putExtrasForFragment();
-                    goToProfile.setArguments(extras);
+                //    putExtrasForFragment();
+                //    goToProfile.setArguments(extras);
 
                     getSupportFragmentManager().beginTransaction().add(R.id.main_container, goToProfile).commit();
-                }else {
+              //  }else {
                     /** If the user is a guest, he will be redirected to loggin fragment */
-                    ProceedFragment goToProceed = new ProceedFragment();
-
-                    // In case this activity was started with special instructions from an
-                    // Intent, pass the Intent's extras to the fragment as arguments
-                    goToProceed.setArguments(getIntent().getExtras());
-
-                    // Add the fragment to the 'fragment_container' FrameLayout
-                    getSupportFragmentManager().beginTransaction()
-                            .add(R.id.main_container, goToProceed).commit();
-                }
+                  //  startActivity(new Intent(this, ProceedActivity.class));
+              //  }
                 break;
 
             case R.id.btm_nav_notifications_inbox:
@@ -160,15 +154,7 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().add(R.id.main_container, goToNotification).commit();
                 }else {
                     /** If the user is a guest, he will be redirected to loggin fragment */
-                    ProceedFragment goToProceed = new ProceedFragment();
-
-                    // In case this activity was started with special instructions from an
-                    // Intent, pass the Intent's extras to the fragment as arguments
-                    goToProceed.setArguments(getIntent().getExtras());
-
-                    // Add the fragment to the 'fragment_container' FrameLayout
-                    getSupportFragmentManager().beginTransaction()
-                            .add(R.id.main_container, goToProceed).commit();
+                    startActivity(new Intent(this, ProceedActivity.class));
                 }
                 break;
 
@@ -186,15 +172,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }else {
                     /** If the user is a guest, he will be redirected to loggin fragment */
-                    ProceedFragment goToProceed = new ProceedFragment();
-
-                    // In case this activity was started with special instructions from an
-                    // Intent, pass the Intent's extras to the fragment as arguments
-                    goToProceed.setArguments(getIntent().getExtras());
-
-                    // Add the fragment to the 'fragment_container' FrameLayout
-                    getSupportFragmentManager().beginTransaction()
-                            .add(R.id.main_container, goToProceed).commit();
+                    startActivity(new Intent(this, ProceedActivity.class));
                 }
 
 
@@ -269,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        finish();
+
     }
 
 
