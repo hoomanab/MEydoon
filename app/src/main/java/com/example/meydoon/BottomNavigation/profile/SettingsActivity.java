@@ -3,8 +3,7 @@ package com.example.meydoon.BottomNavigation.profile;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-
-import com.example.meydoon.BottomNavigation.AddProduct.AddProductFragment;
+import android.view.View;
 import com.example.meydoon.R;
 
 /**
@@ -27,15 +26,32 @@ public class SettingsActivity extends AppCompatActivity {
             }
 
             // Create a new Fragment to be placed in the activity layout
-            AddProductFragment goToAddProduct = new AddProductFragment();
+            SettingsMainFragment settingsMainFragment = new SettingsMainFragment();
 
             // In case this activity was started with special instructions from an
             // Intent, pass the Intent's extras to the fragment as arguments
-            goToAddProduct.setArguments(getIntent().getExtras());
+            settingsMainFragment.setArguments(getIntent().getExtras());
 
             // Add the fragment to the 'fragment_container' FrameLayout
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.settings_container, goToAddProduct).commit();
+                    .add(R.id.settings_container, settingsMainFragment).commit();
+        }
+    }
+
+
+    /** Handling clicks on actionbar icons */
+    public void settingsClickEvent(View view){
+        switch (view.getId()){
+
+            /** For product details,
+             * @param img_settings_back
+             * @param img_edit_profile_back_ **/
+            case R.id.img_settings_back:
+                finish();
+                break;
+
+            case R.id.img_broadcast_message_back:
+                getSupportFragmentManager().popBackStackImmediate();
         }
     }
 }

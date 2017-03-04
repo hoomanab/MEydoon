@@ -23,6 +23,7 @@ import com.example.meydoon.BottomNavigation.NotificationsInboxFragment;
 import com.example.meydoon.BottomNavigation.profile.BroadcastMessageOutboxActivity;
 import com.example.meydoon.BottomNavigation.profile.ProfileFragment;
 import com.example.meydoon.BottomNavigation.SearchFragment;
+import com.example.meydoon.BottomNavigation.profile.SettingsActivity;
 import com.example.meydoon.Intro.ProceedActivity;
 import com.example.meydoon.Intro.ProceedFragment;
 import com.example.meydoon.Intro.UserSignUpActivity;
@@ -238,11 +239,6 @@ public class MainActivity extends AppCompatActivity {
                 .putBoolean("isFirstRun", false).commit();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        finish();
-    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -253,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        finish();
 
     }
 
@@ -275,7 +272,11 @@ public class MainActivity extends AppCompatActivity {
              * @param img_setting
              * @param img_send_notification**/
             case R.id.img_settings:
-                Toast.makeText(this, "تنظیمات", Toast.LENGTH_LONG).show();
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                extras = new Bundle();
+                putExtrasForFragment();
+                settingsIntent.putExtras(extras);
+                startActivity(settingsIntent);
                 break;
 
             case R.id.img_send_notification:

@@ -1,6 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="right"
+    android:layout_gravity="right"
+    android:background="#FAFAFA">
 
-</LinearLayout>
+    <!-- Account Information -->
+    <LinearLayout
+        android:id="@+id/account_information_section"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="right">
+
+        <!-- Header Starts -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_gravity="right">
+
+            <LinearLayout
+                android:id="@+id/profile_settings_header"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginTop="20dip"
+                android:paddingRight="20dip">
+                <TextView
+                    android:text="حساب کاربری"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_below="@+id/profile_settings_header"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="5dip"/>
+        </RelativeLayout>
+
+        <!-- Container starts -->
+        <RelativeLayout
+            android:id="@+id/layout_edit_profile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dip"
+            android:background="@color/white">
+            <LinearLayout
+                android:id="@+id/layout_edit_profile_container"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dip"
+                android:paddingRight="20dip">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="ویرایش مشخصات"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+            <View
+                android:layout_below="@+id/layout_edit_profile_container"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="5dip"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_gray"
+                android:layout_alignParentLeft="true"/>
+
+        </RelativeLayout>
+        <!-- Container Ends -->
+
+    </LinearLayout>
+
+    <!-- Privacy Policy -->
+    <LinearLayout
+        android:id="@+id/privacy_section"
+        android:layout_below="@+id/account_information_section"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="right">
+
+        <!-- Header starts -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_gravity="right">
+
+            <LinearLayout
+                android:id="@+id/privacy_settings_header"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginTop="20dip"
+                android:paddingRight="20dip">
+                <TextView
+                    android:text="درباره میدون"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_below="@+id/privacy_settings_header"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="5dip"/>
+        </RelativeLayout>
+        <!-- Header ends -->
+
+        <!-- Container Starts -->
+        <RelativeLayout
+            android:id="@+id/layout_about"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dip"
+            android:background="@color/white">
+            <LinearLayout
+                android:id="@+id/layout_privacy_container"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dip"
+                android:paddingRight="20dip">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="قوانین میدون"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_below="@+id/layout_privacy_container"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="5dip"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_gray"
+                android:layout_alignParentLeft="true"/>
+
+        </RelativeLayout>
+        <!-- Container ends -->
+
+    </LinearLayout>
+
+
+    <!-- Logout -->
+    <LinearLayout
+        android:id="@+id/logout_section"
+        android:layout_below="@+id/privacy_section"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="right"
+        android:layout_marginTop="60dip">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="5dip"/>
+        <!-- Container Starts -->
+        <RelativeLayout
+            android:id="@+id/layout_logout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dip"
+            android:background="@color/white">
+
+
+            <LinearLayout
+                android:id="@+id/layout_logout_container"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dip"
+                android:paddingRight="20dip"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="خروج"
+                    android:textColor="@color/blue"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+            <View
+                android:layout_below="@+id/layout_logout_container"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="5dip"/>
+
+
+        </RelativeLayout>
+        <!-- Container ends -->
+
+    </LinearLayout>
+
+</RelativeLayout>

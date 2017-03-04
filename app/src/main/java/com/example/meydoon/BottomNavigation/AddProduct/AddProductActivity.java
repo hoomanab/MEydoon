@@ -64,7 +64,11 @@ public class AddProductActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
 
     public void setActionBarTitle(String title){
         getActionBar().setTitle(title);

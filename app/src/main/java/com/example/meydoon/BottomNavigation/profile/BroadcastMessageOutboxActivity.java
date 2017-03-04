@@ -40,6 +40,11 @@ public class BroadcastMessageOutboxActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
 
     /** Handling clicks on actionbar icons */
     public void broadcastMessageOutboxClickEvent(View view){
@@ -48,7 +53,7 @@ public class BroadcastMessageOutboxActivity extends AppCompatActivity {
             /** For product details,
              * @param img_profile_notification_back **/
             case R.id.img_profile_notification_back:
-                finish();
+                super.onBackPressed();
                 break;
 
             case R.id.img_broadcast_message_back:
