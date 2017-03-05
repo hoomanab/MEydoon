@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,12 +24,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.adapter.CustomSpinnerAdapter;
+import com.example.meydoon.app.AppController;
+import com.example.meydoon.app.Config;
+import com.example.meydoon.helper.PrefManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -39,14 +54,20 @@ import java.util.Locale;
  *  This is the page where a shop user can add a product!
  */
 public class AddProductFragment extends Fragment {
+    private static String TAG = AddProductFragment.class.getSimpleName();
+
     private ImageButton addProductImageCapture, addProductImageImport;
     private EditText productName, productPrice, productDescription;
-    private Spinner spinnerProductCategory;
+    private Spinner spinnerProductCategory , productIsShippableSpinner;
     private ImageView imgPreview;
     private Button submitProduct, abort;
 
     private String productCategoryName;
     private int productCategoryId;
+
+    private Boolean productIsShippable;
+
+    private ProgressBar progressBar;
 
     //List<ProductCategoryItem> productCategoryItems;
     //ProductCategoryItem cloths, food, sports, jewelry, cosmetic;
@@ -54,6 +75,8 @@ public class AddProductFragment extends Fragment {
 
     /** Service Values must be assinged to the string! */
     private static final String[] productCategories = {"پوشاک", "خوراک", "ورزشی", "زیور آلات", "آرایشی بهداشتی"};
+    private static final String[] productShipability = {"بله", "خیر"};
+
     private String defaultTextForSpinner = "انتخاب کنید!";
     // directory name to store captured images and videos
     private static final String IMAGE_DIRECTORY_NAME = "Meydoon";
@@ -65,6 +88,11 @@ public class AddProductFragment extends Fragment {
     private static final int IMPORT_IMAGE_REQUEST_CODE = 200;
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
+
+    private byte[] imageBytes;
+    private String encodedimage;
+
+    private PrefManager pref;
 
 
     @Override
@@ -99,6 +127,9 @@ public class AddProductFragment extends Fragment {
         imgPreview = (ImageView)view.findViewById(R.id.img_preview);
         submitProduct = (Button)view.findViewById(R.id.btn_add_product);
         abort = (Button)view.findViewById(R.id.btn_abort_add_product);
+        progressBar = (ProgressBar) view.findViewById(R.id.addproductProgressBar);
+
+
 
         /** Getting Image **/
         addProductImageCapture.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +191,10 @@ public class AddProductFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
+
+                    /** check if they are assigned currectly!
+                     *
+                     */
                     case 0:
                         productCategoryName = "cloths";
                         productCategoryId = 1;
@@ -194,11 +229,33 @@ public class AddProductFragment extends Fragment {
         });
 
 
+        productIsShippableSpinner.setAdapter(new CustomSpinnerAdapter(getActivity(), R.layout.spinner_row, productShipability, defaultTextForSpinner));
+
+        productIsShippableSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        productIsShippable = true;
+                        break;
+                    case 1:
+                        productIsShippable = false;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         /** Add Product Button */
         submitProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
                 // Upload product
+                // Send encodedImage as Base64 image
             }
         });
 
@@ -210,11 +267,6 @@ public class AddProductFragment extends Fragment {
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
-
-
-
-
-
 
 
     }
@@ -358,6 +410,11 @@ public class AddProductFragment extends Fragment {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos);
             bitmap = getResizedBitmap(bitmap, 360, 360);
             //InputStream in = new ByteArrayInputStream(bos.toByteArray());
+            imageBytes = bos.toByteArray();
+            encodedimage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
+
+
 
             imgPreview.setImageBitmap(bitmap);
         } catch (NullPointerException e) {
@@ -395,6 +452,9 @@ public class AddProductFragment extends Fragment {
             //InputStream in = new ByteArrayInputStream(bos.toByteArray());
 
             imgPreview.setImageBitmap(bitmap);
+
+            imageBytes = bos.toByteArray();
+            encodedimage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -433,5 +493,70 @@ public class AddProductFragment extends Fragment {
         return Uri.fromFile(getOutputMediaFile(type));
     }
 
+
+    public void addProduct(){
+
+
+        JSONObject productJSONObject = new JSONObject();
+        try {
+            productJSONObject.put("user_id", pref.getUserId());
+            productJSONObject.put("product_name", productName.getText().toString());
+            productJSONObject.put("product_category_name", productCategoryName);
+            productJSONObject.put("product_category_id", productCategoryId);
+            productJSONObject.put("product_price", productPrice.getText().toString());
+            productJSONObject.put("product_category_shippable_status", productIsShippable);
+            productJSONObject.put("product_description", productDescription.getText().toString());
+            productJSONObject.put("product_image", encodedimage);
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest addProductJsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                Config.URL_ADD_PRODUCT, productJSONObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Log.d(TAG, jsonObject.toString());
+                try {
+                    // Parsing json object response
+                    // response will be a json object
+                    String error = jsonObject.getString("error");
+                    String message = jsonObject.getString("Message");
+                    if(error.equals("0")){
+                        startActivity(new Intent(getActivity(), MainActivity.class));
+                    }
+                }catch (JSONException e){
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Error: " + e.getMessage(),
+                            Toast.LENGTH_LONG).show();
+
+                    progressBar.setVisibility(View.GONE);
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
+        }
+        ) {
+
+
+            @Override
+            public String getBodyContentType() {
+                return String.format("application/json; charset=utf-8");
+            }
+        };
+
+        int socketTimeout = 30000; // 30 seconds. You can change it
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
+        addProductJsonObjectRequest.setRetryPolicy(policy);
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(addProductJsonObjectRequest);
+    }
 
 }

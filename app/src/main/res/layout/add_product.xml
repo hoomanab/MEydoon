@@ -156,6 +156,22 @@
                 android:paddingRight="5dip"/>
 
 
+            <!--  Product Category -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="امکان ارسال محصول توسط فروشگاه"
+                android:layout_marginTop="20dip"/>
+
+
+            <Spinner
+                android:id="@+id/spinner_shippable_status"
+                android:background="@drawable/btn"
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:prompt="@string/product_category"
+                android:layout_marginTop="10dip"
+                android:spinnerMode="dropdown" />
 
 
 
@@ -183,6 +199,7 @@
 
 
 
+
         </LinearLayout>
         <!-- Login Form Ends -->
 
@@ -194,8 +211,19 @@
             android:orientation="vertical"
             android:padding="10dip"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="50dip">
+            android:layout_marginTop="10dip">
 
+
+            <ProgressBar
+                android:id="@+id/addproductProgressBar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/greenSignIn"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="gone"
+                android:layout_marginBottom="10dip"/>
 
             <!-- Add product Button -->
             <Button

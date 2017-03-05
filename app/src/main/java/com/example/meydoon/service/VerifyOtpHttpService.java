@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -31,6 +32,7 @@ public class VerifyOtpHttpService extends IntentService {
     private PrefManager pref;
 
     private String otp, user_phone_number;
+
 
 
     private static String TAG = VerifyOtpHttpService.class.getSimpleName();

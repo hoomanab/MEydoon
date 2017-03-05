@@ -7,6 +7,7 @@ public class Config {
     // server URL configuration
     public static final String URL_REQUEST_SMS = "http://meydooncore.herokuapp.com/CreateUser";
     public static final String URL_VERIFY_OTP = "http://meydooncore.herokuapp.com/VerifyUser";
+    public static final String URL_ADD_PRODUCT = "";
 
     // SMS provider identification
     // It should match with your SMS gateway origin

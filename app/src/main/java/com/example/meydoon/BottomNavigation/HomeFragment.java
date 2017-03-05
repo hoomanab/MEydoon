@@ -1,17 +1,18 @@
 package com.example.meydoon.BottomNavigation;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.ListView;
 import com.android.volley.Cache;
 import com.android.volley.Request;
@@ -19,8 +20,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.meydoon.BottomNavigationViewHelper;
-import com.example.meydoon.Intro.IntroFragment;
+//import com.example.meydoon.EndlessScrollListener;
+import com.example.meydoon.EndlessScrollListener;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.adapter.FeedListAdapter;
@@ -31,9 +32,12 @@ import com.example.meydoon.helper.PrefManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -50,6 +54,11 @@ public class HomeFragment extends Fragment {
     private PrefManager pref;
     private Boolean logginStatus;
 
+    private int current_page = 1;
+
+    private ProgressDialog pDialog;
+
+    private Button btnLoadMore;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,6 +85,7 @@ public class HomeFragment extends Fragment {
         ((MainActivity)getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_home);
 
 
+
         listView = (ListView)view.findViewById(R.id.list);
 
         feedItems = new ArrayList<FeedItem>();
@@ -84,6 +94,12 @@ public class HomeFragment extends Fragment {
         listAdapter = new FeedListAdapter(getActivity(), feedItems);
         listView.setAdapter(listAdapter);
 
+/*
+        btnLoadMore = new Button(getActivity());
+        btnLoadMore.setText("بیشتر");
+        listView.addFooterView(btnLoadMore);
+        btnLoadMore.setBackgroundColor(getContext().getResources().getColor(R.color.blue));
+        btnLoadMore.setPadding(10, 10, 10, 10);*/
 
         /** ========> If logginStatus == false then
          *              show Home for Guest
@@ -142,9 +158,24 @@ public class HomeFragment extends Fragment {
             AppController.getInstance().addToRequestQueue(jsonReq);
         }
 
+
+       /* btnLoadMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new LoadMoreListView().execute();
+            }
+        });*/
+
+        listView.setOnScrollListener(new EndlessScrollListener() {
+            @Override
+            public boolean onLoadMore(int page, int totalItemsCount) {
+                new LoadMoreListView().execute();
+                return true;
+            }
+        });
+
+
     }
-
-
 
     /**
      * Parsing json reponse and passing the data to feed view list adapter
@@ -184,4 +215,118 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    /*
+    public void loadNextDataFromApi(int offset){
+        pDialog = new ProgressDialog(getActivity());
+        pDialog.setMessage("لطفا صبر کنید..");
+        pDialog.setIndeterminate(true);
+        pDialog.setCancelable(false);
+        pDialog.show();
+
+        // Next page request
+        URL_FEED = "http://api.androidhive.info/list_paging/?page=" + offset;
+
+        // making fresh volley request and getting json
+        JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
+                URL_FEED, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                VolleyLog.d(TAG, "Response: " + response.toString());
+                if (response != null) {
+                    parseJsonFeed(response);
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+            }
+        });
+
+        // Adding request to volley request queue
+        AppController.getInstance().addToRequestQueue(jsonReq);
+
+        // get listview current position - used to maintain scroll position
+        int currentPosition = listView.getFirstVisiblePosition();
+
+        // Setting new scroll position
+        listView.setSelectionFromTop(currentPosition + 1, 0);
+
+    }*/
+
+
+    /**
+     * Async Task that send a request to url
+     * Gets new list view data
+     * Appends to list view
+     **/
+    public class LoadMoreListView extends AsyncTask<Void, Void, Void> {
+
+
+        @Override
+        protected void onPreExecute() {
+            // Showing progress dialog before sending http request
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("Please wait..");
+            pDialog.setIndeterminate(true);
+            pDialog.setCancelable(false);
+            pDialog.show();
+
+
+        }
+
+        protected Void doInBackground(Void... unused) {
+            getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    // increment current page
+                    current_page += 1;
+
+                    // Next page request
+                    URL_FEED = "http://api.androidhive.info/list_paging/?page=" + current_page;
+
+                    // making fresh volley request and getting json
+                    JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
+                            URL_FEED, null, new Response.Listener<JSONObject>() {
+
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            VolleyLog.d(TAG, "Response: " + response.toString());
+                            if (response != null) {
+                                parseJsonFeed(response);
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        }
+                    });
+
+                    // Adding request to volley request queue
+                    AppController.getInstance().addToRequestQueue(jsonReq);
+
+                    // get listview current position - used to maintain scroll position
+                    int currentPosition = listView.getFirstVisiblePosition();
+
+                    // Setting new scroll position
+                    listView.setSelectionFromTop(currentPosition + 1, 0);
+
+                }
+            });
+            return (null);
+        }
+
+        protected void onPostExecute(Void unused) {
+            // closing progress dialog
+            pDialog.dismiss();
+        }
+    }
 }
+
+
+
+
+
