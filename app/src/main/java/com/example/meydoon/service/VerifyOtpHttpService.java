@@ -89,14 +89,15 @@ public class VerifyOtpHttpService extends IntentService {
 
 
                         int user_id = response.getInt("user_id");
+                        int shop_id = response.getInt("shop_id");
                         String user_mobile_mobile = response.getString("user_phone_number");
                         String user_name = response.getString("user_name");
-                        Boolean has_shop = response.getBoolean("has_shop");
+
 
                     /**  =================> Need to continue from here <=================**/
 
                         pref = new PrefManager(getApplicationContext());
-                        pref.createLogin(user_id,user_name,user_mobile_mobile, has_shop);
+                        pref.createLogin(user_id,user_name,user_mobile_mobile, shop_id);
                         //pref.createLogin(mobile);
 
                         Intent intent = new Intent(VerifyOtpHttpService.this, MainActivity.class);

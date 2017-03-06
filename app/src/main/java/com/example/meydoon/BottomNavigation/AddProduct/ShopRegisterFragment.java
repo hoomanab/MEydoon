@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,13 +22,26 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.adapter.CustomSpinnerAdapter;
+import com.example.meydoon.app.AppController;
+import com.example.meydoon.app.Config;
+import com.example.meydoon.helper.PrefManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -39,11 +53,18 @@ import java.util.Locale;
  * Created by hooma on 2/19/2017.
  */
 public class ShopRegisterFragment extends Fragment {
+    private static String TAG = ShopRegisterFragment.class.getSimpleName();
+
     private ImageButton imgShopPic;
     private TextView txtShopPic;
     private EditText shopName, shopAddress, shopDescription;
     private Spinner spinnerShopCategory, spinnerCity;
     private Button submitShop, abortSubmition;
+
+    private String shopCategoryName = "";
+    private String shopCityName = "";
+    private int shopCategoryId = 0;
+    private int shopCityId = 0;
 
     private String defaultTextForSpinner = "انتخاب کنید!";
     private static final String[] shopCategories = {"پوشاک", "خوراک", "ورزشی", "زیور آلات", "آرایشی بهداشتی"};
@@ -59,6 +80,13 @@ public class ShopRegisterFragment extends Fragment {
 
     private Uri fileUri, selectedImage; // file url to store image/video
 
+    private PrefManager pref;
+
+    private ProgressBar progressBar;
+
+    private byte[] imageBytes;
+    private String encodedimage = "";
+
 
     @Override
     public void onStop() {
@@ -71,6 +99,14 @@ public class ShopRegisterFragment extends Fragment {
         super.onDestroy();
         getActivity().finish();
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        pref = new PrefManager(getActivity());
+    }
+
 
     @Nullable
     @Override
@@ -97,6 +133,7 @@ public class ShopRegisterFragment extends Fragment {
         spinnerCity = (Spinner)view.findViewById(R.id.spinner_city);
         submitShop = (Button)view.findViewById(R.id.shop_btn_sign_up);
         abortSubmition = (Button)view.findViewById(R.id.shop_btn_abort_sign_up);
+        progressBar = (ProgressBar) view.findViewById(R.id.shopRegisterProgressBar);
 
         /** Importing Image! For now, we just import images! */
         imgShopPic.setOnClickListener(new View.OnClickListener() {
@@ -124,23 +161,28 @@ public class ShopRegisterFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        //
+                        shopCategoryName = "cloths";
+                        shopCategoryId = 1;
                         break;
 
                     case 1:
-                        //
+                        shopCategoryName = "food";
+                        shopCategoryId = 2;
                         break;
 
                     case 2:
-                        //
+                        shopCategoryName = "sports";
+                        shopCategoryId = 3;
                         break;
 
                     case 3:
-                        //
+                        shopCategoryName = "jewelry";
+                        shopCategoryId = 4;
                         break;
 
                     case 4:
-                        //
+                        shopCategoryName = "cosmetic";
+                        shopCategoryId = 5;
                         break;
                 }
             }
@@ -156,23 +198,33 @@ public class ShopRegisterFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        //
+                        shopCityName = "Tehran";
+                        shopCityId = 1;
                         break;
 
                     case 1:
-                        //
+                        shopCityName = "Kermanshah";
+                        shopCityId = 2;
                         break;
 
                     case 2:
-                        //
+                        shopCityName = "Isfahan";
+                        shopCityId = 3;
                         break;
 
                     case 3:
-                        //
+                        shopCityName = "Mashhad";
+                        shopCityId = 4;
                         break;
 
                     case 4:
-                        //
+                        shopCityName = "Tabriz";
+                        shopCityId = 5;
+                        break;
+
+                    case 5:
+                        shopCityName = "Karaj";
+                        shopCityId = 6;
                         break;
                 }
             }
@@ -187,6 +239,7 @@ public class ShopRegisterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //Submit shop!
+                submitShop();
                 // Then go to Add product
             }
         });
@@ -342,6 +395,9 @@ public class ShopRegisterFragment extends Fragment {
             //InputStream in = new ByteArrayInputStream(bos.toByteArray());
 
             imgShopPic.setImageBitmap(bitmap);
+
+            imageBytes = bos.toByteArray();
+            encodedimage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -377,6 +433,9 @@ public class ShopRegisterFragment extends Fragment {
             //InputStream in = new ByteArrayInputStream(bos.toByteArray());
 
             imgShopPic.setImageBitmap(bitmap);
+
+            imageBytes = bos.toByteArray();
+            encodedimage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -413,5 +472,86 @@ public class ShopRegisterFragment extends Fragment {
      */
     public Uri getOutputMediaFileUri(int type) {
         return Uri.fromFile(getOutputMediaFile(type));
+    }
+
+
+    public void submitShop(){
+
+        if(shopName.getText().toString().equals("")) {
+            Toast.makeText(getActivity().getApplicationContext(), "برای فروشگاهتون اسمی انتخاب نکردید!", Toast.LENGTH_SHORT).show();
+
+
+        } else if(shopCategoryName.equals("")){
+            Toast.makeText(getActivity().getApplicationContext(), "لطفا حوزه فعالیت فروشگاهتون رو انتخاب کنید!", Toast.LENGTH_SHORT).show();
+
+
+        } else if(shopCityName.equals("")) {
+            Toast.makeText(getActivity().getApplicationContext(), "لطفا شهری که در اون مستقر هستید رو انتخاب کنید!", Toast.LENGTH_SHORT).show();
+
+
+        } else {
+            JSONObject shopJsonObject = new JSONObject();
+            progressBar.setVisibility(View.VISIBLE);
+            try {
+                shopJsonObject.put("user_id", pref.getUserId());
+                shopJsonObject.put("shop_name", shopName.getText().toString());
+                shopJsonObject.put("shop_category_name", shopCategoryName);
+                shopJsonObject.put("shop_category_id", shopCategoryId);
+                shopJsonObject.put("shop_city_name", shopCityName);
+                shopJsonObject.put("shop_city_id", shopCityId);
+                shopJsonObject.put("shop_address", shopAddress.getText().toString());
+                shopJsonObject.put("shop_description", shopDescription.getText().toString());
+                shopJsonObject.put("shop_picture", encodedimage);
+
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest registerShopJsonObject = new JsonObjectRequest(Request.Method.POST,
+                    Config.URL_REGISTER_SHOP, shopJsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject jsonObject) {
+                    Log.d(TAG, jsonObject.toString());
+                    try {
+                        // Parsing json object response
+                        // response will be a json object
+                        String error = jsonObject.getString("error");
+                        String message = jsonObject.getString("Message");
+                        if(error.equals("0")){
+                            startActivity(new Intent(getActivity(), MainActivity.class));
+                        }
+                    }catch (JSONException e){
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Error: " + e.getMessage(),
+                                Toast.LENGTH_LONG).show();
+
+                        progressBar.setVisibility(View.GONE);
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
+
+                }
+            }
+            ) {
+
+
+                @Override
+                public String getBodyContentType() {
+                    return String.format("application/json; charset=utf-8");
+                }
+            };
+
+            int socketTimeout = 30000; // 30 seconds. You can change it
+            RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
+            registerShopJsonObject.setRetryPolicy(policy);
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(registerShopJsonObject);
+        }
     }
 }

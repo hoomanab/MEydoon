@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
 
     private PrefManager pref;
     private HashMap<String, String> user;
-    private int user_id;
+    private int user_id, shop_id;
     private String user_name;
     private String user_phone_number;
-    private Boolean has_shop;
+
 
     private Bundle extras;
     private Boolean loginStatus;
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         user_id = pref.getUserId();
         user_phone_number = pref.getMobileNumber();
         user_name = pref.getUserName();
-        has_shop = pref.getHasShop();
+        shop_id = pref.getShopId();
 
 
         View view = getSupportActionBar().getCustomView();
@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
         extras.putInt("user_id", user_id);
         extras.putString("user_name", user_name);
         extras.putString("user_phone_number", user_phone_number);
-        extras.putBoolean("has_shop", has_shop);
+        extras.putInt("has_shop", shop_id);
     }
 
 

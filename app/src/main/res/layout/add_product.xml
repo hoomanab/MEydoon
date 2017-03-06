@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true"
-    android:background="@color/feed_bg">
+    android:background="@color/white">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -60,14 +60,16 @@
                     android:layout_width="40dip"
                     android:layout_height="40dip"
                     android:layout_gravity="center_horizontal"
-                    android:src="@android:drawable/ic_menu_camera"
-                    android:layout_marginRight="5dip"/>
+                    android:src="@drawable/ic_camera"
+                    android:layout_marginRight="15dip"
+                    android:background="@color/white"/>
                 <ImageButton
                     android:id="@+id/img_add_product_import"
                     android:layout_width="40dip"
                     android:layout_height="40dip"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_add_item"/>
+                    android:src="@drawable/ic_gallery"
+                    android:background="@color/white"/>
             </LinearLayout>
 
             <!-- image buttons text -->

@@ -58,12 +58,12 @@ public class AddProductFragment extends Fragment {
 
     private ImageButton addProductImageCapture, addProductImageImport;
     private EditText productName, productPrice, productDescription;
-    private Spinner spinnerProductCategory , productIsShippableSpinner;
+    private Spinner spinnerProductCategory, spinnerIshShipableProduct;
     private ImageView imgPreview;
     private Button submitProduct, abort;
 
-    private String productCategoryName;
-    private int productCategoryId;
+    private String productCategoryName = "";
+    private int productCategoryId = 0;
 
     private Boolean productIsShippable;
 
@@ -90,7 +90,7 @@ public class AddProductFragment extends Fragment {
     public static final int MEDIA_TYPE_VIDEO = 2;
 
     private byte[] imageBytes;
-    private String encodedimage;
+    private String encodedimage = "";
 
     private PrefManager pref;
 
@@ -100,6 +100,7 @@ public class AddProductFragment extends Fragment {
         super.onCreate(savedInstanceState);
         /** Moving the layout up to soft keyboard! */
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        pref = new PrefManager(getActivity());
     }
 
     @Nullable
@@ -122,6 +123,7 @@ public class AddProductFragment extends Fragment {
         addProductImageImport = (ImageButton)view.findViewById(R.id.img_add_product_import);
         productName = (EditText)view.findViewById(R.id.txt_product_name);
         spinnerProductCategory = (Spinner)view.findViewById(R.id.spinner_product_category);
+        spinnerIshShipableProduct = (Spinner) view.findViewById(R.id.spinner_shippable_status);
         productPrice = (EditText)view.findViewById(R.id.product_price);
         productDescription = (EditText)view.findViewById(R.id.product_description);
         imgPreview = (ImageView)view.findViewById(R.id.img_preview);
@@ -229,9 +231,9 @@ public class AddProductFragment extends Fragment {
         });
 
 
-        productIsShippableSpinner.setAdapter(new CustomSpinnerAdapter(getActivity(), R.layout.spinner_row, productShipability, defaultTextForSpinner));
+        spinnerIshShipableProduct.setAdapter(new CustomSpinnerAdapter(getActivity(), R.layout.spinner_row, productShipability, defaultTextForSpinner));
 
-        productIsShippableSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerIshShipableProduct.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 switch (position){
@@ -253,9 +255,9 @@ public class AddProductFragment extends Fragment {
         submitProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBar.setVisibility(View.VISIBLE);
+
                 // Upload product
-                // Send encodedImage as Base64 image
+                addProduct();
             }
         });
 
@@ -494,69 +496,89 @@ public class AddProductFragment extends Fragment {
     }
 
 
-    public void addProduct(){
+    public void addProduct() {
+
+        if(encodedimage.equals("")) {
+            Toast.makeText(getActivity().getApplicationContext(), "لطفا برای محصولتون یک تصویر انتخاب کنید!", Toast.LENGTH_SHORT).show();
 
 
-        JSONObject productJSONObject = new JSONObject();
-        try {
-            productJSONObject.put("user_id", pref.getUserId());
-            productJSONObject.put("product_name", productName.getText().toString());
-            productJSONObject.put("product_category_name", productCategoryName);
-            productJSONObject.put("product_category_id", productCategoryId);
-            productJSONObject.put("product_price", productPrice.getText().toString());
-            productJSONObject.put("product_category_shippable_status", productIsShippable);
-            productJSONObject.put("product_description", productDescription.getText().toString());
-            productJSONObject.put("product_image", encodedimage);
+        } else if(productName.getText().toString().equals("")) {
+            Toast.makeText(getActivity().getApplicationContext(), "لطفا نام محصولتون رو وارد کنید!", Toast.LENGTH_SHORT).show();
 
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
 
-        JsonObjectRequest addProductJsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
-                Config.URL_ADD_PRODUCT, productJSONObject, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                Log.d(TAG, jsonObject.toString());
-                try {
-                    // Parsing json object response
-                    // response will be a json object
-                    String error = jsonObject.getString("error");
-                    String message = jsonObject.getString("Message");
-                    if(error.equals("0")){
-                        startActivity(new Intent(getActivity(), MainActivity.class));
+        } else if(productCategoryName.equals("")){
+            Toast.makeText(getActivity().getApplicationContext(), "لطفا برای محصولتون یک دسته انتخاب کنید!", Toast.LENGTH_SHORT).show();
+
+
+        } else if(productPrice.getText().equals("")) {
+            Toast.makeText(getActivity().getApplicationContext(), "لطفا قیمت محصولتون رو وارد کنید!", Toast.LENGTH_SHORT).show();
+
+
+        } else {
+            JSONObject productJSONObject = new JSONObject();
+            progressBar.setVisibility(View.VISIBLE);
+            try {
+                productJSONObject.put("user_id", pref.getUserId());
+                productJSONObject.put("shop_id", pref.getShopId());
+                productJSONObject.put("product_name", productName.getText().toString());
+                productJSONObject.put("product_category_name", productCategoryName);
+                productJSONObject.put("product_category_id", productCategoryId);
+                productJSONObject.put("product_price", productPrice.getText().toString());
+                productJSONObject.put("product_category_shippable_status", productIsShippable);
+                productJSONObject.put("product_description", productDescription.getText().toString());
+                productJSONObject.put("product_image", encodedimage);
+
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest addProductJsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                    Config.URL_ADD_PRODUCT, productJSONObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject jsonObject) {
+                    Log.d(TAG, jsonObject.toString());
+                    try {
+                        // Parsing json object response
+                        // response will be a json object
+                        String error = jsonObject.getString("error");
+                        String message = jsonObject.getString("Message");
+                        if(error.equals("0")){
+                            startActivity(new Intent(getActivity(), MainActivity.class));
+                        }
+                    }catch (JSONException e){
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Error: " + e.getMessage(),
+                                Toast.LENGTH_LONG).show();
+
+                        progressBar.setVisibility(View.GONE);
                     }
-                }catch (JSONException e){
-                    Toast.makeText(getActivity().getApplicationContext(),
-                            "Error: " + e.getMessage(),
-                            Toast.LENGTH_LONG).show();
 
-                    progressBar.setVisibility(View.GONE);
                 }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
 
+                }
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
+            ) {
 
-            }
+
+                @Override
+                public String getBodyContentType() {
+                    return String.format("application/json; charset=utf-8");
+                }
+            };
+
+            int socketTimeout = 30000; // 30 seconds. You can change it
+            RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
+            addProductJsonObjectRequest.setRetryPolicy(policy);
+            // Adding request to request queue
+            AppController.getInstance().addToRequestQueue(addProductJsonObjectRequest);
         }
-        ) {
 
-
-            @Override
-            public String getBodyContentType() {
-                return String.format("application/json; charset=utf-8");
-            }
-        };
-
-        int socketTimeout = 30000; // 30 seconds. You can change it
-        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-
-        addProductJsonObjectRequest.setRetryPolicy(policy);
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(addProductJsonObjectRequest);
     }
 
 }

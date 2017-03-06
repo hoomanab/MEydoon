@@ -198,12 +198,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dip"
-            android:layout_below="@+id/shop_register_main">
+            android:layout_below="@+id/shop_register_main"
+            android:layout_marginTop="20dip">
+
+
+            <ProgressBar
+                android:id="@+id/shopRegisterProgressBar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/greenSignIn"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="gone"
+                android:layout_marginBottom="10dip"/>
 
             <Button
                 style="@style/Btn"
                 android:id="@+id/shop_btn_sign_up"
-                android:layout_marginTop="50dip"
+                android:layout_marginTop="10dip"
                 android:text="@string/submit_shop"
                 android:background="@color/greenSignIn"/>
 

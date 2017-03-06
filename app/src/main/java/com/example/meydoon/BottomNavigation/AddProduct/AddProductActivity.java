@@ -4,31 +4,49 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.meydoon.R;
+import com.example.meydoon.app.AppController;
+import com.example.meydoon.app.Config;
 import com.example.meydoon.helper.PrefManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 /**
  * Created by hooma on 2/19/2017.
  */
 public class AddProductActivity extends AppCompatActivity {
+    private static String TAG = AddProductActivity.class.getSimpleName();
+
     private PrefManager pref;
 
-    private Boolean has_shop;
+
+    private JSONObject requestShopIdJS;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         pref = new PrefManager(getApplicationContext());
         pref.checkLogin();
 
-        has_shop = pref.getHasShop();
+        /** Get user's shopID from server */
+        getShopId();
 
         setContentView(R.layout.add_product_fragment);
 
-        /*************************************** Check if user is a shop_user or is signed-in */
-        if(has_shop){
+        /** Check if the user has a shop */
+        if(pref.getShopId() != 0){
             // Check that the activity is using the layout version with
             // the fragment_container FrameLayout
             if (findViewById(R.id.add_product_container) != null) {
@@ -64,10 +82,77 @@ public class AddProductActivity extends AppCompatActivity {
 
     }
 
+    public void getShopId(){
+        requestShopIdJS = new JSONObject();
+        try {
+
+            requestShopIdJS.put("user_id", pref.getUserId());
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                Config.URL_GET_SHOP_ID, requestShopIdJS, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                try {
+                    // Parsing json object response
+                    // response will be a json object
+                    String error = jsonObject.getString("error");
+                    //String message = jsonObject.getString("Message");
+
+                    // checking for error, if not error SMS is initiated
+                    // device should receive it shortly
+                    if (error.equals("0")) {
+                        // boolean flag saying device is waiting for sms
+                        pref.setShopId(jsonObject.getInt("shop_id"));
+
+
+                    } else {
+                        Toast.makeText(getApplicationContext(),
+                                "Error: " + "unable to get shop_id",
+                                Toast.LENGTH_LONG).show();
+                    }
+
+
+
+                } catch (JSONException e) {
+                    Toast.makeText(getApplicationContext(),
+                            "Error: " + e.getMessage(),
+                            Toast.LENGTH_LONG).show();
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e(TAG, "Error: " + volleyError.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return String.format("application/json; charset=utf-8");
+            }
+        };
+
+
+        int socketTimeout = 30000; // 30 seconds. You can change it
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
+        jsonObjectRequest.setRetryPolicy(policy);
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonObjectRequest);
+    }
+
     @Override
     protected void onStop() {
         super.onStop();
-        finish();
+        //finish();
     }
 
     public void setActionBarTitle(String title){

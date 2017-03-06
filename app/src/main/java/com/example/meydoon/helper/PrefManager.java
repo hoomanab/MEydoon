@@ -33,7 +33,8 @@ public class PrefManager {
     private static final String KEY_USER_ID = "user_id";
     private static final String KEY_PHONE_NUMBER = "user_phone_number";
     private static final String KEY_NAME = "user_name";
-    private static final String KEY_HAS_SHOP = "has_shop";
+    private static final String KEY_SHOP_ID = "shop_id";
+
 
 
     public PrefManager(Context context) {
@@ -79,17 +80,17 @@ public class PrefManager {
         return pref.getString(KEY_PHONE_NUMBER, null);
     }
 
-    public void setHasShop(Boolean has_shop) {
-        editor.putBoolean(KEY_HAS_SHOP, has_shop);
+    public void setShopId(int shop_id) {
+        editor.putInt(KEY_SHOP_ID, shop_id);
         editor.commit();
     }
 
-    public Boolean getHasShop() {
-        return pref.getBoolean(KEY_HAS_SHOP, false);
+    public int getShopId() {
+        return pref.getInt(KEY_SHOP_ID, 0);
     }
 
 
-    public void createLogin(int user_id, String user_name, String user_phone_number, Boolean has_shop) {
+    public void createLogin(int user_id, String user_name, String user_phone_number, int shop_id) {
         //editor.putString(KEY_NAME, name);
         //editor.putString(KEY_EMAIL, email);
 
@@ -103,7 +104,7 @@ public class PrefManager {
         editor.putString(KEY_PHONE_NUMBER, user_phone_number);
 
         // Storing shop ownership status in pref
-        editor.putBoolean(KEY_HAS_SHOP, has_shop);
+        editor.putInt(KEY_SHOP_ID, shop_id);
 
         // Storing login value as TRUE
         editor.putBoolean(KEY_IS_LOGGED_IN, true);
@@ -135,7 +136,7 @@ public class PrefManager {
         // user phone number
         user.put(KEY_PHONE_NUMBER, pref.getString(KEY_PHONE_NUMBER, null));
 
-        user.put(KEY_HAS_SHOP, pref.getString(KEY_HAS_SHOP, null));
+        user.put(KEY_SHOP_ID, pref.getString(KEY_SHOP_ID, null));
 
         // return user
         return user;

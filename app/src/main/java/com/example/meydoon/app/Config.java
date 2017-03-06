@@ -8,6 +8,8 @@ public class Config {
     public static final String URL_REQUEST_SMS = "http://meydooncore.herokuapp.com/CreateUser";
     public static final String URL_VERIFY_OTP = "http://meydooncore.herokuapp.com/VerifyUser";
     public static final String URL_ADD_PRODUCT = "";
+    public static final String URL_GET_SHOP_ID = "http://meydooncore.herokuapp.com/GetShopId";
+    public static final String URL_REGISTER_SHOP = "";
 
     // SMS provider identification
     // It should match with your SMS gateway origin
