@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.example.meydoon.Intro.UserSignUpActivity;
+import com.example.meydoon.MainActivity;
 
 import java.util.HashMap;
 
@@ -174,10 +175,10 @@ public class PrefManager {
     public void logoutUser(){
         // Clearing all data from Shared Preferences
         editor.clear();
-
+        editor.commit();
 
         // After logout redirect user to Loing Activity
-        Intent i = new Intent(_context, UserSignUpActivity.class);
+        Intent i = new Intent(_context, MainActivity.class);
         // Closing all the Activities
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 

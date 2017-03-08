@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private String user_phone_number;
 
 
-    private Bundle extras;
+    //private Bundle extras;
     private Boolean loginStatus;
 
     private MenuItem menuItem = null;
@@ -147,8 +147,8 @@ public class MainActivity extends AppCompatActivity {
                 /** If the is logged in, he can proceed! */
                 if(loginStatus){
                     ProfileFragment goToProfile = new ProfileFragment();
-                    putExtrasForFragment();
-                    goToProfile.setArguments(extras);
+                    //putExtrasForFragment();
+                    //goToProfile.setArguments(extras);
 
                     FragmentTransaction profileFragmentTransaction = getSupportFragmentManager().beginTransaction();
                     profileFragmentTransaction.replace(R.id.main_container, goToProfile);
@@ -168,8 +168,8 @@ public class MainActivity extends AppCompatActivity {
                 /** If the is logged in, he can proceed! */
                 if(loginStatus){
                     NotificationsInboxFragment goToNotification = new NotificationsInboxFragment();
-                    putExtrasForFragment();
-                    goToNotification.setArguments(extras);
+                    //putExtrasForFragment();
+                    //goToNotification.setArguments(extras);
 
                     FragmentTransaction notificationsFragmentTransaction = getSupportFragmentManager().beginTransaction();
                     notificationsFragmentTransaction.replace(R.id.main_container, goToNotification);
@@ -194,8 +194,8 @@ public class MainActivity extends AppCompatActivity {
                 if(loginStatus){
                     /** ====================> Check if the user has shop! <====================*/
                     Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
-                    putExtrasForFragment();
-                    intent.putExtras(extras);
+                    //putExtrasForFragment();
+                    //intent.putExtras(extras);
                     startActivity(intent);
                 }else {
                     /** If the user is a guest, he will be redirected to loggin fragment */
@@ -229,8 +229,8 @@ public class MainActivity extends AppCompatActivity {
                 /** In Home, we should check if the user is guest or not to show products accordingly! */
                 // Create a new Fragment to be placed in the activity layout
                 HomeFragment goToHome = new HomeFragment();
-                putExtrasForFragment();
-                goToHome.setArguments(extras);
+                //putExtrasForFragment();
+                //goToHome.setArguments(extras);
 
                 FragmentTransaction homeFragmentTransaction = getSupportFragmentManager().beginTransaction();
                 homeFragmentTransaction.replace(R.id.main_container, goToHome);
@@ -305,13 +305,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void putExtrasForFragment(){
+   /* private void putExtrasForFragment(){
         extras = new Bundle();
         extras.putInt("user_id", user_id);
         extras.putString("user_name", user_name);
         extras.putString("user_phone_number", user_phone_number);
         extras.putInt("has_shop", shop_id);
-    }
+    }*/
 
 
 
@@ -324,17 +324,17 @@ public class MainActivity extends AppCompatActivity {
              * @param img_send_notification**/
             case R.id.img_settings:
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
-                extras = new Bundle();
-                putExtrasForFragment();
-                settingsIntent.putExtras(extras);
+                //extras = new Bundle();
+                //putExtrasForFragment();
+                //settingsIntent.putExtras(extras);
                 startActivity(settingsIntent);
                 break;
 
             case R.id.img_send_notification:
                 Intent intent = new Intent(this, BroadcastMessageOutboxActivity.class);
-                extras = new Bundle();
-                putExtrasForFragment(); /** Which is for an activity here ;P */
-                intent.putExtras(extras);
+                //extras = new Bundle();
+                //putExtrasForFragment(); /** Which is for an activity here ;P */
+                //intent.putExtras(extras);
                 startActivity(intent);
                 break;
 

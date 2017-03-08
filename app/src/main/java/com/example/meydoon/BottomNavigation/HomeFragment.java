@@ -174,13 +174,13 @@ public class HomeFragment extends Fragment {
             }
         });*/
 
-        listView.setOnScrollListener(new EndlessScrollListener() {
-            @Override
-            public boolean onLoadMore(int page, int totalItemsCount) {
-                new LoadMoreListView().execute();
-                return true;
-            }
-        });
+       // listView.setOnScrollListener(new EndlessScrollListener() {
+       //     @Override
+       //     public boolean onLoadMore(int page, int totalItemsCount) {
+                //new LoadMoreListView().execute();
+                //return true;
+        //    }
+      //  });
 
 
     }
@@ -269,7 +269,7 @@ public class HomeFragment extends Fragment {
      * Async Task that send a request to url
      * Gets new list view data
      * Appends to list view
-     **/
+     *
     public class LoadMoreListView extends AsyncTask<Void, Void, Void> {
 
 
@@ -329,9 +329,9 @@ public class HomeFragment extends Fragment {
 
         protected void onPostExecute(Void unused) {
             // closing progress dialog
-            pDialog.dismiss();
+//            pDialog.dismiss();
         }
-    }
+    }*/
 }
 
 
