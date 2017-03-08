@@ -1,5 +1,6 @@
 package com.example.meydoon.BottomNavigation.AddProduct;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
@@ -14,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.app.AppController;
 import com.example.meydoon.app.Config;
@@ -67,14 +69,14 @@ public class AddProductActivity extends AppCompatActivity {
 
                 // Add the fragment to the 'fragment_container' FrameLayout
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.add_product_container, goToAddProduct).commit();
+                        .replace(R.id.add_product_container, goToAddProduct).commit();
             }
         } else {
             ShopRegisterFragment shopRegisterFragment = new ShopRegisterFragment();
             shopRegisterFragment.setArguments(getIntent().getExtras());
 
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.add(R.id.add_product_container, shopRegisterFragment);
+            fragmentTransaction.replace(R.id.add_product_container, shopRegisterFragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
@@ -152,7 +154,7 @@ public class AddProductActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        //finish();
+        finish();
     }
 
     public void setActionBarTitle(String title){

@@ -266,7 +266,7 @@ public class AddProductFragment extends Fragment {
         abort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), MainActivity.class));
+                getActivity().finish();
             }
         });
 
@@ -409,6 +409,7 @@ public class AddProductFragment extends Fragment {
             Bitmap bitmap = BitmapFactory.decodeFile(fileUri.getPath(),
                     options);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap = getResizedBitmap(bitmap, 360, 360);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos);
             bitmap = getResizedBitmap(bitmap, 360, 360);
             //InputStream in = new ByteArrayInputStream(bos.toByteArray());
@@ -449,6 +450,7 @@ public class AddProductFragment extends Fragment {
             Bitmap bitmap = BitmapFactory.decodeFile(picturePath);
 
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap = getResizedBitmap(bitmap, 360, 360);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos);
             bitmap = getResizedBitmap(bitmap, 360, 360);
             //InputStream in = new ByteArrayInputStream(bos.toByteArray());
@@ -581,4 +583,9 @@ public class AddProductFragment extends Fragment {
 
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        getActivity().finish();
+    }
 }

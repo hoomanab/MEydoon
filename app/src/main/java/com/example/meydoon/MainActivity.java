@@ -11,6 +11,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -34,6 +36,8 @@ import com.example.meydoon.mainTabs.BottomNavigationTabFragment;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     private static final String SELECTED_ITEM = "arg_selected_item";
     private BottomNavigationView bottomNavigationView;
 
@@ -53,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     private Bundle extras;
     private Boolean loginStatus;
 
+    private MenuItem menuItem = null;
+
 
     // =====================> Products and shops tabs will not be in the MVP
     private int[] tabIcons = {
@@ -61,9 +67,14 @@ public class MainActivity extends AppCompatActivity {
       //      R.drawable.ic_shop_tab
     };
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.v(TAG, "MainActivity created!");
+
         setContentView(R.layout.activity_main);
 
         // ********** Here is for the tabs! in version 2.0 we will implement other parts **********
@@ -130,21 +141,29 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btm_nav_profile:
                 loginStatus = pref.isLoggedIn();
 
-                /** If the is logged in, he can proceed! */
-                //if(loginStatus){
-                    ProfileFragment goToProfile = new ProfileFragment();
-                //    putExtrasForFragment();
-                //    goToProfile.setArguments(extras);
+                menuItem = bottomNavigationView.getMenu().getItem(0);
 
-                    getSupportFragmentManager().beginTransaction().add(R.id.main_container, goToProfile).commit();
-              //  }else {
+
+                /** If the is logged in, he can proceed! */
+                if(loginStatus){
+                    ProfileFragment goToProfile = new ProfileFragment();
+                    putExtrasForFragment();
+                    goToProfile.setArguments(extras);
+
+                    FragmentTransaction profileFragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    profileFragmentTransaction.replace(R.id.main_container, goToProfile);
+                    profileFragmentTransaction.commit();
+
+                }else {
                     /** If the user is a guest, he will be redirected to loggin fragment */
-                  //  startActivity(new Intent(this, ProceedActivity.class));
-              //  }
+                    startActivity(new Intent(this, ProceedActivity.class));
+                }
                 break;
 
             case R.id.btm_nav_notifications_inbox:
                 loginStatus = pref.isLoggedIn();
+
+                menuItem = bottomNavigationView.getMenu().getItem(1);
 
                 /** If the is logged in, he can proceed! */
                 if(loginStatus){
@@ -152,7 +171,9 @@ public class MainActivity extends AppCompatActivity {
                     putExtrasForFragment();
                     goToNotification.setArguments(extras);
 
-                    getSupportFragmentManager().beginTransaction().add(R.id.main_container, goToNotification).commit();
+                    FragmentTransaction notificationsFragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    notificationsFragmentTransaction.replace(R.id.main_container, goToNotification);
+                    notificationsFragmentTransaction.commit();
                 }else {
                     /** If the user is a guest, he will be redirected to loggin fragment */
                     startActivity(new Intent(this, ProceedActivity.class));
@@ -164,6 +185,11 @@ public class MainActivity extends AppCompatActivity {
                 //goToAddProduct.putExtra("Previously Selected Menu Item", bottomNavigationView.getMenu().getItem(4).toString());
                 loginStatus = pref.isLoggedIn();
 
+
+                /** Making Home the initial selected item */
+
+                //menuItem = bottomNavigationView.getMenu().getItem(4);
+
                 /** If the is logged in, he can proceed! */
                 if(loginStatus){
                     /** ====================> Check if the user has shop! <====================*/
@@ -173,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }else {
                     /** If the user is a guest, he will be redirected to loggin fragment */
+
                     startActivity(new Intent(this, ProceedActivity.class));
                 }
 
@@ -183,29 +210,36 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btm_nav_search:
                 SearchFragment gotToSearch = new SearchFragment();
 
+                menuItem = bottomNavigationView.getMenu().getItem(3);
+
+                FragmentTransaction searchFragmentTransaction = getSupportFragmentManager().beginTransaction();
+                searchFragmentTransaction.replace(R.id.main_container, gotToSearch);
+                searchFragmentTransaction.commit();
                 // In case this activity was started with special instructions from an
                 // Intent, pass the Intent's extras to the fragment as arguments
                 //gotToSearch.setArguments(getIntent().getExtras());
 
                 // Add the fragment to the 'fragment_container' FrameLayout
-                getSupportFragmentManager().beginTransaction()
-                        .add(R.id.main_container, gotToSearch).commit();
                 break;
 
             case R.id.btm_nav_home:
+
+                menuItem = bottomNavigationView.getMenu().getItem(4);
 
                 /** In Home, we should check if the user is guest or not to show products accordingly! */
                 // Create a new Fragment to be placed in the activity layout
                 HomeFragment goToHome = new HomeFragment();
                 putExtrasForFragment();
                 goToHome.setArguments(extras);
+
+                FragmentTransaction homeFragmentTransaction = getSupportFragmentManager().beginTransaction();
+                homeFragmentTransaction.replace(R.id.main_container, goToHome);
+                homeFragmentTransaction.commit();
                 // In case this activity was started with special instructions from an
                 // Intent, pass the Intent's extras to the fragment as arguments
                 //goToHome.setArguments(getIntent().getExtras());
 
                 // Add the fragment to the 'fragment_container' FrameLayout
-                getSupportFragmentManager().beginTransaction()
-                            .add(R.id.main_container, goToHome).commit();
 
                 break;
         }
@@ -229,6 +263,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        Log.v(TAG, "MainActivity resumed!");
+
         Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isFirstRun", true);
         if (isFirstRun) {
@@ -237,6 +274,11 @@ public class MainActivity extends AppCompatActivity {
         }
         getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
                 .putBoolean("isFirstRun", false).commit();
+        if(menuItem != null){
+            menuItem.setChecked(true);
+            bottomNavSelectedItem(menuItem);
+        }
+
     }
 
 
@@ -249,9 +291,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        finish();
+        Log.v(TAG, "MainActivity destroyed!");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.v(TAG, "MainActivity stopped!");
+        /** Making Home the initial selected item */
+
 
     }
+
 
 
     private void putExtrasForFragment(){

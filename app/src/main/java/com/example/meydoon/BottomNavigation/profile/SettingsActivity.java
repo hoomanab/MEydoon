@@ -38,6 +38,11 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
 
     /** Handling clicks on actionbar icons */
     public void settingsClickEvent(View view){

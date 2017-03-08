@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dip">
+
+    <!-- Enter Phone Number -->
+    <LinearLayout
+        android:id="@+id/layout_sms"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:layout_marginTop="140dip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:text="با فروشگاه ارتباط برقرار کنید و محصول مورد نظرتون رو سفارش بدید!"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <!--  =================> Numbers here! <================= -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="@string/input_username"/>
+            <EditText
+                style="@style/EditText"
+                android:id="@+id/inputMobile"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:background="@drawable/btn"
+                android:fontFamily="sans-serif-light"
+                android:hint="0912 222 2222"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:padding="5dp"
+                android:textCursorDrawable="@null"
+                android:textSize="18dp" />
+
+            <Button
+                style="@style/Btn"
+                android:id="@+id/btn_request_sms"
+                android:text="@string/next"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:background="@color/greenSignIn"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
