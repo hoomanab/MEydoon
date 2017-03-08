@@ -11,6 +11,11 @@ public class Config {
     public static final String URL_GET_SHOP_ID = "http://meydooncore.herokuapp.com/GetShopId";
     public static final String URL_REGISTER_SHOP = "";
 
+    public static final String URL_HOME_FEED = "http://api.androidhive.info/feed/feed.json";
+    public static final String URL_BROADCAST_MESSAGE_OUTBOX = "https://api.myjson.com/bins/1ezj9d";
+    public static final String URL_NOTIFICATION_INBOX = "https://api.myjson.com/bins/1ezj9d";
+    public static final String URL_SEARCH = "https://api.myjson.com/bins/q9p5l";
+
     // SMS provider identification
     // It should match with your SMS gateway origin
     // You can use  MSGIND, TESTER and ALERTS as sender ID

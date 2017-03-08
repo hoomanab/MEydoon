@@ -21,6 +21,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.meydoon.R;
 import com.example.meydoon.adapter.NotificationInboxAdapter;
 import com.example.meydoon.app.AppController;
+import com.example.meydoon.app.Config;
 import com.example.meydoon.data.NotificationInboxItem;
 import com.example.meydoon.helper.PrefManager;
 
@@ -45,7 +46,7 @@ public class BroadcastMessageOutboxFragment extends Fragment {
     private NotificationInboxAdapter notificationInboxAdapter;
     private List<NotificationInboxItem> notificationInboxItems;
 
-    private String URL_NOTIFICATION = "https://api.myjson.com/bins/1ezj9d";
+    private String URL_NOTIFICATION = Config.URL_BROADCAST_MESSAGE_OUTBOX;
 
     private PrefManager pref;
 

@@ -21,6 +21,7 @@ import com.example.meydoon.adapter.FeedListAdapter;
 import com.example.meydoon.adapter.NotificationInboxAdapter;
 import com.example.meydoon.adapter.ShopSearchResultListAdapter;
 import com.example.meydoon.app.AppController;
+import com.example.meydoon.app.Config;
 import com.example.meydoon.data.FeedItem;
 import com.example.meydoon.data.NotificationInboxItem;
 import com.example.meydoon.data.SearchItem;
@@ -46,7 +47,7 @@ public class NotificationsInboxFragment extends Fragment {
     private PrefManager pref;
 
 
-    private String URL_NOTIFICATION_INBOX = "https://api.myjson.com/bins/1ezj9d";
+    private String URL_NOTIFICATION_INBOX = Config.URL_NOTIFICATION_INBOX;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

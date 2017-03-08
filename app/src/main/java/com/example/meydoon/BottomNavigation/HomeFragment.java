@@ -27,6 +27,7 @@ import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.adapter.FeedListAdapter;
 import com.example.meydoon.app.AppController;
+import com.example.meydoon.app.Config;
 import com.example.meydoon.data.FeedItem;
 import com.example.meydoon.helper.PrefManager;
 
@@ -50,7 +51,7 @@ public class HomeFragment extends Fragment {
     private ListView listView;
     private FeedListAdapter listAdapter;
     private List<FeedItem> feedItems;
-    private String URL_FEED = "http://api.androidhive.info/feed/feed.json";
+    private String URL_FEED = Config.URL_HOME_FEED;
 
     private PrefManager pref;
     private Boolean logginStatus;

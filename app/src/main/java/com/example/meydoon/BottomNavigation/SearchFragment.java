@@ -25,6 +25,7 @@ import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.adapter.ShopSearchResultListAdapter;
 import com.example.meydoon.app.AppController;
+import com.example.meydoon.app.Config;
 import com.example.meydoon.data.FeedItem;
 import com.example.meydoon.data.SearchItem;
 
@@ -47,7 +48,7 @@ public class SearchFragment extends Fragment {
     private List<SearchItem> searchItems;
 
 
-    private String URL_SHOP_SEARCH = "https://api.myjson.com/bins/q9p5l";
+    private String URL_SHOP_SEARCH = Config.URL_SEARCH;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
