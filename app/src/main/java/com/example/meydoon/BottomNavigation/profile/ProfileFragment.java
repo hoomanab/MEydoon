@@ -39,6 +39,8 @@ import java.util.List;
  * Created by hooma on 2/8/2017.
  */
 public class ProfileFragment extends Fragment {
+    private long now;
+
     private static final String TAG = ProfileFragment.class.getSimpleName();
 
     ImageButton profilePic;
@@ -55,6 +57,8 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        now = System.currentTimeMillis();
     }
 
 
@@ -89,7 +93,18 @@ public class ProfileFragment extends Fragment {
 
         // We first check for cached request
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_PROFILE);
+        Cache.Entry entry = new Cache.Entry();
+
+        final long cacheHitButRefreshed = 3 * 60 * 1000;
+        final long cacheExpired = 5 * 24 * 60 * 1000;
+        final long softExpire = now + cacheHitButRefreshed;
+        final long ttl = now + cacheExpired;
+
+        entry.softTtl = softExpire;
+        entry.ttl = ttl;
+
+
+        entry = cache.get(URL_PROFILE);
         if (entry != null) {
             // fetch the data from cache
             try {

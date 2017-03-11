@@ -5,9 +5,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
+    <TextView
+        android:id="@+id/txt_no_internet"
+        android:layout_alignParentTop="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="خطا در اتصال به اینترنت!"
+        android:background="@color/gray"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:padding="10dip"/>
+
     <FrameLayout
         android:id="@+id/main_container"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="60dip"/>
 

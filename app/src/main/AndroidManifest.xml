@@ -3,6 +3,7 @@
     package="com.example.meydoon" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
@@ -77,6 +78,16 @@
         <receiver android:name=".receiver.SmsReceiver">
             <intent-filter android:priority="99999">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+
+        <!-- Connectivity Receiver -->
+        <receiver
+            android:name=".receiver.ConnectivityReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 

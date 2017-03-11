@@ -37,6 +37,8 @@ import java.util.List;
  * Created by hooma on 3/1/2017.
  */
 public class BroadcastMessageOutboxFragment extends Fragment {
+    private long now;
+
     private static final String TAG = BroadcastMessageOutboxFragment.class.getSimpleName();
     private Bundle extras;
 
@@ -58,6 +60,7 @@ public class BroadcastMessageOutboxFragment extends Fragment {
 
         pref = new PrefManager(getActivity().getApplicationContext());
 
+        now = System.currentTimeMillis();
         //pref.checkLogin();
     }
 
@@ -104,7 +107,17 @@ public class BroadcastMessageOutboxFragment extends Fragment {
 
         // We first check for cached request
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_NOTIFICATION);
+        Cache.Entry entry = new Cache.Entry();
+
+        final long cacheHitButRefreshed = 3 * 60 * 1000;
+        final long cacheExpired = 5 * 24 * 60 * 1000;
+        final long softExpire = now + cacheHitButRefreshed;
+        final long ttl = now + cacheExpired;
+
+        entry.softTtl = softExpire;
+        entry.ttl = ttl;
+
+        entry = cache.get(URL_NOTIFICATION);
         if (entry != null) {
             // fetch the data from cache
             try {

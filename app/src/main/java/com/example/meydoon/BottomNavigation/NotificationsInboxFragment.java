@@ -39,6 +39,8 @@ import java.util.List;
  * Fragment for notification inbox!
  */
 public class NotificationsInboxFragment extends Fragment {
+    private long now;
+
     private static final String TAG = NotificationsInboxFragment.class.getSimpleName();
     private ListView listView;
     private NotificationInboxAdapter notificationInboxAdapter;
@@ -58,6 +60,8 @@ public class NotificationsInboxFragment extends Fragment {
         pref.checkLogin();
         /** Here I should send a request to getNotifications for the user! **/
         // Request for notifications!
+
+        now = System.currentTimeMillis();
     }
 
     @Nullable
@@ -89,7 +93,17 @@ public class NotificationsInboxFragment extends Fragment {
 
         // We first check for cached request
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_NOTIFICATION_INBOX);
+        Cache.Entry entry = new Cache.Entry();
+
+        final long cacheHitButRefreshed = 3 * 60 * 1000;
+        final long cacheExpired = 5 * 24 * 60 * 1000;
+        final long softExpire = now + cacheHitButRefreshed;
+        final long ttl = now + cacheExpired;
+
+        entry.softTtl = softExpire;
+        entry.ttl = ttl;
+
+        entry = cache.get(URL_NOTIFICATION_INBOX);
         if (entry != null) {
             // fetch the data from cache
             try {

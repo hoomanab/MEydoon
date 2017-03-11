@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -15,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.android.volley.Cache;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -45,7 +48,9 @@ import java.util.List;
 /**
  * To handle the view when Home icon is selected from bottom navigation!
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+    private long now;
+
     private BottomNavigationView bottomNavigationView;
     private static final String TAG = HomeFragment.class.getSimpleName();
     private ListView listView;
@@ -64,11 +69,16 @@ public class HomeFragment extends Fragment {
 
     private MenuItem menuItem;
 
+    private SwipeRefreshLayout swipeRefreshLayout; /**  ===============> Implement Later <=============== */
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         pref = new PrefManager(getActivity().getApplicationContext());
         logginStatus = pref.isLoggedIn();
+
+        now = System.currentTimeMillis();
     }
 
     @Override
@@ -93,7 +103,7 @@ public class HomeFragment extends Fragment {
         ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
         ((MainActivity)getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_home);
 
-
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.home_swipe_refresh_layout);
 
         listView = (ListView)view.findViewById(R.id.list);
 
@@ -103,6 +113,20 @@ public class HomeFragment extends Fragment {
         listAdapter = new FeedListAdapter(getActivity(), feedItems);
         listView.setAdapter(listAdapter);
 
+        swipeRefreshLayout.setOnRefreshListener(this);
+
+        /**
+         * Showing Swipe Refresh animation on activity create
+         * As animation won't start on onCreate, post runnable is used
+         */
+        swipeRefreshLayout.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        swipeRefreshLayout.setRefreshing(true);
+                                        fetchFeed();
+                                    }
+                                }
+        );
 /*
         btnLoadMore = new Button(getActivity());
         btnLoadMore.setText("بیشتر");
@@ -121,6 +145,39 @@ public class HomeFragment extends Fragment {
          *
          *              Then send user_id as JSONObject to server and get it's latest following shops products!**/
 
+
+
+
+       /* btnLoadMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new LoadMoreListView().execute();
+            }
+        });*/
+
+       // listView.setOnScrollListener(new EndlessScrollListener() {
+       //     @Override
+       //     public boolean onLoadMore(int page, int totalItemsCount) {
+                //new LoadMoreListView().execute();
+                //return true;
+        //    }
+      //  });
+
+
+    }
+
+    /**
+     * This method is called when swipe refresh is pulled down
+     */
+    @Override
+    public void onRefresh() {
+        fetchFeed();
+    }
+
+    private void fetchFeed(){
+
+        swipeRefreshLayout.setRefreshing(true);
+
         // These two lines not needed,
         // just to get the look of facebook (changing background color & hiding the icon)
         //getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3b5998")));
@@ -129,7 +186,17 @@ public class HomeFragment extends Fragment {
 
         // We first check for cached request
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_FEED);
+        Cache.Entry entry = new Cache.Entry();
+
+        final long cacheHitButRefreshed = 3 * 60 * 1000;
+        final long cacheExpired = 5 * 24 * 60 * 1000;
+        final long softExpire = now + cacheHitButRefreshed;
+        final long ttl = now + cacheExpired;
+
+        entry.softTtl = softExpire;
+        entry.ttl = ttl;
+
+        entry = cache.get(URL_FEED);
         if (entry != null) {
             // fetch the data from cache
             try {
@@ -160,30 +227,17 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG, "Error: " + error.getMessage());
+
+                    Toast.makeText(getActivity().getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG);
+
+                    // stopping swipe refresh
+                    swipeRefreshLayout.setRefreshing(false);
                 }
             });
 
             // Adding request to volley request queue
             AppController.getInstance().addToRequestQueue(jsonReq);
         }
-
-
-       /* btnLoadMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new LoadMoreListView().execute();
-            }
-        });*/
-
-       // listView.setOnScrollListener(new EndlessScrollListener() {
-       //     @Override
-       //     public boolean onLoadMore(int page, int totalItemsCount) {
-                //new LoadMoreListView().execute();
-                //return true;
-        //    }
-      //  });
-
-
     }
 
     /**
@@ -219,6 +273,9 @@ public class HomeFragment extends Fragment {
 
             // notify data changes to list adapater
             listAdapter.notifyDataSetChanged();
+
+            // stopping swipe refresh
+            swipeRefreshLayout.setRefreshing(false);
         } catch (JSONException e) {
             e.printStackTrace();
         }

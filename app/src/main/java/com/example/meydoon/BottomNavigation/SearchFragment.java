@@ -42,6 +42,8 @@ import java.util.Locale;
  * Created by hooma on 2/8/2017.
  */
 public class SearchFragment extends Fragment {
+    private long now;
+
     private static final String TAG = SearchFragment.class.getSimpleName();
     private ListView listView;
     private ShopSearchResultListAdapter shopSearchResultListAdapter;
@@ -54,7 +56,7 @@ public class SearchFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        now = System.currentTimeMillis();
 
         //View view = ((MainActivity)getActivity()).getSupportActionBar().getCustomView();
         //ImageButton imageButton= (ImageButton)view.findViewById(R.id.meydoon_tab);
@@ -218,7 +220,17 @@ public class SearchFragment extends Fragment {
         //shopSearchResultListAdapter = new ShopSearchResultListAdapter(getActivity(), filteredItem);
         // We first check for cached request
         Cache cache = AppController.getInstance().getRequestQueue().getCache();
-        Cache.Entry entry = cache.get(URL_SHOP_SEARCH);
+        Cache.Entry entry = new Cache.Entry();
+
+        final long cacheHitButRefreshed = 3 * 60 * 1000;
+        final long cacheExpired = 5 * 24 * 60 * 1000;
+        final long softExpire = now + cacheHitButRefreshed;
+        final long ttl = now + cacheExpired;
+
+        entry.softTtl = softExpire;
+        entry.ttl = ttl;
+
+        entry = cache.get(URL_SHOP_SEARCH);
         if (entry != null) {
             // fetch the data from cache
             try {
