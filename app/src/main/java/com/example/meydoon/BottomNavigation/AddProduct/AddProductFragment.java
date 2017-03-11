@@ -60,7 +60,7 @@ public class AddProductFragment extends Fragment {
     private EditText productName, productPrice, productDescription;
     private Spinner spinnerProductCategory, spinnerIshShipableProduct;
     private ImageView imgPreview;
-    private Button submitProduct, abort;
+    private Button submitProduct;
 
     private String productCategoryName = "";
     private int productCategoryId = 0;
@@ -128,7 +128,6 @@ public class AddProductFragment extends Fragment {
         productDescription = (EditText)view.findViewById(R.id.product_description);
         imgPreview = (ImageView)view.findViewById(R.id.img_preview);
         submitProduct = (Button)view.findViewById(R.id.btn_add_product);
-        abort = (Button)view.findViewById(R.id.btn_abort_add_product);
         progressBar = (ProgressBar) view.findViewById(R.id.addproductProgressBar);
 
 
@@ -262,13 +261,6 @@ public class AddProductFragment extends Fragment {
         });
 
 
-        /** Abort adding product button */
-        abort.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().finish();
-            }
-        });
 
 
     }

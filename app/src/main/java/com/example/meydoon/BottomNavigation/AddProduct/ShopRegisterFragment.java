@@ -59,7 +59,7 @@ public class ShopRegisterFragment extends Fragment {
     private TextView txtShopPic;
     private EditText shopName, shopAddress, shopDescription;
     private Spinner spinnerShopCategory, spinnerCity;
-    private Button submitShop, abortSubmition;
+    private Button submitShop;
 
     private String shopCategoryName = "";
     private String shopCityName = "";
@@ -91,7 +91,7 @@ public class ShopRegisterFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        startActivity(new Intent(getActivity(), MainActivity.class));
+        getActivity().finish();
     }
 
     @Override
@@ -132,7 +132,6 @@ public class ShopRegisterFragment extends Fragment {
         spinnerShopCategory = (Spinner)view.findViewById(R.id.spinner_shop_category);
         spinnerCity = (Spinner)view.findViewById(R.id.spinner_city);
         submitShop = (Button)view.findViewById(R.id.shop_btn_sign_up);
-        abortSubmition = (Button)view.findViewById(R.id.shop_btn_abort_sign_up);
         progressBar = (ProgressBar) view.findViewById(R.id.shopRegisterProgressBar);
 
         /** Importing Image! For now, we just import images! */
@@ -244,12 +243,6 @@ public class ShopRegisterFragment extends Fragment {
             }
         });
 
-        abortSubmition.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), MainActivity.class));
-            }
-        });
 
     }
 

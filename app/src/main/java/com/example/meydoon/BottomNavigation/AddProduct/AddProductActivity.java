@@ -15,6 +15,8 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.meydoon.BottomNavigation.profile.BroadcastMessageOutboxActivity;
+import com.example.meydoon.BottomNavigation.profile.SettingsActivity;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.app.AppController;
@@ -160,5 +162,30 @@ public class AddProductActivity extends AppCompatActivity {
     public void setActionBarTitle(String title){
         getActionBar().setTitle(title);
     }
+
+
+    /** Handling clicks on actionbar icons */
+    public void addProductClickEvent(View view){
+        switch (view.getId()){
+
+            /** For shop add product actionbar,
+             * @param img_abort_add_product**/
+            case R.id.img_abort_add_product:
+                finish();
+                break;
+
+            case R.id.img_abort_shop_register:
+                finish();
+                break;
+
+
+            /** For product details,
+             * @param img_back **/
+            case R.id.img_back:
+                this.getSupportFragmentManager().popBackStackImmediate();
+                break;
+        }
+    }
+
 
 }

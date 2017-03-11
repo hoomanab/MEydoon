@@ -220,13 +220,6 @@
                 android:text="@string/submit_shop"
                 android:background="@color/greenSignIn"/>
 
-            <!-- Abort button -->
-            <Button
-                style="@style/Btn"
-                android:id="@+id/shop_btn_abort_sign_up"
-                android:layout_marginTop="10dip"
-                android:text="@string/abort"
-                android:background="@color/meydoonRed" />
         </LinearLayout>
 
 

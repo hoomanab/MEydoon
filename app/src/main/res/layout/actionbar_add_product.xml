@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:background="@color/meydoonRed">
+
+    <ImageButton
+        android:id="@+id/img_abort_add_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_cross_white"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:onClick="addProductClickEvent" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,4 +31,5 @@
         android:textColor="@color/white"/>
 
 
-</RelativeLayout>
+</LinearLayout>
+

@@ -234,13 +234,13 @@
                 android:text="@string/add_to_shop"
                 android:background="@color/greenSignIn"/>
 
-            <!-- Abort Button -->
+            <!-- Abort Button
             <Button
                 style="@style/Btn"
                 android:id="@+id/btn_abort_add_product"
                 android:text="@string/abort"
                 android:background="@color/meydoonRed"
-                android:layout_marginTop="10dip"/>
+                android:layout_marginTop="10dip"/>-->
 
 
         </LinearLayout>
