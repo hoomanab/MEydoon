@@ -390,8 +390,8 @@ public class ShopRegisterFragment extends Fragment {
             Bitmap bitmap = BitmapFactory.decodeFile(fileUri.getPath(),
                     options);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos);
-            bitmap = getResizedBitmap(bitmap, 50, 50);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            bitmap = getResizedBitmap(bitmap, 100, 100);
             //InputStream in = new ByteArrayInputStream(bos.toByteArray());
 
             imgShopPic.setImageBitmap(bitmap);

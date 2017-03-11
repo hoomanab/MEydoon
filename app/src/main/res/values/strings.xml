@@ -50,6 +50,7 @@
     <string name="shipable">قابل ارسال با پیک</string>
     <string name="broadcast_message_title">عنوان اعلان</string>
     <string name="send">ارسال</string>
+    <string name="enter">ورود</string>
 
     <string-array name="product_category_array">
         <item>خوراک</item>

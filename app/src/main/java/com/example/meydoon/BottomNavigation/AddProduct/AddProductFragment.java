@@ -413,13 +413,12 @@ public class AddProductFragment extends Fragment {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos);
             bitmap = getResizedBitmap(bitmap, 360, 360);
             //InputStream in = new ByteArrayInputStream(bos.toByteArray());
-            imageBytes = bos.toByteArray();
-            encodedimage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-
-
 
 
             imgPreview.setImageBitmap(bitmap);
+
+            imageBytes = bos.toByteArray();
+            encodedimage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         } catch (NullPointerException e) {
             e.printStackTrace();
         }

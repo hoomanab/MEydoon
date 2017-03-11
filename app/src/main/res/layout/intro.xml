@@ -115,7 +115,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="25dp"
                 android:background="@color/greenSignIn"
-                android:text="@string/btn_sign_up_text" />
+                android:text="@string/enter" />
 
 
 

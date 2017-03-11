@@ -88,8 +88,8 @@ public class BroadcastMessageOutboxFragment extends Fragment {
         ((BroadcastMessageOutboxActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_profile_notification);
 
         /** Getting extras */
-        extras = getActivity().getIntent().getExtras();
-        shopId = extras.getInt("shop_id");
+        //extras = getActivity().getIntent().getExtras();
+        shopId = pref.getShopId();
 
 
         newBroadcastMessage = (LinearLayout) view.findViewById(R.id.new_broadcast_message);
@@ -199,5 +199,9 @@ public class BroadcastMessageOutboxFragment extends Fragment {
 
     }
 
-
+    @Override
+    public void onStop() {
+        super.onStop();
+        getActivity().finish();
+    }
 }

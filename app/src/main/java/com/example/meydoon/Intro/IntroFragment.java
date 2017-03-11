@@ -87,6 +87,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
         btnEditMobile = (ImageButton) view.findViewById(R.id.btn_edit_mobile);
         txtEditMobile = (TextView) view.findViewById(R.id.txt_edit_mobile);
         layoutEditMobile = (LinearLayout) view.findViewById(R.id.layout_edit_mobile);
+
         btnGuestEnter = (Button) view.findViewById(R.id.btn_guest_enter);
 
         // view click listeners
@@ -144,7 +145,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.btn_verify_otp:
-                progressBar.setVisibility(View.VISIBLE);
+
                 verifyOtp();
                 break;
 
@@ -315,12 +316,14 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
 
 
         if (!otp.isEmpty()) {
+            progressBar.setVisibility(View.VISIBLE);
             Intent grapprIntent = new Intent(getActivity(), VerifyOtpHttpService.class);
             Bundle extras = new Bundle();
             extras.putString("otp", otp);
             extras.putString("user_phone_number",mobile);
             grapprIntent.putExtras(extras);
             getActivity().startService(grapprIntent);
+            progressBar.setVisibility(View.GONE);
         } else {
             progressBar.setVisibility(View.GONE);
             Toast.makeText(getActivity().getApplicationContext(), "لطفا کدی که دریافت کردید رو به صورت کامل وارد کنید!", Toast.LENGTH_SHORT).show();
@@ -365,5 +368,11 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
             }
             return viewPager.findViewById(resId);
         }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getActivity().finish();
     }
 }

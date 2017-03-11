@@ -46,7 +46,7 @@ public class AppController extends Application {
         getRequestQueue();
         if (mImageLoader == null) {
             getLruBitmapCache();
-            mImageLoader = new ImageLoader(this.mRequestQueue, mLruBitmapCache);
+            mImageLoader = new ImageLoader(this.mRequestQueue, getLruBitmapCache());
         }
 
         return this.mImageLoader;
