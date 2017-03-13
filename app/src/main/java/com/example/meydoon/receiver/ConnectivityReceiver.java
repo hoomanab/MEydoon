@@ -11,7 +11,9 @@ import com.example.meydoon.app.AppController;
 /**
  * Created by hooma on 3/11/2017.
  */
-public class ConnectivityReceiver extends BroadcastReceiver {
+public class ConnectivityReceiver
+        extends BroadcastReceiver {
+
     public static ConnectivityReceiverListener connectivityReceiverListener;
 
     public ConnectivityReceiver() {

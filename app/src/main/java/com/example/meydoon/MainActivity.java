@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.meydoon.BottomNavigation.AddProduct.AddProductActivity;
@@ -30,12 +31,14 @@ import com.example.meydoon.Intro.ProceedActivity;
 import com.example.meydoon.Intro.ProceedFragment;
 import com.example.meydoon.Intro.UserSignUpActivity;
 import com.example.meydoon.adapter.ViewPagerAdapter;
+import com.example.meydoon.app.AppController;
 import com.example.meydoon.helper.PrefManager;
 import com.example.meydoon.mainTabs.BottomNavigationTabFragment;
+import com.example.meydoon.receiver.ConnectivityReceiver;
 
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private static final String SELECTED_ITEM = "arg_selected_item";
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     private int user_id, shop_id;
     private String user_name;
     private String user_phone_number;
+
+    private TextView no_connection;
 
 
     //private Bundle extras;
@@ -77,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+
+
         // ********** Here is for the tabs! in version 2.0 we will implement other parts **********
         /*viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -99,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
         user_name = pref.getUserName();
         shop_id = pref.getShopId();
 
+        no_connection = (TextView) findViewById(R.id.txt_no_internet);
+        checkConnection();
 
         View view = getSupportActionBar().getCustomView();
         ImageButton imageButton= (ImageButton)view.findViewById(R.id.meydoon_tab);
@@ -132,6 +141,20 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    // Method to manually check connection status
+    private void checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        showNoConnection(isConnected);
+    }
+
+    private void showNoConnection(boolean isConnected){
+        if(isConnected) {
+            no_connection.setVisibility(View.GONE);
+        } else{
+            no_connection.setVisibility(View.VISIBLE);
+        }
     }
 
 
@@ -266,6 +289,11 @@ public class MainActivity extends AppCompatActivity {
 
         Log.v(TAG, "MainActivity resumed!");
 
+        checkConnection();
+
+
+        AppController.getInstance().setConnectivityListener(this);
+
         Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isFirstRun", true);
         if (isFirstRun) {
@@ -301,6 +329,15 @@ public class MainActivity extends AppCompatActivity {
         /** Making Home the initial selected item */
 
 
+    }
+
+    /**
+     * Callback will be triggered when there is change in
+     * network connection
+     */
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showNoConnection(isConnected);
     }
 
 

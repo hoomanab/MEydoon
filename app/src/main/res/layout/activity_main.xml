@@ -5,22 +5,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/txt_no_internet"
-        android:layout_alignParentTop="true"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:id="@+id/no_connection_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="خطا در اتصال به اینترنت!"
-        android:background="@color/gray"
-        android:textColor="@color/black"
-        android:gravity="center_horizontal"
-        android:padding="10dip"/>
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/txt_no_internet"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="خطا در اتصال به اینترنت!"
+            android:background="@color/gray_btm_nav_bar_icon"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:padding="10dip"
+            android:visibility="gone"
+            android:fitsSystemWindows="true" />
+    </LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/main_container"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="60dip"/>
+        android:paddingBottom="60dip"
+        android:layout_below="@+id/no_connection_layout"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
