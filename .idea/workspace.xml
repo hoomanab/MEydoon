@@ -69,27 +69,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="HomeFragment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HomeFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.084745765">
+              <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
               <folding>
-                <element signature="e#4067#4390#0" expanded="true" />
-                <element signature="e#4389#4390#0" expanded="true" />
-                <element signature="e#5767#5768#0" expanded="true" />
-                <element signature="e#5794#5795#0" expanded="true" />
-                <element signature="e#7702#8149#0" expanded="true" />
-                <element signature="e#8148#8149#0" expanded="true" />
+                <element signature="e#3870#4027#0" expanded="true" />
+                <element signature="e#4026#4027#0" expanded="true" />
+                <element signature="e#4220#4543#0" expanded="true" />
+                <element signature="e#4542#4543#0" expanded="true" />
+                <element signature="e#5920#5921#0" expanded="true" />
+                <element signature="e#5947#5948#0" expanded="true" />
+                <element signature="e#7855#8302#0" expanded="true" />
+                <element signature="e#8301#8302#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22082019">
+            <state vertical-scroll-proportion="0.0">
               <caret line="172" column="25" selection-start-line="172" selection-start-column="25" selection-end-line="172" selection-end-column="25" />
               <folding>
                 <element signature="e#12699#12700#0" expanded="true" />
@@ -1887,13 +1889,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/profile/ProfileFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/adapter/SwipeListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/app/MyApplication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/feed_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/app/AppController.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/receiver/ConnectivityReceiver.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java" />
       </list>
     </option>
   </component>
@@ -3258,21 +3260,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding>
-            <element signature="e#4067#4390#0" expanded="true" />
-            <element signature="e#4389#4390#0" expanded="true" />
-            <element signature="e#5767#5768#0" expanded="true" />
-            <element signature="e#5794#5795#0" expanded="true" />
-            <element signature="e#7702#8149#0" expanded="true" />
-            <element signature="e#8148#8149#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/app/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3306,11 +3293,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22082019">
+        <state vertical-scroll-proportion="0.0">
           <caret line="172" column="25" selection-start-line="172" selection-start-column="25" selection-end-line="172" selection-end-column="25" />
           <folding>
             <element signature="e#12699#12700#0" expanded="true" />
             <element signature="e#12744#12745#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/meydoon/BottomNavigation/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.084745765">
+          <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
+          <folding>
+            <element signature="e#3870#4027#0" expanded="true" />
+            <element signature="e#4026#4027#0" expanded="true" />
+            <element signature="e#4220#4543#0" expanded="true" />
+            <element signature="e#4542#4543#0" expanded="true" />
+            <element signature="e#5920#5921#0" expanded="true" />
+            <element signature="e#5947#5948#0" expanded="true" />
+            <element signature="e#7855#8302#0" expanded="true" />
+            <element signature="e#8301#8302#0" expanded="true" />
           </folding>
         </state>
       </provider>

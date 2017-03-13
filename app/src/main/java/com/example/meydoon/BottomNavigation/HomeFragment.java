@@ -113,7 +113,12 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         listAdapter = new FeedListAdapter(getActivity(), feedItems);
         listView.setAdapter(listAdapter);
 
-        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchFeed();
+            }
+        });
 
         /**
          * Showing Swipe Refresh animation on activity create
