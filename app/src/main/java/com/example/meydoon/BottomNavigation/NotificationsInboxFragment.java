@@ -96,7 +96,7 @@ public class NotificationsInboxFragment extends Fragment {
         Cache.Entry entry = new Cache.Entry();
 
         final long cacheHitButRefreshed = 3 * 60 * 1000;
-        final long cacheExpired = 5 * 24 * 60 * 1000;
+        final long cacheExpired = 5 * 24 * 60 * 60 * 1000;
         final long softExpire = now + cacheHitButRefreshed;
         final long ttl = now + cacheExpired;
 

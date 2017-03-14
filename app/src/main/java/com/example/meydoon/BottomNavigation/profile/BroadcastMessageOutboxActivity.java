@@ -58,6 +58,7 @@ public class BroadcastMessageOutboxActivity extends AppCompatActivity {
 
             case R.id.img_broadcast_message_back:
                 getSupportFragmentManager().popBackStackImmediate();
+                break;
         }
     }
 

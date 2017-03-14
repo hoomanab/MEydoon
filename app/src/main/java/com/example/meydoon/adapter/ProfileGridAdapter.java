@@ -2,6 +2,11 @@ package com.example.meydoon.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -14,6 +19,7 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.meydoon.BottomNavigation.profile.ProductDetailsFragment;
 import com.example.meydoon.FeedImageView;
 import com.example.meydoon.R;
 import com.example.meydoon.app.AppController;
@@ -67,7 +73,7 @@ public class ProfileGridAdapter extends BaseAdapter {
         NetworkImageView gridImageView = (NetworkImageView) convertView
                 .findViewById(R.id.grid_image);
 
-        ProfileGridItem item = profileGridItems.get(position);
+        final ProfileGridItem item = profileGridItems.get(position);
 
         productPrice.setText(item.getProductPrice());
         gridImageView.setImageUrl(item.getProductImage(), imageLoader);
@@ -78,7 +84,12 @@ public class ProfileGridAdapter extends BaseAdapter {
         profileGridContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Go to product details
+                Intent prdouctDetailsIntent = new Intent();
+                Bundle extras = new Bundle();
+                extras.putInt("product_id", item.getProductId());
+                prdouctDetailsIntent.putExtras(extras);
+                activity.startActivity(prdouctDetailsIntent);
+
             }
         });
 

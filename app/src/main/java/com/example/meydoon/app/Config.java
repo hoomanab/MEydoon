@@ -16,6 +16,8 @@ public class Config {
     public static final String URL_NOTIFICATION_INBOX = "https://api.myjson.com/bins/1ezj9d";
     public static final String URL_SEARCH = "https://api.myjson.com/bins/q9p5l";
 
+    public static final String URL_PRODUCT_DETAILS = "";
+
     // SMS provider identification
     // It should match with your SMS gateway origin
     // You can use  MSGIND, TESTER and ALERTS as sender ID
