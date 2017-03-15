@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -138,6 +139,15 @@ public class FeedListAdapter extends BaseAdapter {
         } else {
             feedImageView.setVisibility(View.GONE);
         }
+
+
+        Button orderProduct = (Button) convertView.findViewById(R.id.btn_feed_details);
+        orderProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Order Product
+            }
+        });
 
         return convertView;
     }

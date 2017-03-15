@@ -8,7 +8,7 @@ import android.view.View;
 import com.example.meydoon.R;
 
 /**
- * Created by hooma on 3/14/2017.
+ * Product Details Activity
  */
 public class ProductDetailsActivity extends AppCompatActivity {
 

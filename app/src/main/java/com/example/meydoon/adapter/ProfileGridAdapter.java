@@ -4,9 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -84,9 +85,12 @@ public class ProfileGridAdapter extends BaseAdapter {
         profileGridContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent prdouctDetailsIntent = new Intent();
+
                 Bundle extras = new Bundle();
                 extras.putInt("product_id", item.getProductId());
+
+                Intent prdouctDetailsIntent = new Intent();
+
                 prdouctDetailsIntent.putExtras(extras);
                 activity.startActivity(prdouctDetailsIntent);
 

@@ -152,6 +152,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 /** Go to ProductDetailsActivity */
+
             }
         });
 
