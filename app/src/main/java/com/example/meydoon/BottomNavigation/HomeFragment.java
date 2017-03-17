@@ -253,25 +253,30 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             JSONArray feedArray = response.getJSONArray("feed");
 
             for (int i = 0; i < feedArray.length(); i++) {
-                JSONObject feedObj = (JSONObject) feedArray.get(i);
+                JSONObject responseObj = (JSONObject) feedArray.get(i);
 
                 FeedItem item = new FeedItem();
-                item.setId(feedObj.getInt("id"));
-                item.setName(feedObj.getString("name"));
+                item.setProductId(responseObj.getInt("product_id"));
+                item.setShopId(responseObj.getInt("shop_id"));
+                item.setShopName(responseObj.getString("shop_name"));
 
                 // Image might be null sometimes
-                String image = feedObj.isNull("image") ? null : feedObj
-                        .getString("image");
-                item.setImge(image);
-                item.setStatus(feedObj.getString("status"));
-                item.setProfilePic(feedObj.getString("profilePic"));
-                item.setTimeStamp(feedObj.getString("timeStamp"));
+                String productImage = responseObj.isNull("product_image") ? null : responseObj
+                        .getString("product_image");
+                item.setProductImage(productImage);
+                item.setProductDescription(responseObj.getString("product_description"));
+                item.setShopProfilePic(responseObj.getString("shop_profile_pic"));
+                item.setTimeStamp(responseObj.getString("time"));
                 //item.setShipableStatus(feedObj.getBoolean("shipable"));
 
                 // url might be null sometimes
-                String feedUrl = feedObj.isNull("url") ? null : feedObj
-                        .getString("url");
-                item.setUrl(feedUrl);
+                String productTitle = responseObj.isNull("product_title") ? null : responseObj
+                        .getString("product_title");
+                item.setProductTitle(productTitle);
+                item.setShopPhoneNumber(responseObj.getString("shop_phone_number"));
+                String shopTelegramId = responseObj.isNull("shop_telegram_id") ? null : responseObj
+                        .getString("shop_telegram_id");
+                item.setShopTelegramId(shopTelegramId);
 
                 feedItems.add(item);
             }

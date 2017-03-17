@@ -1,9 +1,10 @@
-package com.example.meydoon.BottomNavigation.profile;
+package com.example.meydoon.BottomNavigation.product;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
@@ -79,9 +80,9 @@ public class ProductDetailsFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.product_details);
+        ((ProductDetailsActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ((ProductDetailsActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((ProductDetailsActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.product_details);
 
 
         feedItem = new FeedItem();
@@ -96,7 +97,7 @@ public class ProductDetailsFragment extends Fragment {
         price = (TextView) view.findViewById(R.id.feed_price);
         orderProduct = (Button) view.findViewById(R.id.btn_feed_details);
 
-        name.setText(feedItem.getName());
+        name.setText(feedItem.getShopName());
 
         // Converting timestamp into x ago format
         CharSequence timeAgo = DateUtils.getRelativeTimeSpanString(
@@ -105,19 +106,19 @@ public class ProductDetailsFragment extends Fragment {
         timeStamp.setText(timeAgo);
 
         // Chcek for empty status message
-        if (!TextUtils.isEmpty(feedItem.getStatus())) {
-            txtProductDescription.setText(feedItem.getStatus());
+        if (!TextUtils.isEmpty(feedItem.getProductDescription())) {
+            txtProductDescription.setText(feedItem.getProductDescription());
             txtProductDescription.setVisibility(View.VISIBLE);
         } else {
             // status is empty, remove from view
             txtProductDescription.setVisibility(View.GONE);
         }
 
-        shopProfilePic.setImageUrl(feedItem.getProfilePic(), imageLoader);
+        shopProfilePic.setImageUrl(feedItem.getShopProfilePic(), imageLoader);
 
         // Feed image
-        if (feedItem.getImge() != null) {
-            productImage.setImageUrl(feedItem.getImge(), imageLoader);
+        if (feedItem.getProductImage() != null) {
+            productImage.setImageUrl(feedItem.getProductImage(), imageLoader);
             productImage.setVisibility(View.VISIBLE);
             productImage
                     .setResponseObserver(new FeedImageView.ResponseObserver() {
@@ -137,7 +138,20 @@ public class ProductDetailsFragment extends Fragment {
         orderProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // go To Contact shop!
+                Bundle bundle = new Bundle();
+                bundle.putInt("product_id", feedItem.getProductId());
+                bundle.putString("shop_phone_number", feedItem.getShopPhoneNumber());
+                bundle.putString("shop_telegram_id", feedItem.getShopTelegramId());
+
+                ContactShopFragment contactShopFragment = new ContactShopFragment();
+                contactShopFragment.setArguments(bundle);
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.add(R.id.product_details_container, contactShopFragment);
+                transaction.addToBackStack(null);
+
+                // Commit the transaction
+                transaction.commit();
             }
         });
 
@@ -168,23 +182,27 @@ public class ProductDetailsFragment extends Fragment {
                     // device should receive it shortly
                     if (error.equals("0")) {
 
-                        feedItem.setId(responseObj.getInt("id"));
-                        feedItem.setName(responseObj.getString("name"));
+                        feedItem.setProductId(responseObj.getInt("product_id"));
+                        feedItem.setShopId(responseObj.getInt("shop_id"));
+                        feedItem.setShopName(responseObj.getString("shop_name"));
 
                         // Image might be null sometimes
-                        String image = responseObj.isNull("image") ? null : responseObj
-                                .getString("image");
-                        feedItem.setImge(image);
-                        feedItem.setStatus(responseObj.getString("status"));
-                        feedItem.setProfilePic(responseObj.getString("profilePic"));
-                        feedItem.setTimeStamp(responseObj.getString("timeStamp"));
+                        String productImage = responseObj.isNull("product_image") ? null : responseObj
+                                .getString("product_image");
+                        feedItem.setProductImage(productImage);
+                        feedItem.setProductDescription(responseObj.getString("product_description"));
+                        feedItem.setShopProfilePic(responseObj.getString("shop_profile_pic"));
+                        feedItem.setTimeStamp(responseObj.getString("time"));
                         //item.setShipableStatus(feedObj.getBoolean("shipable"));
 
                         // url might be null sometimes
-                        String feedUrl = responseObj.isNull("url") ? null : responseObj
-                                .getString("url");
-                        feedItem.setUrl(feedUrl);
-
+                        String productTitle = responseObj.isNull("product_title") ? null : responseObj
+                                .getString("product_title");
+                        feedItem.setProductTitle(productTitle);
+                        feedItem.setShopPhoneNumber(responseObj.getString("shop_phone_number"));
+                        String shopTelegramId = responseObj.isNull("shop_telegram_id") ? null : responseObj
+                                .getString("shop_telegram_id");
+                        feedItem.setShopTelegramId(shopTelegramId);
 
                     } else {
                         Toast.makeText(getActivity().getApplicationContext(),
@@ -227,6 +245,9 @@ public class ProductDetailsFragment extends Fragment {
     }
 
 
-
-
+    @Override
+    public void onStop() {
+        super.onStop();
+        getActivity().finish();
+    }
 }

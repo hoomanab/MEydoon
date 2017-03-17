@@ -4,64 +4,76 @@ package com.example.meydoon.data;
  * Created by hooma on 2/8/2017.
  */
 public class FeedItem {
-    private int id;
-    private String name, status, image, profilePic, timeStamp, url;
+    private int productId, shopId;
+    private String shopName, productDescription, productImage, shopProfilePic, timeStamp, productTitle, shopPhoneNumber, shopTelegramId;
     private Boolean isShipable;
 
     public FeedItem() {
     }
 
-    public FeedItem(int id, String name, String image, String status,
-                    String profilePic, String timeStamp, String url, Boolean isShipable) {
+    public FeedItem(int productId, int shopId, String shopName, String productImage, String productDescription,
+                    String shopProfilePic, String timeStamp, String productTitle,
+                    String shopPhoneNumber, String shopTelegramId, Boolean isShipable) {
         super();
-        this.id = id;
-        this.name = name;
-        this.image = image;
-        this.status = status;
-        this.profilePic = profilePic;
+        this.shopId = shopId;
+        this.productId = productId;
+        this.shopName = shopName;
+        this.productImage = productImage;
+        this.productDescription = productDescription;
+        this.shopProfilePic = shopProfilePic;
         this.timeStamp = timeStamp;
-        this.url = url;
+        this.productTitle = productTitle;
+        this.shopPhoneNumber = shopPhoneNumber;
+        this.shopTelegramId = shopTelegramId;
         this.isShipable = isShipable;
     }
 
-    public int getId() {
-        return id;
+    public int getShopId() {
+        return shopId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
     }
 
-    public String getName() {
-        return name;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
-    public String getImge() {
-        return image;
+    public String getShopName() {
+        return shopName;
     }
 
-    public void setImge(String image) {
-        this.image = image;
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 
-    public String getStatus() {
-        return status;
+    public String getProductImage() {
+        return productImage;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
 
-    public String getProfilePic() {
-        return profilePic;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public void setProfilePic(String profilePic) {
-        this.profilePic = profilePic;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public String getShopProfilePic() {
+        return shopProfilePic;
+    }
+
+    public void setShopProfilePic(String shopProfilePic) {
+        this.shopProfilePic = shopProfilePic;
     }
 
     public String getTimeStamp() {
@@ -72,12 +84,28 @@ public class FeedItem {
         this.timeStamp = timeStamp;
     }
 
-    public String getUrl() {
-        return url;
+    public String getShopPhoneNumber() {
+        return shopPhoneNumber;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setShopPhoneNumber(String shopPhoneNumber) {
+        this.shopPhoneNumber = shopPhoneNumber;
+    }
+
+    public String getShopTelegramId() {
+        return shopTelegramId;
+    }
+
+    public void setShopTelegramId(String shopTelegramId) {
+        this.productTitle = shopTelegramId;
+    }
+
+    public String getProductTitle() {
+        return productTitle;
+    }
+
+    public void setProductTitle(String productTitle) {
+        this.productTitle = productTitle;
     }
 
     public Boolean getShipableStatus(){

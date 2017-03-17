@@ -2,6 +2,8 @@ package com.example.meydoon.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.meydoon.BottomNavigation.product.ProductDetailsActivity;
 import com.example.meydoon.FeedImageView;
 import com.example.meydoon.R;
 import com.example.meydoon.app.AppController;
@@ -68,21 +71,23 @@ public class FeedListAdapter extends BaseAdapter {
         Boolean isShipable;
         TextView txtShipable = (TextView) convertView.findViewById(R.id.txt_shipable_status);
 
-        TextView name = (TextView) convertView.findViewById(R.id.name);
+        TextView shopName = (TextView) convertView.findViewById(R.id.name);
+        TextView productTitle = (TextView) convertView.findViewById(R.id.txt_product_title);
         TextView timestamp = (TextView) convertView
                 .findViewById(R.id.timestamp);
-        TextView statusMsg = (TextView) convertView
+        TextView productDescription = (TextView) convertView
                 .findViewById(R.id.txtStatusMsg);
        // TextView url = (TextView) convertView.findViewById(R.id.txtUrl);
-        NetworkImageView profilePic = (NetworkImageView) convertView
+        NetworkImageView shopProfilePic = (NetworkImageView) convertView
                 .findViewById(R.id.profilePic);
-        FeedImageView feedImageView = (FeedImageView) convertView
+        FeedImageView productImage = (FeedImageView) convertView
                 .findViewById(R.id.feedImage1);
 
-        FeedItem item = feedItems.get(position);
+        final FeedItem item = feedItems.get(position);
 
-        name.setText(item.getName());
+        shopName.setText(item.getShopName());
 
+        productTitle.setText(item.getProductTitle());
         //isShipable = item.getShipableStatus();
 
         //if(!isShipable){
@@ -98,12 +103,12 @@ public class FeedListAdapter extends BaseAdapter {
 
 
         // Chcek for empty status message
-        if (!TextUtils.isEmpty(item.getStatus())) {
-            statusMsg.setText(item.getStatus());
-            statusMsg.setVisibility(View.VISIBLE);
+        if (!TextUtils.isEmpty(item.getProductDescription())) {
+            productDescription.setText(item.getProductDescription());
+            productDescription.setVisibility(View.VISIBLE);
         } else {
             // status is empty, remove from view
-            statusMsg.setVisibility(View.GONE);
+            productDescription.setVisibility(View.GONE);
         }
 
         /* Checking for null feed url
@@ -120,13 +125,13 @@ public class FeedListAdapter extends BaseAdapter {
         }
            */
         // user profile pic
-        profilePic.setImageUrl(item.getProfilePic(), imageLoader);
+        shopProfilePic.setImageUrl(item.getShopProfilePic(), imageLoader);
 
         // Feed image
-        if (item.getImge() != null) {
-            feedImageView.setImageUrl(item.getImge(), imageLoader);
-            feedImageView.setVisibility(View.VISIBLE);
-            feedImageView
+        if (item.getProductImage() != null) {
+            productImage.setImageUrl(item.getProductImage(), imageLoader);
+            productImage.setVisibility(View.VISIBLE);
+            productImage
                     .setResponseObserver(new FeedImageView.ResponseObserver() {
                         @Override
                         public void onError() {
@@ -137,15 +142,24 @@ public class FeedListAdapter extends BaseAdapter {
                         }
                     });
         } else {
-            feedImageView.setVisibility(View.GONE);
+            productImage.setVisibility(View.GONE);
         }
 
 
-        Button orderProduct = (Button) convertView.findViewById(R.id.btn_feed_details);
-        orderProduct.setOnClickListener(new View.OnClickListener() {
+        Button contactShop = (Button) convertView.findViewById(R.id.btn_feed_details);
+        contactShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Order Product
+                Bundle extras = new Bundle();
+                extras.putString("origin", "home_fragment");
+                extras.putInt("product_id", item.getProductId());
+                extras.putString("shop_telegram_id", item.getShopTelegramId());
+                extras.putString("shop_phone_number", item.getShopPhoneNumber());
+
+                Intent prdouctDetailsIntent = new Intent(activity, ProductDetailsActivity.class);
+
+                prdouctDetailsIntent.putExtras(extras);
+                activity.startActivity(prdouctDetailsIntent);
             }
         });
 

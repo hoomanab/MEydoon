@@ -4,27 +4,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-import com.example.meydoon.BottomNavigation.profile.ProductDetailsFragment;
-import com.example.meydoon.FeedImageView;
+import com.example.meydoon.BottomNavigation.product.ProductDetailsActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.app.AppController;
-import com.example.meydoon.data.FeedItem;
 import com.example.meydoon.data.ProfileGridItem;
 
 import java.util.List;
@@ -80,7 +71,6 @@ public class ProfileGridAdapter extends BaseAdapter {
         gridImageView.setImageUrl(item.getProductImage(), imageLoader);
 
 
-        int productId = item.getProductId();
         LinearLayout profileGridContainer = (LinearLayout) convertView.findViewById(R.id.profile_grid_container);
         profileGridContainer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,8 +78,9 @@ public class ProfileGridAdapter extends BaseAdapter {
 
                 Bundle extras = new Bundle();
                 extras.putInt("product_id", item.getProductId());
+                extras.putString("origin", "profile_grid");
 
-                Intent prdouctDetailsIntent = new Intent();
+                Intent prdouctDetailsIntent = new Intent(activity, ProductDetailsActivity.class);
 
                 prdouctDetailsIntent.putExtras(extras);
                 activity.startActivity(prdouctDetailsIntent);
