@@ -3,6 +3,26 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/product_details_no_connection_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/product_details_txt_no_internet"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="خطا در اتصال به اینترنت!"
+            android:background="@color/gray_btm_nav_bar_icon"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal"
+            android:padding="10dip"
+            android:visibility="gone"
+            android:fitsSystemWindows="true" />
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/product_details_container"
         android:layout_width="wrap_content"

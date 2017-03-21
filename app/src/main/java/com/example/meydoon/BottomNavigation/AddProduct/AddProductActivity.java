@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -15,13 +16,11 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.meydoon.BottomNavigation.profile.BroadcastMessageOutboxActivity;
-import com.example.meydoon.BottomNavigation.profile.SettingsActivity;
-import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
 import com.example.meydoon.app.AppController;
 import com.example.meydoon.app.Config;
 import com.example.meydoon.helper.PrefManager;
+import com.example.meydoon.receiver.ConnectivityReceiver;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,11 +29,12 @@ import org.json.JSONObject;
 /**
  * Created by hooma on 2/19/2017.
  */
-public class AddProductActivity extends AppCompatActivity {
+public class AddProductActivity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
     private static String TAG = AddProductActivity.class.getSimpleName();
 
     private PrefManager pref;
 
+    private TextView txtNoConnection;
 
     private JSONObject requestShopIdJS;
 
@@ -48,6 +48,9 @@ public class AddProductActivity extends AppCompatActivity {
         getShopId();
 
         setContentView(R.layout.add_product_fragment);
+
+        txtNoConnection = (TextView) findViewById(R.id.add_product_txt_no_internet);
+        checkConnection();
 
         /** Check if the user has a shop */
         if(pref.getShopId() != 0){
@@ -153,10 +156,44 @@ public class AddProductActivity extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
+    // Method to manually check connection status
+    private void checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        showNoConnection(isConnected);
+    }
+
+    private void showNoConnection(boolean isConnected){
+        if(isConnected) {
+            txtNoConnection.setVisibility(View.GONE);
+        } else{
+            txtNoConnection.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.v(TAG, "MainActivity resumed!");
+
+        checkConnection();
+        AppController.getInstance().setConnectivityListener(this);
+    }
+
+
     @Override
     protected void onStop() {
         super.onStop();
         finish();
+    }
+
+    /**
+     * Callback will be triggered when there is change in
+     * network connection
+     */
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showNoConnection(isConnected);
     }
 
     public void setActionBarTitle(String title){
@@ -179,11 +216,6 @@ public class AddProductActivity extends AppCompatActivity {
                 break;
 
 
-            /** For product details,
-             * @param img_back **/
-            case R.id.img_back:
-                this.getSupportFragmentManager().popBackStackImmediate();
-                break;
         }
     }
 

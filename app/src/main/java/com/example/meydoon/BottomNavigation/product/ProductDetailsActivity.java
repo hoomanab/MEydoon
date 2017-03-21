@@ -5,6 +5,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -16,6 +17,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.meydoon.R;
 import com.example.meydoon.app.AppController;
 import com.example.meydoon.app.Config;
+import com.example.meydoon.receiver.ConnectivityReceiver;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,7 +25,7 @@ import org.json.JSONObject;
 /**
  * Product Details Activity
  */
-public class ProductDetailsActivity extends AppCompatActivity {
+public class ProductDetailsActivity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
     private static final String TAG = ProductDetailsActivity.class.getSimpleName();
 
     private Bundle extras;
@@ -34,10 +36,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     private Boolean successfullConnection;
 
+    private TextView txtNoConnection;
+
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.product_details_fragment);
+
+        txtNoConnection = (TextView) findViewById(R.id.product_details_txt_no_internet);
+        checkConnection();
 
         savedInstanceState = getIntent().getExtras();
 
@@ -64,8 +71,39 @@ public class ProductDetailsActivity extends AppCompatActivity {
             finish();
         }
 
+    }
 
+    // Method to manually check connection status
+    private void checkConnection() {
+        boolean isConnected = ConnectivityReceiver.isConnected();
+        showNoConnection(isConnected);
+    }
 
+    private void showNoConnection(boolean isConnected){
+        if(isConnected) {
+            txtNoConnection.setVisibility(View.GONE);
+        } else{
+            txtNoConnection.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.v(TAG, "MainActivity resumed!");
+
+        checkConnection();
+        AppController.getInstance().setConnectivityListener(this);
+    }
+
+    /**
+     * Callback will be triggered when there is change in
+     * network connection
+     */
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showNoConnection(isConnected);
     }
 
     /*public void getShopId(){

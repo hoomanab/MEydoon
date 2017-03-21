@@ -376,11 +376,6 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
                 break;
 
 
-            /** For product details,
-             * @param img_back **/
-            case R.id.img_back:
-                this.getSupportFragmentManager().popBackStackImmediate();
-                break;
         }
     }
 
