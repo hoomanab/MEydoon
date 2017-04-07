@@ -65,12 +65,12 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
     private MenuItem menuItem = null;
 
 
-    // =====================> Products and shops tabs will not be in the MVP
+    /* =====================> Products and shops tabs will not be in the MVP
     private int[] tabIcons = {
            // R.drawable.ic_product_filter_tab,
             R.drawable.ic_meydoon_tab,
       //      R.drawable.ic_shop_tab
-    };
+    };*/
 
 
 
@@ -276,11 +276,11 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
         viewPager.setAdapter(adapter);
     }
 
-    private void setupTabIcons() {
+   /* private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
         //tabLayout.getTabAt(1).setIcon(tabIcons[1]);
         //tabLayout.getTabAt(2).setIcon(tabIcons[2]);
-    }
+    }*/
 
     /** ********** If Meydoon is run for the first time, it goes to intro.xml layout ***********/
     @Override

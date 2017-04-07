@@ -23,6 +23,7 @@ import com.example.meydoon.R;
 import com.example.meydoon.app.AppController;
 import com.example.meydoon.data.FeedItem;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -68,13 +69,14 @@ public class FeedListAdapter extends BaseAdapter {
         if (imageLoader == null)
             imageLoader = AppController.getInstance().getImageLoader();
 
-        Boolean isShipable;
+        int isShipable;
         TextView txtShipable = (TextView) convertView.findViewById(R.id.txt_shipable_status);
-
+        TextView productPrice = (TextView) convertView.findViewById(R.id.feed_price);
         TextView shopName = (TextView) convertView.findViewById(R.id.name);
         TextView productTitle = (TextView) convertView.findViewById(R.id.txt_product_title);
         TextView timestamp = (TextView) convertView
                 .findViewById(R.id.timestamp);
+        TextView shopCity = (TextView) convertView.findViewById(R.id.feed_item_city);
         TextView productDescription = (TextView) convertView
                 .findViewById(R.id.txtStatusMsg);
        // TextView url = (TextView) convertView.findViewById(R.id.txtUrl);
@@ -86,8 +88,16 @@ public class FeedListAdapter extends BaseAdapter {
         final FeedItem item = feedItems.get(position);
 
         shopName.setText(item.getShopName());
+        isShipable = item.getShipableStatus();
+        if(isShipable == 1){
+            txtShipable.setVisibility(View.VISIBLE);
+        } else {
+            txtShipable.setVisibility(View.GONE);
+        }
 
+        productPrice.setText(item.getProductPrice());
         productTitle.setText(item.getProductTitle());
+        shopCity.setText(item.getShopCity());
         //isShipable = item.getShipableStatus();
 
         //if(!isShipable){
@@ -96,7 +106,7 @@ public class FeedListAdapter extends BaseAdapter {
 
         // Converting timestamp into x ago format
         CharSequence timeAgo = DateUtils.getRelativeTimeSpanString(
-                Long.parseLong(item.getTimeStamp()),
+                Long.parseLong(item.getProductRegisterDate()),
                 System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
         timestamp.setText(timeAgo);
 

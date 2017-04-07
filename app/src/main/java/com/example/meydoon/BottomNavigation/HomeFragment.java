@@ -9,6 +9,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,8 +20,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Cache;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -183,6 +186,15 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         swipeRefreshLayout.setRefreshing(true);
 
+        JSONObject feedJsonObject = new JSONObject();
+        try {
+            feedJsonObject.put("user_id", pref.getUserId());
+            feedJsonObject.put("page_number", 1);
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
         // These two lines not needed,
         // just to get the look of facebook (changing background color & hiding the icon)
         //getActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3b5998")));
@@ -216,10 +228,12 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             }
 
         } else {
-            // making fresh volley request and getting json
-            JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
-                    URL_FEED, null, new Response.Listener<JSONObject>() {
 
+
+
+            // making fresh volley request and getting json
+            JsonObjectRequest requestFeed = new JsonObjectRequest(Request.Method.POST,
+                    URL_FEED, feedJsonObject, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     VolleyLog.d(TAG, "Response: " + response.toString());
@@ -228,20 +242,35 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                     }
                 }
             }, new Response.ErrorListener() {
-
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    VolleyLog.d(TAG, "Error: " + error.getMessage());
-
-                    Toast.makeText(getActivity().getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG);
+                    Log.e(TAG, "Error: " + error.getMessage());
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            error.getMessage(), Toast.LENGTH_SHORT).show();
 
                     // stopping swipe refresh
                     swipeRefreshLayout.setRefreshing(false);
                 }
-            });
+            }) {
+
+
+                @Override
+                public String getBodyContentType() {
+                    return String.format("application/json; charset=utf-8");
+                }
+
+            };
+
+
+            int socketTimeout = 10000; // 30 seconds. You can change it
+            RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
+            requestFeed.setRetryPolicy(policy);
 
             // Adding request to volley request queue
-            AppController.getInstance().addToRequestQueue(jsonReq);
+            AppController.getInstance().addToRequestQueue(requestFeed);
         }
     }
 
@@ -250,7 +279,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
      * */
     private void parseJsonFeed(JSONObject response) {
         try {
-            JSONArray feedArray = response.getJSONArray("feed");
+            JSONArray feedArray = response.getJSONArray("Feed");
 
             for (int i = 0; i < feedArray.length(); i++) {
                 JSONObject responseObj = (JSONObject) feedArray.get(i);
@@ -261,22 +290,29 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 item.setShopName(responseObj.getString("shop_name"));
 
                 // Image might be null sometimes
-                String productImage = responseObj.isNull("product_image") ? null : responseObj
-                        .getString("product_image");
+                String productImage = responseObj.isNull("product_picture_address") ? null : responseObj
+                        .getString("product_picture_address");
                 item.setProductImage(productImage);
                 item.setProductDescription(responseObj.getString("product_description"));
-                item.setShopProfilePic(responseObj.getString("shop_profile_pic"));
-                item.setTimeStamp(responseObj.getString("time"));
+
+                String shopImage = responseObj.isNull("shop_picture_address") ? null : responseObj
+                        .getString("shop_picture_address");
+                item.setShopProfilePic(responseObj.getString("shop_picture_address"));
+                item.setProductRegisterDate(responseObj.getString("product_register_date"));
                 //item.setShipableStatus(feedObj.getBoolean("shipable"));
 
                 // url might be null sometimes
-                String productTitle = responseObj.isNull("product_title") ? null : responseObj
-                        .getString("product_title");
+                String productTitle = responseObj.isNull("product_name") ? null : responseObj
+                        .getString("product_name");
                 item.setProductTitle(productTitle);
                 item.setShopPhoneNumber(responseObj.getString("shop_phone_number"));
                 String shopTelegramId = responseObj.isNull("shop_telegram_id") ? null : responseObj
                         .getString("shop_telegram_id");
                 item.setShopTelegramId(shopTelegramId);
+                item.setProductPrice(responseObj.getString("product_price"));
+                item.setShipableStatus(responseObj.getInt("product_shippable_status"));
+                item.setShopCity(responseObj.getString("shop_city"));
+
 
                 feedItems.add(item);
             }

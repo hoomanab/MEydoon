@@ -101,7 +101,7 @@ public class ProductDetailsFragment extends Fragment {
 
         // Converting timestamp into x ago format
         CharSequence timeAgo = DateUtils.getRelativeTimeSpanString(
-                Long.parseLong(feedItem.getTimeStamp()),
+                Long.parseLong(feedItem.getProductRegisterDate()),
                 System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
         timeStamp.setText(timeAgo);
 
@@ -192,7 +192,7 @@ public class ProductDetailsFragment extends Fragment {
                         feedItem.setProductImage(productImage);
                         feedItem.setProductDescription(responseObj.getString("product_description"));
                         feedItem.setShopProfilePic(responseObj.getString("shop_profile_pic"));
-                        feedItem.setTimeStamp(responseObj.getString("time"));
+                        feedItem.setProductRegisterDate(responseObj.getString("time"));
                         //item.setShipableStatus(feedObj.getBoolean("shipable"));
 
                         // url might be null sometimes

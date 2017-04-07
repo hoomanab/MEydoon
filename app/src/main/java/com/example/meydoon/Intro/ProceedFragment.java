@@ -58,6 +58,9 @@ public class ProceedFragment extends Fragment {
         });
     }
 
-
-    
+    @Override
+    public void onStop() {
+        super.onStop();
+        getActivity().finish();
+    }
 }

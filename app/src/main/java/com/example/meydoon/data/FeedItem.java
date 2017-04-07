@@ -1,19 +1,24 @@
 package com.example.meydoon.data;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by hooma on 2/8/2017.
  */
 public class FeedItem {
-    private int productId, shopId;
-    private String shopName, productDescription, productImage, shopProfilePic, timeStamp, productTitle, shopPhoneNumber, shopTelegramId;
-    private Boolean isShipable;
+    private int productId, shopId, isShipable;
+    private String shopName, productDescription, productImage,
+            shopProfilePic, productTitle, shopPhoneNumber,
+            shopTelegramId, productRegisterDate, shopCity, productPrice;
+
 
     public FeedItem() {
     }
 
-    public FeedItem(int productId, int shopId, String shopName, String productImage, String productDescription,
-                    String shopProfilePic, String timeStamp, String productTitle,
-                    String shopPhoneNumber, String shopTelegramId, Boolean isShipable) {
+    public FeedItem(int productId, int shopId, String productPrice, String shopName, String productImage, String productDescription,
+                    String shopProfilePic, String productTitle,
+                    String shopPhoneNumber, String shopTelegramId, int isShipable,
+                    String productRegisterDate, String shopCity) {
         super();
         this.shopId = shopId;
         this.productId = productId;
@@ -21,11 +26,13 @@ public class FeedItem {
         this.productImage = productImage;
         this.productDescription = productDescription;
         this.shopProfilePic = shopProfilePic;
-        this.timeStamp = timeStamp;
         this.productTitle = productTitle;
         this.shopPhoneNumber = shopPhoneNumber;
         this.shopTelegramId = shopTelegramId;
         this.isShipable = isShipable;
+        this.productPrice = productPrice;
+        this.productRegisterDate = productRegisterDate;
+        this.shopCity = shopCity;
     }
 
     public int getShopId() {
@@ -34,6 +41,14 @@ public class FeedItem {
 
     public void setShopId(int shopId) {
         this.shopId = shopId;
+    }
+
+    public String getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(String productPrice) {
+        this.productPrice = productPrice;
     }
 
     public int getProductId() {
@@ -76,14 +91,6 @@ public class FeedItem {
         this.shopProfilePic = shopProfilePic;
     }
 
-    public String getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
     public String getShopPhoneNumber() {
         return shopPhoneNumber;
     }
@@ -108,11 +115,28 @@ public class FeedItem {
         this.productTitle = productTitle;
     }
 
-    public Boolean getShipableStatus(){
+    public int getShipableStatus(){
         return isShipable;
     }
 
-    public void setShipableStatus(Boolean isShipable){
+    public void setShipableStatus(int isShipable){
         this.isShipable = isShipable;
     }
+
+    public String getProductRegisterDate(){
+        return productRegisterDate;
+    }
+
+    public void setProductRegisterDate(String productRegisterDate){
+        this.productRegisterDate = productRegisterDate;
+    }
+
+    public String getShopCity(){
+        return shopCity;
+    }
+
+    public void setShopCity(String shopCity){
+        this.shopCity = shopCity;
+    }
+
 }

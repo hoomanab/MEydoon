@@ -120,7 +120,8 @@
             android:textStyle="bold"
             android:gravity="right"
             android:text="@string/shipable"
-            android:textColor="@color/greenSignIn"/>
+            android:textColor="@color/greenSignIn"
+            android:visibility="gone"/>
 
         <!-- Message of the feed-->
         <TextView
