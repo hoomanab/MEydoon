@@ -105,10 +105,10 @@ public class FeedListAdapter extends BaseAdapter {
        // }
 
         // Converting timestamp into x ago format
-        CharSequence timeAgo = DateUtils.getRelativeTimeSpanString(
-                Long.parseLong(item.getProductRegisterDate()),
-                System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
-        timestamp.setText(timeAgo);
+        //CharSequence timeAgo = DateUtils.getRelativeTimeSpanString(
+        //        Long.parseLong(item.getProductRegisterDate()),
+         //       System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
+        timestamp.setText(item.getProductRegisterDate());
 
 
 

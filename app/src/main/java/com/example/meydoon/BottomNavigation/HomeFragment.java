@@ -305,7 +305,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 String productTitle = responseObj.isNull("product_name") ? null : responseObj
                         .getString("product_name");
                 item.setProductTitle(productTitle);
-                item.setShopPhoneNumber(responseObj.getString("shop_phone_number"));
+                item.setShopPhoneNumber(responseObj.getString("shop_phone"));
                 String shopTelegramId = responseObj.isNull("shop_telegram_id") ? null : responseObj
                         .getString("shop_telegram_id");
                 item.setShopTelegramId(shopTelegramId);
