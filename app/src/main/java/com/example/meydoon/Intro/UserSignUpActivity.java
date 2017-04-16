@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
+import android.app.Activity;
 import com.example.meydoon.R;
 import com.example.meydoon.app.AppController;
 import com.example.meydoon.receiver.ConnectivityReceiver;
@@ -19,12 +19,15 @@ import com.example.meydoon.receiver.ConnectivityReceiver;
 public class UserSignUpActivity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
     private static String TAG = UserSignUpActivity.class.getSimpleName();
 
+    public static Activity activity;
+
     private TextView txtNoConnection;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_sign_up_fragment);
+        activity = this;
 
         txtNoConnection = (TextView) findViewById(R.id.user_signup_txt_no_internet);
         checkConnection();

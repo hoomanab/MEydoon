@@ -45,8 +45,8 @@ public class ProceedFragment extends Fragment {
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().finish();
                 Intent intent = new Intent(getActivity(), UserSignUpActivity.class);
+                getActivity().finish();
                 startActivity(intent);
             }
         });
@@ -55,10 +55,11 @@ public class ProceedFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getActivity().finish();
-                startActivity(new Intent(getActivity(), MainActivity.class));
+                //startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
     }
+
 
     @Override
     public void onStop() {

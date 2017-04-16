@@ -13,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.meydoon.Intro.UserSignUpActivity;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.app.AppController;
 import com.example.meydoon.app.Config;
@@ -99,10 +100,10 @@ public class VerifyOtpHttpService extends IntentService {
                         pref = new PrefManager(getApplicationContext());
                         pref.createLogin(user_id,user_name,user_mobile_mobile, shop_id);
                         //pref.createLogin(mobile);
-
-                        Intent intent = new Intent(VerifyOtpHttpService.this, MainActivity.class);
+                        UserSignUpActivity.activity.finish();
+                        /*Intent intent = new Intent(VerifyOtpHttpService.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+                        startActivity(intent);*/
 
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
 

@@ -131,7 +131,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 getActivity().finish();
-                startActivity(new Intent(getActivity(), MainActivity.class));
+                //startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
 
@@ -146,7 +146,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.btn_verify_otp:
-
+                progressBar.setVisibility(View.VISIBLE);
                 verifyOtp();
                 break;
 
@@ -312,12 +312,13 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
      * sending the OTP to server and activating the user
      */
     private void verifyOtp() {
+
         String otp = inputOtp.getText().toString();
         String mobile = txtEditMobile.getText().toString();
 
 
         if (!otp.isEmpty()) {
-            progressBar.setVisibility(View.VISIBLE);
+
             Intent grapprIntent = new Intent(getActivity(), VerifyOtpHttpService.class);
             Bundle extras = new Bundle();
             extras.putString("otp", otp);

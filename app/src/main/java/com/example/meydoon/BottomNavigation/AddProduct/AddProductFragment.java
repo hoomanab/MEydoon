@@ -257,6 +257,7 @@ public class AddProductFragment extends Fragment {
 
                 // Upload product
                 addProduct();
+                getActivity().finish();
             }
         });
 

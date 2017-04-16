@@ -239,6 +239,7 @@ public class ShopRegisterFragment extends Fragment {
             public void onClick(View view) {
                 //Submit shop!
                 submitShop();
+                getActivity().finish();
                 // Then go to Add product
             }
         });
