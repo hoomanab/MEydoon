@@ -175,4 +175,13 @@ public class FeedListAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+    public void clearFeedAdapter() {
+        feedItems.clear();
+        notifyDataSetChanged();
+    }
+
+
+
+
 }

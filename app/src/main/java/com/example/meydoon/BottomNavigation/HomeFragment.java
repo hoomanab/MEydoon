@@ -116,9 +116,12 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         listAdapter = new FeedListAdapter(getActivity(), feedItems);
         listView.setAdapter(listAdapter);
 
+        //fetchFeed();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                listAdapter.clearFeedAdapter();
+                swipeRefreshLayout.setRefreshing(true);
                 fetchFeed();
             }
         });
@@ -130,6 +133,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         swipeRefreshLayout.post(new Runnable() {
                                     @Override
                                     public void run() {
+                                        //listView.setAdapter(null);
                                         swipeRefreshLayout.setRefreshing(true);
                                         fetchFeed();
                                     }
@@ -184,7 +188,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private void fetchFeed(){
 
-        swipeRefreshLayout.setRefreshing(true);
+
 
         JSONObject feedJsonObject = new JSONObject();
         try {
