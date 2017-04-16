@@ -130,6 +130,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
         btnGuestEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getActivity().finish();
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
