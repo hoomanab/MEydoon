@@ -257,7 +257,7 @@ public class AddProductFragment extends Fragment {
 
                 // Upload product
                 addProduct();
-                getActivity().finish();
+                //getActivity().finish();
             }
         });
 
@@ -537,7 +537,8 @@ public class AddProductFragment extends Fragment {
                         String error = jsonObject.getString("error");
                         String message = jsonObject.getString("Message");
                         if(error.equals("0")){
-                            startActivity(new Intent(getActivity(), MainActivity.class));
+                            getActivity().finish();
+                            //startActivity(new Intent(getActivity(), MainActivity.class));
                         }
                     }catch (JSONException e){
                         Toast.makeText(getActivity().getApplicationContext(),

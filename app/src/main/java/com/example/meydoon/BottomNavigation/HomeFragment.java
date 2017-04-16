@@ -28,6 +28,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 //import com.example.meydoon.EndlessScrollListener;
+import com.example.meydoon.BottomNavigation.AddProduct.AddProductActivity;
 import com.example.meydoon.EndlessScrollListener;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
@@ -82,6 +83,12 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         logginStatus = pref.isLoggedIn();
 
         now = System.currentTimeMillis();
+
+        /*if (pref.isLoggedIn()) {
+            AddProductActivity addProductActivity = new AddProductActivity();
+            addProductActivity.getShopId();
+        }*/
+
     }
 
     @Override

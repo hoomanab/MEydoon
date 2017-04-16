@@ -88,6 +88,7 @@ public class ShopRegisterFragment extends Fragment {
     private String encodedimage = "";
 
 
+
     @Override
     public void onStop() {
         super.onStop();
@@ -239,7 +240,7 @@ public class ShopRegisterFragment extends Fragment {
             public void onClick(View view) {
                 //Submit shop!
                 submitShop();
-                getActivity().finish();
+                //getActivity().finish();
                 // Then go to Add product
             }
         });
@@ -512,7 +513,9 @@ public class ShopRegisterFragment extends Fragment {
                         String error = jsonObject.getString("error");
                         String message = jsonObject.getString("Message");
                         if(error.equals("0")){
-                            startActivity(new Intent(getActivity(), MainActivity.class));
+                            pref.setShopId(jsonObject.getInt("shop_id"));
+                            getActivity().finish();
+                            //startActivity(new Intent(getActivity(), MainActivity.class));
                         }
                     }catch (JSONException e){
                         Toast.makeText(getActivity().getApplicationContext(),

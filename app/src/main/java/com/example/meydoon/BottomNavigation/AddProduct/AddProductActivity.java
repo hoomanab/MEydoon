@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.app.Activity;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -38,11 +38,15 @@ public class AddProductActivity extends AppCompatActivity implements Connectivit
 
     private JSONObject requestShopIdJS;
 
+    public static Activity activity;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         pref = new PrefManager(getApplicationContext());
         pref.checkLogin();
+
+        activity = this;
 
         /** Get user's shopID from server */
         getShopId();
