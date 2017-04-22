@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
+import android.app.ProgressDialog;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -34,7 +34,7 @@ public class VerifyOtpHttpService extends IntentService {
 
     private String otp, user_phone_number;
 
-
+    private ProgressDialog progressDialog;
 
     private static String TAG = VerifyOtpHttpService.class.getSimpleName();
 
@@ -60,6 +60,10 @@ public class VerifyOtpHttpService extends IntentService {
      * @param otp otp received in the SMS
      */
     private void verifyOtp(final String otp, final String user_phone_number) {
+        //progressDialog = new ProgressDialog(UserSignUpActivity.activity);
+        //progressDialog.setMessage("لطفا صبر کنید..");
+        //progressDialog.show();
+
         JSONObject verificationJsonObj = new JSONObject();
         try {
             verificationJsonObj.put("user_phone_number", user_phone_number);
@@ -111,10 +115,14 @@ public class VerifyOtpHttpService extends IntentService {
                         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     }
 
+
+
                 } catch (JSONException e) {
                     Toast.makeText(getApplicationContext(),
                             "Error: " + e.getMessage(),
                             Toast.LENGTH_LONG).show();
+
+                    progressDialog.hide();
                 }
 
             }
@@ -125,6 +133,7 @@ public class VerifyOtpHttpService extends IntentService {
                 Log.e(TAG, "Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.hide();
             }
         }) {
 

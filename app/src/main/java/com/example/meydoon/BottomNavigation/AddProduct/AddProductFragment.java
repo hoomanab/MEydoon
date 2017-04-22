@@ -27,12 +27,13 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import android.app.ProgressDialog;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
@@ -491,7 +492,8 @@ public class AddProductFragment extends Fragment {
 
 
     public void addProduct() {
-
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("لطفا صبر کنید..");
         if(encodedimage.equals("")) {
             Toast.makeText(getActivity().getApplicationContext(), "لطفا برای محصولتون یک تصویر انتخاب کنید!", Toast.LENGTH_SHORT).show();
 
@@ -510,7 +512,8 @@ public class AddProductFragment extends Fragment {
 
         } else {
             JSONObject productJSONObject = new JSONObject();
-            progressBar.setVisibility(View.VISIBLE);
+            progressDialog.show();
+            //progressBar.setVisibility(View.VISIBLE);
             try {
                 productJSONObject.put("user_id", pref.getUserId());
                 productJSONObject.put("shop_id", pref.getShopId());
@@ -545,14 +548,16 @@ public class AddProductFragment extends Fragment {
                                 "Error: " + e.getMessage(),
                                 Toast.LENGTH_LONG).show();
 
-                        progressBar.setVisibility(View.GONE);
+                        //progressBar.setVisibility(View.GONE);
+                        progressDialog.hide();
                     }
 
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError volleyError) {
-
+                    VolleyLog.d(TAG, "Error: " + volleyError.getMessage());
+                    progressDialog.hide();
                 }
             }
             ) {

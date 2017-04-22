@@ -164,11 +164,12 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
             case R.id.btm_nav_profile:
                 loginStatus = pref.isLoggedIn();
 
-                menuItem = bottomNavigationView.getMenu().getItem(0);
+
 
 
                 /** If the is logged in, he can proceed! */
                 if(loginStatus){
+                    menuItem = bottomNavigationView.getMenu().getItem(0);
                     ProfileFragment goToProfile = new ProfileFragment();
                     //putExtrasForFragment();
                     //goToProfile.setArguments(extras);
@@ -186,10 +187,11 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
             case R.id.btm_nav_notifications_inbox:
                 loginStatus = pref.isLoggedIn();
 
-                menuItem = bottomNavigationView.getMenu().getItem(1);
+
 
                 /** If the is logged in, he can proceed! */
                 if(loginStatus){
+                    menuItem = bottomNavigationView.getMenu().getItem(1);
                     NotificationsInboxFragment goToNotification = new NotificationsInboxFragment();
                     //putExtrasForFragment();
                     //goToNotification.setArguments(extras);

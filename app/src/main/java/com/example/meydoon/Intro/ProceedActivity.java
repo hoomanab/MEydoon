@@ -68,6 +68,12 @@ public class ProceedActivity extends AppCompatActivity implements ConnectivityRe
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
         finish();

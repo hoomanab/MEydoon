@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.app.ProgressDialog;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -52,6 +52,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
     private Button btnRequestSms, btnVerifyOtp, btnGuestEnter;
     private EditText inputMobile, inputOtp;
     private ProgressBar progressBar;
+    private ProgressDialog progressDialog;
     private PrefManager pref;
     private ImageButton btnEditMobile;
     private TextView txtEditMobile;
@@ -89,6 +90,9 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
         layoutEditMobile = (LinearLayout) view.findViewById(R.id.layout_edit_mobile);
 
         btnGuestEnter = (Button) view.findViewById(R.id.btn_guest_enter);
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("لطفا صبر کنید..");
 
         // view click listeners
         btnEditMobile.setOnClickListener(this);
@@ -146,7 +150,8 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.btn_verify_otp:
-                progressBar.setVisibility(View.VISIBLE);
+                //progressBar.setVisibility(View.VISIBLE);
+                progressDialog.show();
                 verifyOtp();
                 break;
 
@@ -175,7 +180,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
         if (isValidPhoneNumber(mobile)) {
 
             // request for sms
-            progressBar.setVisibility(View.VISIBLE);
+            //progressBar.setVisibility(View.VISIBLE);
 
             // saving the mobile number in shared preferences
             pref.setMobileNumber(mobile);
@@ -214,7 +219,7 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
             e.printStackTrace();
         }
 
-
+        progressDialog.show();
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 Config.URL_REQUEST_SMS, jsonobject_one, new Response.Listener<JSONObject>() {
@@ -242,21 +247,25 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
 
                         Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 
+
                     } else {
                         Toast.makeText(getActivity().getApplicationContext(),
                                 "Error: " + message,
                                Toast.LENGTH_LONG).show();
                     }
+                    progressDialog.hide();
 
                     // hiding the progress bar
-                    progressBar.setVisibility(View.GONE);
+                    //progressBar.setVisibility(View.GONE);
 
                 } catch (JSONException e) {
                     Toast.makeText(getActivity().getApplicationContext(),
                             "Error: " + e.getMessage(),
                             Toast.LENGTH_LONG).show();
 
-                    progressBar.setVisibility(View.GONE);
+                    progressDialog.hide();
+                    //progressBar.setVisibility(View.GONE);
+
                 }
 
             }
@@ -267,7 +276,8 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
                 Log.e(TAG, "Error: " + error.getMessage());
                 Toast.makeText(getActivity().getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.GONE);
+                //progressBar.setVisibility(View.GONE);
+                progressDialog.hide();
             }
         }) {
 
@@ -316,18 +326,20 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
         String otp = inputOtp.getText().toString();
         String mobile = txtEditMobile.getText().toString();
 
+        //progressDialog.show();
 
         if (!otp.isEmpty()) {
-
             Intent grapprIntent = new Intent(getActivity(), VerifyOtpHttpService.class);
             Bundle extras = new Bundle();
             extras.putString("otp", otp);
             extras.putString("user_phone_number",mobile);
             grapprIntent.putExtras(extras);
             getActivity().startService(grapprIntent);
-            progressBar.setVisibility(View.GONE);
+            //progressBar.setVisibility(View.GONE);
+            //progressDialog.hide();
         } else {
-            progressBar.setVisibility(View.GONE);
+            //progressDialog.hide();
+            // progressBar.setVisibility(View.GONE);
             Toast.makeText(getActivity().getApplicationContext(), "لطفا کدی که دریافت کردید رو به صورت کامل وارد کنید!", Toast.LENGTH_SHORT).show();
         }
     }

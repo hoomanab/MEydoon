@@ -26,12 +26,13 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.app.ProgressDialog;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.R;
@@ -471,6 +472,8 @@ public class ShopRegisterFragment extends Fragment {
 
 
     public void submitShop(){
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("لطفا صبر کنید..");
 
         if(shopName.getText().toString().equals("")) {
             Toast.makeText(getActivity().getApplicationContext(), "برای فروشگاهتون اسمی انتخاب نکردید!", Toast.LENGTH_SHORT).show();
@@ -486,7 +489,8 @@ public class ShopRegisterFragment extends Fragment {
 
         } else {
             JSONObject shopJsonObject = new JSONObject();
-            progressBar.setVisibility(View.VISIBLE);
+            //progressBar.setVisibility(View.VISIBLE);
+            progressDialog.show();
             try {
                 shopJsonObject.put("user_id", pref.getUserId());
                 shopJsonObject.put("shop_name", shopName.getText().toString());
@@ -522,14 +526,16 @@ public class ShopRegisterFragment extends Fragment {
                                 "Error: " + e.getMessage(),
                                 Toast.LENGTH_LONG).show();
 
-                        progressBar.setVisibility(View.GONE);
+                        //progressBar.setVisibility(View.GONE);
+                        progressDialog.hide();
                     }
 
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError volleyError) {
-
+                    VolleyLog.d(TAG, "Error: " + volleyError.getMessage());
+                    progressDialog.hide();
                 }
             }
             ) {

@@ -124,14 +124,9 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         listView.setAdapter(listAdapter);
 
         //fetchFeed();
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                listAdapter.clearFeedAdapter();
-                swipeRefreshLayout.setRefreshing(true);
-                fetchFeed();
-            }
-        });
+        swipeRefreshLayout.setOnRefreshListener(this);
+
+
 
         /**
          * Showing Swipe Refresh animation on activity create
@@ -190,12 +185,14 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
      */
     @Override
     public void onRefresh() {
+        listAdapter.clearFeedAdapter();
+        //swipeRefreshLayout.setRefreshing(true);
         fetchFeed();
     }
 
     private void fetchFeed(){
 
-
+        swipeRefreshLayout.setRefreshing(true);
 
         JSONObject feedJsonObject = new JSONObject();
         try {
@@ -313,9 +310,9 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 //item.setShipableStatus(feedObj.getBoolean("shipable"));
 
                 // url might be null sometimes
-                String productTitle = responseObj.isNull("product_name") ? null : responseObj
-                        .getString("product_name");
-                item.setProductTitle(productTitle);
+                //String productTitle = responseObj.isNull("product_name") ? null : responseObj
+                  //      .getString("product_name");
+                item.setProductTitle(responseObj.getString("product_name"));
                 item.setShopPhoneNumber(responseObj.getString("shop_phone"));
                 String shopTelegramId = responseObj.isNull("shop_telegram_id") ? null : responseObj
                         .getString("shop_telegram_id");
