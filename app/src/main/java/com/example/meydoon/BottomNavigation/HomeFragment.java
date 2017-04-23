@@ -37,6 +37,7 @@ import com.example.meydoon.app.AppController;
 import com.example.meydoon.app.Config;
 import com.example.meydoon.data.FeedItem;
 import com.example.meydoon.helper.PrefManager;
+import com.example.meydoon.receiver.ConnectivityReceiver;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,6 +76,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private SwipeRefreshLayout swipeRefreshLayout; /**  ===============> Implement Later <=============== */
 
+    private Cache cache;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,7 +85,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         logginStatus = pref.isLoggedIn();
 
         now = System.currentTimeMillis();
-
+        cache = AppController.getInstance().getRequestQueue().getCache();
         /*if (pref.isLoggedIn()) {
             AddProductActivity addProductActivity = new AddProductActivity();
             addProductActivity.getShopId();
@@ -95,6 +97,14 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     public void onStop() {
         super.onStop();
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (ConnectivityReceiver.isConnected()) {
+            cache.clear();
+        }
     }
 
     @Nullable
@@ -185,7 +195,10 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
      */
     @Override
     public void onRefresh() {
-        listAdapter.clearFeedAdapter();
+        if (ConnectivityReceiver.isConnected()) {
+            cache.clear();
+        }
+        //listAdapter.clearFeedAdapter();
         //swipeRefreshLayout.setRefreshing(true);
         fetchFeed();
     }
@@ -210,7 +223,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         //        new ColorDrawable(getResources().getColor(android.R.color.transparent)));
 
         // We first check for cached request
-        Cache cache = AppController.getInstance().getRequestQueue().getCache();
+        
         Cache.Entry entry = new Cache.Entry();
 
         final long cacheHitButRefreshed = 3 * 60 * 1000;
@@ -334,6 +347,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             e.printStackTrace();
         }
     }
+
 
     /*
     public void loadNextDataFromApi(int offset){
