@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Cache;
@@ -66,9 +67,9 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private PrefManager pref;
     private Boolean logginStatus;
 
-    private int current_page = 1;
+    private int current_page;
 
-    private ProgressDialog pDialog;
+
 
     private Button btnLoadMore;
 
@@ -90,7 +91,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             AddProductActivity addProductActivity = new AddProductActivity();
             addProductActivity.getShopId();
         }*/
-
+        current_page = 1;
     }
 
     @Override
@@ -151,6 +152,13 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                                     }
                                 }
         );
+
+        listView.setOnScrollListener(new EndlessScrollListener() {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount) {
+                loadNextDataFromApi(current_page + 1);
+            }
+        });
 /*
         btnLoadMore = new Button(getActivity());
         btnLoadMore.setText("بیشتر");
@@ -205,6 +213,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private void fetchFeed(){
 
+        listAdapter.clearFeedAdapter();
         swipeRefreshLayout.setRefreshing(true);
 
         JSONObject feedJsonObject = new JSONObject();
@@ -223,7 +232,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         //        new ColorDrawable(getResources().getColor(android.R.color.transparent)));
 
         // We first check for cached request
-        
+
         Cache.Entry entry = new Cache.Entry();
 
         final long cacheHitButRefreshed = 3 * 60 * 1000;
@@ -349,46 +358,80 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
 
-    /*
+
     public void loadNextDataFromApi(int offset){
-        pDialog = new ProgressDialog(getActivity());
+        /*pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage("لطفا صبر کنید..");
         pDialog.setIndeterminate(true);
         pDialog.setCancelable(false);
-        pDialog.show();
+        pDialog.show();*/
 
-        // Next page request
-        URL_FEED = "http://api.androidhive.info/list_paging/?page=" + offset;
+
+
+
+
+        /** Begin ************************************/
+        JSONObject feedJsonObject = new JSONObject();
+        try {
+            feedJsonObject.put("user_id", pref.getUserId());
+            feedJsonObject.put("page_number", offset);
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
 
         // making fresh volley request and getting json
-        JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
-                URL_FEED, null, new Response.Listener<JSONObject>() {
-
+        JsonObjectRequest requestFeed = new JsonObjectRequest(Request.Method.POST,
+                URL_FEED, feedJsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 VolleyLog.d(TAG, "Response: " + response.toString());
                 if (response != null) {
                     parseJsonFeed(response);
+                    //pDialog.hide();
                 }
             }
         }, new Response.ErrorListener() {
-
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Log.e(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "خطا در دریافت اطلاعات ", Toast.LENGTH_SHORT).show();
+
+                //pDialog.hide();
             }
-        });
+        }) {
+
+
+            @Override
+            public String getBodyContentType() {
+                return String.format("application/json; charset=utf-8");
+            }
+
+        };
+
+
+        int socketTimeout = 10000; // 30 seconds. You can change it
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
+        requestFeed.setRetryPolicy(policy);
 
         // Adding request to volley request queue
-        AppController.getInstance().addToRequestQueue(jsonReq);
+        AppController.getInstance().addToRequestQueue(requestFeed);
+
+        /** End **************************************/
+
+
 
         // get listview current position - used to maintain scroll position
-        int currentPosition = listView.getFirstVisiblePosition();
+        //int currentPosition = listView.getFirstVisiblePosition();
 
         // Setting new scroll position
-        listView.setSelectionFromTop(currentPosition + 1, 0);
+        //listView.setSelectionFromTop(currentPosition + 1, 0);
 
-    }*/
+    }
 
 
     /**

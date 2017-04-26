@@ -13,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.meydoon.Intro.IntroFragment;
 import com.example.meydoon.Intro.UserSignUpActivity;
 import com.example.meydoon.MainActivity;
 import com.example.meydoon.app.AppController;
@@ -121,8 +122,8 @@ public class VerifyOtpHttpService extends IntentService {
                     Toast.makeText(getApplicationContext(),
                             "Error: " + e.getMessage(),
                             Toast.LENGTH_LONG).show();
-
-                    progressDialog.hide();
+                    IntroFragment introFragment = new IntroFragment();
+                    introFragment.getActivity().finish();
                 }
 
             }
@@ -133,7 +134,8 @@ public class VerifyOtpHttpService extends IntentService {
                 Log.e(TAG, "Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_SHORT).show();
-                progressDialog.hide();
+                IntroFragment introFragment = new IntroFragment();
+                introFragment.getActivity().finish();
             }
         }) {
 
