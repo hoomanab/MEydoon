@@ -160,9 +160,11 @@
                 android:id="@+id/btn_feed_details"
                 android:layout_width="@dimen/feed_item_button_width"
                 android:layout_height="@dimen/feed_item_button_height"
-                android:background="@drawable/btn"
+                android:background="@drawable/red_btn"
                 android:text="@string/product_details"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:paddingBottom="2dip" />
 
             <TextView
                 android:id="@+id/feed_price"

@@ -144,12 +144,29 @@ public class ContactShopFragment extends Fragment implements View.OnClickListene
             productImage.setVisibility(View.GONE);
         }
 
-        onClick(view);
+        contactCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent call = new Intent(Intent.ACTION_CALL);
+
+                call.setData(Uri.parse("tel:" + shopPhoneNumber));
+                startActivity(call);
+            }
+        });
+
+        contactSms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sms = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + shopPhoneNumber));
+                sms.putExtra("sms_body", "سفارش محصول" + extras.getString("product_name") + "از طرف میدون");
+                startActivity(sms);
+            }
+        });
 
 
     }
 
-
+/**
     public void getProductDetails(){
         JSONObject requestProductJsonObject = new JSONObject();
 
@@ -242,7 +259,7 @@ public class ContactShopFragment extends Fragment implements View.OnClickListene
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(getProductDetails);
 
-    }
+    }*/
 
     @Override
     public void onClick(View view) {
@@ -256,10 +273,7 @@ public class ContactShopFragment extends Fragment implements View.OnClickListene
                 break;
 
             case R.id.contact_shop_call:
-                Intent intent = new Intent(Intent.ACTION_CALL);
 
-                intent.setData(Uri.parse("tel:" + shopPhoneNumber));
-                startActivity(intent);
                 break;
         }
     }
