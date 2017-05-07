@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="@color/white"/>
-    <corners android:radius="3dp" />
-    <stroke android:width="1dip" android:color="#000000" />
+    <!-- view background color -->
+    <solid android:color="@color/meydoonRed" >
+    </solid>
+
+    <stroke android:width="1dip" android:color="@color/meydoonRed" />
     <padding android:top="5dip"/>
+
+    <!-- Here is the corner radius -->
+    <corners android:radius="@dimen/feed_item_corner_radius" >
+    </corners>
 </shape>

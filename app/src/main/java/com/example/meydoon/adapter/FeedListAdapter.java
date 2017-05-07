@@ -166,6 +166,16 @@ public class FeedListAdapter extends BaseAdapter {
                 extras.putString("shop_telegram_id", item.getShopTelegramId());
                 extras.putString("shop_phone_number", item.getShopPhoneNumber());
 
+                extras.putInt("shop_id", item.getShopId());
+                extras.putString("shop_name", item.getShopName());
+                extras.putString("product_picture_address", item.getProductImage());
+                extras.putString("product_description", item.getProductDescription());
+                extras.putString("shop_picture_address", item.getShopProfilePic());
+                extras.putString("product_register_date", item.getProductRegisterDate());
+                extras.putString("product_name", item.getProductTitle());
+                extras.putString("product_price", item.getProductPrice());
+                extras.putInt("product_shippable_status", item.getShipableStatus());
+                extras.putString("shop_city", item.getShopCity());
 
                 Intent prdouctDetailsIntent = new Intent(activity, ProductDetailsActivity.class);
 

@@ -144,12 +144,14 @@
             android:layout_gravity="right"/>-->
 
         <!-- Footer -->
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingTop="20dp"
             android:paddingLeft="@dimen/feed_item_status_pad_left_right"
-            android:paddingRight="@dimen/feed_item_status_pad_left_right">
+            android:paddingRight="@dimen/feed_item_status_pad_left_right"
+            android:layout_gravity="right"
+            android:gravity="right">
 
             <!-- order button
             <Button
@@ -161,17 +163,33 @@
                 android:gravity="center"/>
             -->
             <!-- price -->
+            <LinearLayout
+                android:id="@+id/price_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="5dip">
+                <TextView
+                    android:id="@+id/product_details_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:textSize="@dimen/feed_item_profile_name"
+                    android:textStyle="bold"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:text="10000" />
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/product_details_price"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
                 android:textSize="@dimen/feed_item_profile_name"
                 android:textStyle="bold"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:text="100000 تومان"/>
-        </LinearLayout>
+                android:text="تومان"
+                android:layout_toLeftOf="@+id/price_container" />
+        </RelativeLayout>
 
 
         <!-- Layout container -->
@@ -181,31 +199,36 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="30dip">
 
-
-
-            <TextView
-                android:layout_marginTop="50dip"
+            <View
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                android:text="این شما و این هم فروشگاه!"/>
+                android:layout_height="1dip"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="5dip"/>
+
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textAlignment="center"
-                android:text="امیدواریم خرید موفقی داشته باشید!"/>
+                android:text="سفارش محصول"
+                android:layout_marginTop="10dip"/>
+            <!--<TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:text="امیدواریم خرید موفقی داشته باشید!"/>-->
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="20dip">
+                android:layout_marginTop="10dip">
 
                 <!-- Telegram shop
                 <LinearLayout

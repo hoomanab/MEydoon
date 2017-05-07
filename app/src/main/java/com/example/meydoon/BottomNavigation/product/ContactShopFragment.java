@@ -51,7 +51,7 @@ public class ContactShopFragment extends Fragment implements View.OnClickListene
 
     private Bundle extras;
 
-    private int productId;
+    private int productId, shopId;
     private String shopTelegramId, shopPhoneNumber;
 
     @Override
@@ -85,7 +85,7 @@ public class ContactShopFragment extends Fragment implements View.OnClickListene
         shopTelegramId = extras.getString("shop_telegram_id");
         shopPhoneNumber = extras.getString("shop_phone_number");
 
-        feedItem = new FeedItem();
+
         //contactTelegram = (LinearLayout) view.findViewById(R.id.contact_shop_telegram);
         contactSms = (LinearLayout) view.findViewById(R.id.contact_shop_sms);
         contactCall = (LinearLayout) view.findViewById(R.id.contact_shop_call);
@@ -100,33 +100,35 @@ public class ContactShopFragment extends Fragment implements View.OnClickListene
         txtShipable = (TextView) view.findViewById(R.id.product_details_txt_shipable_status);
         price = (TextView) view.findViewById(R.id.product_details_price);
 
-        getProductDetails();
+        //getProductDetails();
 
-        shopName.setText(feedItem.getShopName());
+        shopName.setText(extras.getString("shop_name"));
+        productName.setText(extras.getString("product_name"));
+        price.setText(extras.getString("product_price"));
 
-        isShipable = feedItem.getShipableStatus();
+        isShipable = extras.getInt("product_shippable_status");
         if(isShipable == 1){
             txtShipable.setVisibility(View.VISIBLE);
         } else {
             txtShipable.setVisibility(View.GONE);
         }
 
-        timeStamp.setText(feedItem.getProductRegisterDate());
-        txtShopCity.setText(feedItem.getShopCity());
+        timeStamp.setText(extras.getString("product_register_date"));
+        txtShopCity.setText(extras.getString("shop_city"));
 
         // Chcek for empty status message
-        if (!TextUtils.isEmpty(feedItem.getProductDescription())) {
-            txtProductDescription.setText(feedItem.getProductDescription());
+        if (!TextUtils.isEmpty(extras.getString("product_description"))) {
+            txtProductDescription.setText(extras.getString("product_description"));
             txtProductDescription.setVisibility(View.VISIBLE);
         } else {
             // status is empty, remove from view
             txtProductDescription.setVisibility(View.GONE);
         }
 
-        shopProfilePic.setImageUrl(feedItem.getShopProfilePic(), imageLoader);
+        shopProfilePic.setImageUrl(extras.getString("shop_picture_address"), imageLoader);
 
-        if (feedItem.getProductImage() != null) {
-            productImage.setImageUrl(feedItem.getProductImage(), imageLoader);
+        if (extras.getString("product_picture_address") != null) {
+            productImage.setImageUrl(extras.getString("product_picture_address"), imageLoader);
             productImage.setVisibility(View.VISIBLE);
             productImage
                     .setResponseObserver(new FeedImageView.ResponseObserver() {
@@ -200,7 +202,7 @@ public class ContactShopFragment extends Fragment implements View.OnClickListene
                         feedItem.setProductPrice(object.getString("product_price"));
                         feedItem.setShipableStatus(object.getInt("product_shippable_status"));
                         feedItem.setShopCity(object.getString("shop_city"));
-                        feedItem.setShopId(object.getInt("shop_table_shop_id"));
+
 
                     } else {
                         Toast.makeText(getActivity().getApplicationContext(),

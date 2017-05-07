@@ -160,8 +160,8 @@
                 android:id="@+id/btn_feed_details"
                 android:layout_width="@dimen/feed_item_button_width"
                 android:layout_height="@dimen/feed_item_button_height"
-                android:background="@color/meydoonRed"
-                android:text="@string/order_product"
+                android:background="@drawable/btn"
+                android:text="@string/product_details"
                 android:gravity="center"/>
 
             <TextView
