@@ -344,6 +344,11 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+
+    public void stopProgressDialog() {
+        progressDialog.hide();
+    }
+
     /**
      * Regex to validate the mobile number
      * mobile number should be of 11 digits length

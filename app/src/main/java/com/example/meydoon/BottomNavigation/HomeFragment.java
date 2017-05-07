@@ -82,16 +82,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        pref = new PrefManager(getActivity().getApplicationContext());
-        logginStatus = pref.isLoggedIn();
 
-        now = System.currentTimeMillis();
-        cache = AppController.getInstance().getRequestQueue().getCache();
-        /*if (pref.isLoggedIn()) {
-            AddProductActivity addProductActivity = new AddProductActivity();
-            addProductActivity.getShopId();
-        }*/
-        current_page = 1;
     }
 
     @Override
@@ -123,6 +114,17 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         ((MainActivity)getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
         ((MainActivity)getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_home);
+
+        pref = new PrefManager(getActivity().getApplicationContext());
+        logginStatus = pref.isLoggedIn();
+
+        now = System.currentTimeMillis();
+        cache = AppController.getInstance().getRequestQueue().getCache();
+        /*if (pref.isLoggedIn()) {
+            AddProductActivity addProductActivity = new AddProductActivity();
+            addProductActivity.getShopId();
+        }*/
+        current_page = 1;
 
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.home_swipe_refresh_layout);
 
@@ -205,6 +207,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     public void onRefresh() {
         if (ConnectivityReceiver.isConnected()) {
             cache.clear();
+
         }
         //listAdapter.clearFeedAdapter();
         //swipeRefreshLayout.setRefreshing(true);

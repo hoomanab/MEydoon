@@ -110,10 +110,12 @@ public class VerifyOtpHttpService extends IntentService {
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);*/
 
-                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "شما وارد میدون شدید!", Toast.LENGTH_LONG).show();
 
                     } else {
-                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "کدی که وارد کردید معتبر نیست!", Toast.LENGTH_LONG).show();
+                        IntroFragment introFragment = new IntroFragment();
+                        introFragment.stopProgressDialog();
                     }
 
 
@@ -133,7 +135,7 @@ public class VerifyOtpHttpService extends IntentService {
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
+                       "ورود شما موفقیت آمیز نبود. لطقا مجدد امتحان کنید!", Toast.LENGTH_LONG).show();
                 IntroFragment introFragment = new IntroFragment();
                 introFragment.getActivity().finish();
             }

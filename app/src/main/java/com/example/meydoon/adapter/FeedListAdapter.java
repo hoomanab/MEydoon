@@ -166,6 +166,7 @@ public class FeedListAdapter extends BaseAdapter {
                 extras.putString("shop_telegram_id", item.getShopTelegramId());
                 extras.putString("shop_phone_number", item.getShopPhoneNumber());
 
+
                 Intent prdouctDetailsIntent = new Intent(activity, ProductDetailsActivity.class);
 
                 prdouctDetailsIntent.putExtras(extras);

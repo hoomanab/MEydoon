@@ -1,158 +1,333 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dip">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_parent_rounded_corner"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/feed_item_padding_top_bottom"
+    android:paddingTop="@dimen/feed_item_padding_top_bottom"
+    android:layout_gravity="right"
+    android:gravity="right">
 
-    <!-- Layout container -->
     <LinearLayout
-        android:id="@+id/layout_contact_shop_container"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center_horizontal"
         android:orientation="vertical">
 
-
-
-        <TextView
-            android:layout_marginTop="100dip"
+        <!-- shop profile pic, name and date -->
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textAlignment="center"
-            android:text="این شما و این هم فروشگاه!"/>
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/feed_item_padding_left_right"
+            android:paddingRight="@dimen/feed_item_padding_left_right"
+            android:layout_gravity="right"
+            android:gravity="right">
+
+            <LinearLayout
+                android:id="@+id/product_details_shop_profile_pic_containter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/feed_item_profile_info_padd"
+                android:layout_alignParentRight="true">
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/product_details_shop_profile_Pic"
+                    android:layout_width="@dimen/feed_item_profile_pic"
+                    android:layout_height="@dimen/feed_item_profile_pic"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/default_shop"/>
+            </LinearLayout>
+
+            <!-- shop name -->
+            <TextView
+                android:id="@+id/product_details_shop_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/feed_item_profile_name"
+                android:textStyle="bold"
+                android:text="@string/name"
+                android:textColor="@color/black"
+                android:layout_toLeftOf="@+id/product_details_shop_profile_pic_containter"
+                android:layout_marginRight="5dip"/>
+
+            <!-- timestamp -->
+            <TextView
+                android:id="@+id/product_details_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/timestamp"
+                android:textSize="@dimen/feed_item_timestamp"
+                android:layout_toLeftOf="@+id/product_details_shop_profile_pic_containter"
+                android:text="زمان"
+                android:layout_below="@+id/product_details_shop_name"
+                android:layout_marginRight="5dip"/>
+
+            <!-- shop city -->
+            <TextView
+                android:id="@+id/product_details_feed_item_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/timestamp"
+                android:textSize="@dimen/feed_item_timestamp"
+                android:textStyle="bold"
+                android:text="شهر"
+                android:layout_toLeftOf="@+id/product_details_shop_profile_pic_containter"
+                android:layout_below="@+id/product_details_timestamp"
+                android:layout_marginRight="5dip"/>
+
+            <!-- =======================> Add option button here! <======================= -->
+
+        </RelativeLayout>
+
+
+        <!-- Product image -->
+        <com.example.meydoon.FeedImageView
+            android:id="@+id/product_details_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:scaleType="fitXY"
+            android:visibility="visible"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dip"/>
+
+        <!-- product title -->
         <TextView
+            android:id="@+id/product_Details_txt_product_title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textAlignment="center"
-            android:text="امیدواریم خرید موفقی داشته باشید!"/>
+            android:textSize="@dimen/feed_item_product_title"
+            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+            android:paddingRight="@dimen/feed_item_status_pad_left_right"
+            android:paddingTop="@dimen/feed_item_status_pad_top"
+            android:textStyle="bold"
+            android:gravity="right"
+            android:text="عنوان محصول"/>
 
+        <TextView
+            android:id="@+id/product_details_txt_shipable_status"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/feed_item_timestamp"
+            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+            android:paddingRight="@dimen/feed_item_status_pad_left_right"
+            android:layout_marginBottom="5dip"
+            android:textStyle="bold"
+            android:gravity="right"
+            android:text="@string/shipable"
+            android:textColor="@color/greenSignIn"/>
+
+        <!-- product details -->
+        <TextView
+            android:id="@+id/product_details_txt_status_msg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+            android:paddingRight="@dimen/feed_item_status_pad_left_right"
+            android:layout_gravity="right"
+            android:gravity="right" />
+
+
+
+        <!-- URL
+        <TextView
+            android:id="@+id/txtUrl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:linksClickable="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+            android:paddingRight="@dimen/feed_item_status_pad_left_right"
+            android:textColorLink="@color/link"
+            android:layout_gravity="right"/>-->
+
+        <!-- Footer -->
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="60dip">
+            android:paddingTop="20dp"
+            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+            android:paddingRight="@dimen/feed_item_status_pad_left_right">
 
-            <!-- Telegram shop -->
-            <LinearLayout
-                android:id="@+id/contact_shop_telegram"
+            <!-- order button
+            <Button
+                android:id="@+id/product_details_btn_order_product"
+                android:layout_width="@dimen/feed_item_button_width"
+                android:layout_height="@dimen/feed_item_button_height"
+                android:background="@color/meydoonRed"
+                android:text="سفارش محصول"
+                android:gravity="center"/>
+            -->
+            <!-- price -->
+            <TextView
+                android:id="@+id/product_details_price"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/telegram_icon_container"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_alignParentRight="true">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_telegram"/>
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_toLeftOf="@+id/telegram_icon_container"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:text="ارسال پیام تلگرام به فروشگاه"
-                        android:gravity="center_vertical"
-                        android:layout_marginTop="25dip"
-                        android:layout_marginRight="5dip"/>
-
-                </RelativeLayout>
-            </LinearLayout>
+                android:paddingTop="5dp"
+                android:textSize="@dimen/feed_item_profile_name"
+                android:textStyle="bold"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="100000 تومان"/>
+        </LinearLayout>
 
 
-            <!-- Text shop -->
-            <LinearLayout
-                android:id="@+id/contact_shop_sms"
+        <!-- Layout container -->
+        <LinearLayout
+            android:id="@+id/layout_contact_shop_container"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:layout_marginTop="50dip"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:text="این شما و این هم فروشگاه!"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:text="امیدواریم خرید موفقی داشته باشید!"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_marginTop="20dip">
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
 
-                    <LinearLayout
-                        android:id="@+id/sms_icon_container"
+                <!-- Telegram shop
+                <LinearLayout
+                    android:id="@+id/contact_shop_telegram"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_alignParentRight="true">
-                        <ImageView
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/telegram_icon_container"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_sms"/>
+                            android:orientation="horizontal"
+                            android:layout_alignParentRight="true">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_telegram"/>
 
-                    </LinearLayout>
+                        </LinearLayout>
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/sms_icon_container"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:text="ارسال پیامک به فروشگاه"
-                        android:gravity="center_vertical"
-                        android:layout_marginTop="25dip"
-                        android:layout_marginRight="5dip"/>
-
-                </RelativeLayout>
-            </LinearLayout>
-
-            <!-- Call shop -->
-            <LinearLayout
-                android:id="@+id/contact_shop_call"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dip">
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/call_icon_container"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_alignParentRight="true">
-                        <ImageView
+                        <TextView
+                            android:layout_toLeftOf="@+id/telegram_icon_container"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_call"/>
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:text="ارسال پیام تلگرام به فروشگاه"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="25dip"
+                            android:layout_marginRight="5dip"/>
 
-                    </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>-->
 
-                    <TextView
-                        android:layout_toLeftOf="@+id/call_icon_container"
+
+                <!-- SMS shop -->
+                <LinearLayout
+                    android:id="@+id/contact_shop_sms"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:layout_marginRight="10dip">
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:text="تماس با فروشگاه"
-                        android:gravity="center_vertical"
-                        android:layout_marginTop="25dip"
-                        android:layout_marginRight="5dip"/>
+                        android:layout_height="match_parent">
 
-                </RelativeLayout>
+                        <LinearLayout
+                            android:id="@+id/sms_icon_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_alignParentRight="true">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_sms"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_toLeftOf="@+id/sms_icon_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:text="ارسال پیامک به فروشگاه"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="25dip"
+                            android:layout_marginRight="5dip"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <!-- Call shop -->
+                <LinearLayout
+                    android:id="@+id/contact_shop_call"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:layout_marginRight="10dip">
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/call_icon_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_alignParentRight="true">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_call"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_toLeftOf="@+id/call_icon_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:text="تماس با فروشگاه"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="25dip"
+                            android:layout_marginRight="5dip"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+
             </LinearLayout>
 
 
         </LinearLayout>
 
-
     </LinearLayout>
 
-</LinearLayout>
+
+</ScrollView>

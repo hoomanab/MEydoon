@@ -26,6 +26,7 @@ import com.example.meydoon.R;
 import com.example.meydoon.adapter.ProfileGridAdapter;
 import com.example.meydoon.app.AppController;
 import com.example.meydoon.data.ProfileGridItem;
+import com.example.meydoon.helper.ExpandableHeightGridView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,13 +44,13 @@ public class ProfileFragment extends Fragment {
 
     private static final String TAG = ProfileFragment.class.getSimpleName();
 
-    ImageButton profilePic;
-    TextView followers, following, productCounter;
-    Button btnProfileAction;
+    private ImageButton profilePic;
+    private TextView followers, following, productCounter;
+    private Button btnProfileAction;
 
-    GridView gridView;
-    ProfileGridAdapter profileGridAdapter;
-    List<ProfileGridItem> profileGridItems;
+    private ExpandableHeightGridView gridView;
+    private ProfileGridAdapter profileGridAdapter;
+    private List<ProfileGridItem> profileGridItems;
 
     private String URL_PROFILE = "https://api.myjson.com/bins/15zt0l";
 
@@ -86,7 +87,9 @@ public class ProfileFragment extends Fragment {
 
         /** Getting shop information */
 
-        gridView = (GridView) view.findViewById(R.id.profile_grid_view);
+        gridView = (ExpandableHeightGridView) view.findViewById(R.id.profile_grid_view);
+        gridView.setExpanded(true);
+
         profileGridItems = new ArrayList<ProfileGridItem>();
 
         profileGridAdapter = new ProfileGridAdapter(getActivity(), profileGridItems);

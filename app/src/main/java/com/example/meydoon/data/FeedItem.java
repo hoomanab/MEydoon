@@ -104,7 +104,7 @@ public class FeedItem {
     }
 
     public void setShopTelegramId(String shopTelegramId) {
-        this.productTitle = shopTelegramId;
+        this.shopTelegramId = shopTelegramId;
     }
 
     public String getProductTitle() {

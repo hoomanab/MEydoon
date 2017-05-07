@@ -9,6 +9,7 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 
     <application
@@ -74,7 +75,7 @@
             android:theme="@style/CustomTheme"
             android:windowSoftInputMode="adjustPan"/>
 
-        <activity android:name=".BottomNavigation.profile.ProductDetailsActivity"
+        <activity android:name=".BottomNavigation.product.ProductDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CustomTheme"
             android:windowSoftInputMode="adjustPan"/>
