@@ -158,7 +158,8 @@ public class ContactShopFragment extends Fragment implements View.OnClickListene
             @Override
             public void onClick(View view) {
                 Intent sms = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + shopPhoneNumber));
-                sms.putExtra("sms_body", "سفارش محصول" + extras.getString("product_name") + "از طرف میدون");
+                sms.putExtra("sms_body", "سلام! من درخواست سفارش محصول"+ " " + extras.getString("product_name") + " "
+                        + "رو از فروشگاه شما توی برنامه میدون دارم!");
                 startActivity(sms);
             }
         });
