@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +39,9 @@ public class AddProductActivity extends AppCompatActivity implements Connectivit
 
     private JSONObject requestShopIdJS;
 
-    public static Activity activity;
+
+
+    int shopId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,10 +49,12 @@ public class AddProductActivity extends AppCompatActivity implements Connectivit
         pref = new PrefManager(getApplicationContext());
         pref.checkLogin();
 
-        activity = this;
+
 
         /** Get user's shopID from server */
         getShopId();
+
+        //pref.setShopId(shopId);
 
         setContentView(R.layout.add_product_fragment);
 
@@ -94,6 +99,7 @@ public class AddProductActivity extends AppCompatActivity implements Connectivit
     }
 
     public void getShopId(){
+
         requestShopIdJS = new JSONObject();
         try {
 
@@ -118,6 +124,7 @@ public class AddProductActivity extends AppCompatActivity implements Connectivit
                     if (error.equals("0")) {
                         // boolean flag saying device is waiting for sms
                         pref.setShopId(jsonObject.getInt("shop_id"));
+
 
 
                     } else {
@@ -158,6 +165,12 @@ public class AddProductActivity extends AppCompatActivity implements Connectivit
         jsonObjectRequest.setRetryPolicy(policy);
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(jsonObjectRequest);
+
+    }
+
+    public int retrieveShopId (){
+        getShopId();
+        return shopId;
     }
 
     // Method to manually check connection status
@@ -188,7 +201,19 @@ public class AddProductActivity extends AppCompatActivity implements Connectivit
     @Override
     protected void onStop() {
         super.onStop();
-        finish();
+        //finish();
+    }
+
+
+    // Kill app on back button
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     /**

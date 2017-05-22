@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="fill_parent"
+    android:orientation="vertical" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/white">
 
     <LinearLayout
+        android:id="@+id/profile_swipe_refresh_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -29,10 +30,10 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="10dip">
 
-                <ImageButton
-                    android:id="@+id/imgBtn_shop_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/shop_profile_pic"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/default_shop"
                     android:background="@color/white"/>
 
@@ -41,6 +42,7 @@
 
 
             <Button
+                android:id="@+id/profile_action_btn"
                 android:background="@drawable/btn"
                 android:layout_toLeftOf="@+id/profile_image_container"
                 android:layout_below="@+id/above_btn_container"
@@ -72,7 +74,7 @@
                     android:layout_marginBottom="5dip">
 
                     <TextView
-                        android:id="@+id/txt_followers_number"
+                        android:id="@+id/profile_txt_followers_number"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -91,7 +93,7 @@
                 </LinearLayout>
 
 
-                <!-- Following counter -->
+                <!-- Following counter
                 <LinearLayout
                     android:id="@+id/products_following_container"
                     android:layout_width="fill_parent"
@@ -101,7 +103,7 @@
                     android:layout_marginBottom="5dip">
 
                     <TextView
-                        android:id="@+id/txt_following_number"
+                        android:id="@+id/profile_txt_following_number"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -117,7 +119,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:text="دنبال شونده"/>
-                </LinearLayout>
+                </LinearLayout> -->
 
 
                 <!-- Followers counter -->
@@ -130,7 +132,7 @@
                     android:layout_marginBottom="5dip">
 
                     <TextView
-                        android:id="@+id/txt_products_counter"
+                        android:id="@+id/profile_txt_products_counter"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -170,6 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true">
                 <TextView
+                    android:id="@+id/profile_shop_name_txt"
                     android:text="نام فروشگاه"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -180,7 +183,7 @@
 
 
             <TextView
-                android:id="@+id/txt_shop_city"
+                android:id="@+id/profile_txt_shop_city"
                 android:text="تهران"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
@@ -208,12 +211,23 @@
 
             <TextView
                 android:text="توضیحات فروشگاه"
-                android:id="@+id/txt_shop_desctiption"
+                android:id="@+id/profile_txt_shop_description"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/txt_shop_category"
                 android:layout_marginTop="15dip"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:text="آدرس فروشگاه"
+                android:id="@+id/profile_txt_shop_address"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/profile_txt_shop_description"
+                android:layout_marginTop="20dip"
                 android:textSize="15sp"
                 android:textColor="@color/black"/>
 

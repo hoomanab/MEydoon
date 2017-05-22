@@ -90,4 +90,10 @@ public class ProfileGridAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+
+    public void clearGridAdapter() {
+        profileGridItems.clear();
+        notifyDataSetChanged();
+    }
 }

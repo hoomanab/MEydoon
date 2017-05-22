@@ -164,22 +164,36 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
         switch (item.getItemId()) {
             case R.id.btm_nav_profile:
                 loginStatus = pref.isLoggedIn();
-
+                AddProductActivity addProductActivity = new AddProductActivity();
+                int shopId = pref.getShopId();
 
 
 
                 /** If the is logged in, he can proceed! */
                 if(loginStatus){
-                    menuItem = bottomNavigationView.getMenu().getItem(0);
-                    ProfileFragment goToProfile = new ProfileFragment();
-                    //putExtrasForFragment();
-                    //goToProfile.setArguments(extras);
 
-                    FragmentTransaction profileFragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    profileFragmentTransaction.replace(R.id.main_container, goToProfile);
-                    profileFragmentTransaction.commit();
+                    if(shopId != 0){
+                        menuItem = bottomNavigationView.getMenu().getItem(0);
+                        ProfileFragment goToProfile = new ProfileFragment();
+                        //putExtrasForFragment();
+                        //goToProfile.setArguments(extras);
+                        Bundle extras = new Bundle();
+                        extras.putInt("shop_id", shopId);
+                        goToProfile.setArguments(extras);
 
-                }else {
+                        FragmentTransaction profileFragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        profileFragmentTransaction.replace(R.id.main_container, goToProfile);
+                        profileFragmentTransaction.commit();
+                    } else {
+                        /** ====================> This class forwards user to add_shop_fragment if it doesn't have a shop! <====================*/
+                        Intent registerShopIntent = new Intent(MainActivity.this, AddProductActivity.class);
+                        //putExtrasForFragment();
+                        //intent.putExtras(extras);
+                        startActivity(registerShopIntent);
+                    }
+
+
+                } else {
                     /** If the user is a guest, he will be redirected to loggin fragment */
                     startActivity(new Intent(this, ProceedActivity.class));
                 }
