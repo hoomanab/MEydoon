@@ -22,14 +22,11 @@ import android.widget.Toast;
 
 import com.android.volley.Cache;
 import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 //import com.example.meydoon.EndlessScrollListener;
 import com.example.meydoon.BottomNavigation.AddProduct.AddProductActivity;
@@ -68,48 +65,25 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private String URL_FEED = Config.URL_HOME_FEED;
 
     private PrefManager pref;
-    private Boolean logginStatus, allowScroll;
+    private Boolean logginStatus;
 
     private int current_page;
-    private int mCurCheckPosition;
 
-    private Bundle savedState = null;
+
 
     private Button btnLoadMore;
 
     private MenuItem menuItem;
 
-    private SwipeRefreshLayout swipeRefreshLayout;
-    /**
-     * ===============> Implement Later <===============
-     */
+    private SwipeRefreshLayout swipeRefreshLayout; /**  ===============> Implement Later <=============== */
 
     private Cache cache;
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        cache = AppController.getInstance().getRequestQueue().getCache();
-        allowScroll = true;
+
     }
-
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (savedInstanceState != null) {
-            // Restore last state for checked position.
-            mCurCheckPosition = savedInstanceState.getInt("curChoice", 0);
-        }
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("curChoice", mCurCheckPosition);
-    }
-
 
     @Override
     public void onStop() {
@@ -137,15 +111,15 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         /** Custom Action Bar*/
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_home);
+        ((MainActivity)getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((MainActivity)getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_home);
 
         pref = new PrefManager(getActivity().getApplicationContext());
         logginStatus = pref.isLoggedIn();
 
         now = System.currentTimeMillis();
-
+        cache = AppController.getInstance().getRequestQueue().getCache();
         /*if (pref.isLoggedIn()) {
             AddProductActivity addProductActivity = new AddProductActivity();
             addProductActivity.getShopId();
@@ -154,7 +128,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.home_swipe_refresh_layout);
 
-        listView = (ListView) view.findViewById(R.id.list);
+        listView = (ListView)view.findViewById(R.id.list);
 
         feedItems = new ArrayList<FeedItem>();
 
@@ -162,9 +136,9 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         listAdapter = new FeedListAdapter(getActivity(), feedItems);
         listView.setAdapter(listAdapter);
 
-        swipeRefreshLayout.setRefreshing(true);
-
+        //fetchFeed();
         swipeRefreshLayout.setOnRefreshListener(this);
+
 
 
         /**
@@ -181,13 +155,10 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                                 }
         );
 
-
         listView.setOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
-                if (allowScroll) {
-                    loadNextDataFromApi(current_page + 1);
-                }
+                loadNextDataFromApi(current_page + 1);
             }
         });
 /*
@@ -218,13 +189,13 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             }
         });*/
 
-        // listView.setOnScrollListener(new EndlessScrollListener() {
-        //     @Override
-        //     public boolean onLoadMore(int page, int totalItemsCount) {
-        //new LoadMoreListView().execute();
-        //return true;
+       // listView.setOnScrollListener(new EndlessScrollListener() {
+       //     @Override
+       //     public boolean onLoadMore(int page, int totalItemsCount) {
+                //new LoadMoreListView().execute();
+                //return true;
         //    }
-        //  });
+      //  });
 
 
     }
@@ -243,9 +214,9 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         fetchFeed();
     }
 
-    private void fetchFeed() {
+    private void fetchFeed(){
 
-
+        listAdapter.clearFeedAdapter();
         swipeRefreshLayout.setRefreshing(true);
 
         JSONObject feedJsonObject = new JSONObject();
@@ -253,7 +224,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             feedJsonObject.put("user_id", pref.getUserId());
             feedJsonObject.put("page_number", 1);
 
-        } catch (JSONException e) {
+        }catch (JSONException e){
             e.printStackTrace();
         }
 
@@ -265,11 +236,10 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         // We first check for cached request
 
-
         Cache.Entry entry = new Cache.Entry();
 
-        final long cacheHitButRefreshed = 10 * 1000;
-        final long cacheExpired = 24 * 60 * 60 * 1000;
+        final long cacheHitButRefreshed = 3 * 60 * 1000;
+        final long cacheExpired = 5 * 24 * 60 * 60 * 1000;
         final long softExpire = now + cacheHitButRefreshed;
         final long ttl = now + cacheExpired;
 
@@ -282,7 +252,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             try {
                 String data = new String(entry.data, "UTF-8");
                 try {
-                    refreshParseJsonFeed(new JSONObject(data));
+                    parseJsonFeed(new JSONObject(data));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -293,30 +263,15 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         } else {
 
 
+
             // making fresh volley request and getting json
             JsonObjectRequest requestFeed = new JsonObjectRequest(Request.Method.POST,
                     URL_FEED, feedJsonObject, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     VolleyLog.d(TAG, "Response: " + response.toString());
-                    try {
-                        // Parsing json object response
-                        // response will be a json object
-                        String error = response.getString("error");
-
-                        // checking for error, if not error SMS is initiated
-                        // device should receive it shortly
-                        if (error.equals("0")) {
-                            refreshParseJsonFeed(response);
-                        } else if (error.equals("1")) {
-                            Toast.makeText(getActivity().getApplicationContext(),
-                                    "محصولی وجود ندارد!",
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    } catch (JSONException e) {
-                        Toast.makeText(getActivity().getApplicationContext(),
-                                "خطا در دریافت اطلاعات!",
-                                Toast.LENGTH_LONG).show();
+                    if (response != null) {
+                        parseJsonFeed(response);
                     }
                 }
             }, new Response.ErrorListener() {
@@ -324,12 +279,13 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 public void onErrorResponse(VolleyError error) {
                     Log.e(TAG, "Error: " + error.getMessage());
                     Toast.makeText(getActivity().getApplicationContext(),
-                            "خطا در دریافت اطلاعات. ممکنه به اینترنت متصل نباشید!", Toast.LENGTH_SHORT).show();
+                            error.getMessage(), Toast.LENGTH_SHORT).show();
 
                     // stopping swipe refresh
                     swipeRefreshLayout.setRefreshing(false);
                 }
             }) {
+
 
                 @Override
                 public String getBodyContentType() {
@@ -339,7 +295,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             };
 
 
-            int socketTimeout = 10000; // 10 seconds. You can change it
+            int socketTimeout = 10000; // 30 seconds. You can change it
             RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
@@ -353,7 +309,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     /**
      * Parsing json reponse and passing the data to feed view list adapter
-     */
+     * */
     private void parseJsonFeed(JSONObject response) {
         try {
             JSONArray feedArray = response.getJSONArray("Feed");
@@ -380,63 +336,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
                 // url might be null sometimes
                 //String productTitle = responseObj.isNull("product_name") ? null : responseObj
-                //      .getString("product_name");
-                item.setProductTitle(responseObj.getString("product_name"));
-                item.setShopPhoneNumber(responseObj.getString("shop_phone"));
-                String shopTelegramId = responseObj.isNull("shop_telegram_id") ? null : responseObj
-                        .getString("shop_telegram_id");
-                item.setShopTelegramId(shopTelegramId);
-                item.setProductPrice(responseObj.getString("product_price"));
-                item.setShipableStatus(responseObj.getInt("product_shippable_status"));
-                item.setShopCity(responseObj.getString("shop_city"));
-
-
-                feedItems.add(item);
-            }
-
-            // notify data changes to list adapater
-            listAdapter.notifyDataSetChanged();
-
-            // stopping swipe refresh
-            //swipeRefreshLayout.setRefreshing(false);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    /**
-     * Parsing json reponse and passing the data to feed view list adapter
-     */
-    private void refreshParseJsonFeed(JSONObject response) {
-        try {
-            listAdapter.clearFeedAdapter();
-
-            JSONArray feedArray = response.getJSONArray("Feed");
-
-            for (int i = 0; i < feedArray.length(); i++) {
-                JSONObject responseObj = (JSONObject) feedArray.get(i);
-
-                FeedItem item = new FeedItem();
-                item.setProductId(responseObj.getInt("product_id"));
-                item.setShopId(responseObj.getInt("shop_id"));
-                item.setShopName(responseObj.getString("shop_name"));
-
-                // Image might be null sometimes
-                String productImage = responseObj.isNull("product_picture_address") ? null : responseObj
-                        .getString("product_picture_address");
-                item.setProductImage(productImage);
-                item.setProductDescription(responseObj.getString("product_description"));
-
-                String shopImage = responseObj.isNull("shop_picture_address") ? null : responseObj
-                        .getString("shop_picture_address");
-                item.setShopProfilePic(responseObj.getString("shop_picture_address"));
-                item.setProductRegisterDate(responseObj.getString("product_register_date"));
-                //item.setShipableStatus(feedObj.getBoolean("shipable"));
-
-                // url might be null sometimes
-                //String productTitle = responseObj.isNull("product_name") ? null : responseObj
-                //      .getString("product_name");
+                  //      .getString("product_name");
                 item.setProductTitle(responseObj.getString("product_name"));
                 item.setShopPhoneNumber(responseObj.getString("shop_phone"));
                 String shopTelegramId = responseObj.isNull("shop_telegram_id") ? null : responseObj
@@ -461,12 +361,16 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
 
-    public void loadNextDataFromApi(int offset) {
-        final ProgressDialog pDialog = new ProgressDialog(getActivity());
+
+    public void loadNextDataFromApi(int offset){
+        /*pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage("لطفا صبر کنید..");
         pDialog.setIndeterminate(true);
         pDialog.setCancelable(false);
-        pDialog.show();
+        pDialog.show();*/
+
+
+
 
 
         /** Begin ************************************/
@@ -475,7 +379,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             feedJsonObject.put("user_id", pref.getUserId());
             feedJsonObject.put("page_number", offset);
 
-        } catch (JSONException e) {
+        }catch (JSONException e){
             e.printStackTrace();
         }
 
@@ -485,25 +389,9 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             @Override
             public void onResponse(JSONObject response) {
                 VolleyLog.d(TAG, "Response: " + response.toString());
-                try {
-                    // Parsing json object response
-                    // response will be a json object
-                    String error = response.getString("error");
-
-                    // checking for error, if not error SMS is initiated
-                    // device should receive it shortly
-                    if (error.equals("0")) {
-                        parseJsonFeed(response);
-                        pDialog.hide();
-                    } else if (error.equals("1")) {
-                        allowScroll = false;
-                        pDialog.hide();
-                    }
-                } catch (JSONException e) {
-                    Toast.makeText(getActivity().getApplicationContext(),
-                            "خطا در دریافت اطلاعات!",
-                            Toast.LENGTH_LONG).show();
-                    pDialog.hide();
+                if (response != null) {
+                    parseJsonFeed(response);
+                    //pDialog.hide();
                 }
             }
         }, new Response.ErrorListener() {
@@ -512,7 +400,6 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 Log.e(TAG, "Error: " + error.getMessage());
                 Toast.makeText(getActivity().getApplicationContext(),
                         "خطا در دریافت اطلاعات ", Toast.LENGTH_SHORT).show();
-                pDialog.hide();
 
                 //pDialog.hide();
             }
@@ -540,6 +427,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         /** End **************************************/
 
 
+
         // get listview current position - used to maintain scroll position
         //int currentPosition = listView.getFirstVisiblePosition();
 
@@ -548,33 +436,23 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        if (swipeRefreshLayout != null) {
-            swipeRefreshLayout.setRefreshing(false);
-            swipeRefreshLayout.destroyDrawingCache();
-            swipeRefreshLayout.clearAnimation();
-        }
-    }
 
     /**
      * Async Task that send a request to url
      * Gets new list view data
      * Appends to list view
-     **/
+     *
     public class LoadMoreListView extends AsyncTask<Void, Void, Void> {
 
 
         @Override
         protected void onPreExecute() {
-            /* Showing progress dialog before sending http request
+            // Showing progress dialog before sending http request
             pDialog = new ProgressDialog(getActivity());
             pDialog.setMessage("Please wait..");
             pDialog.setIndeterminate(true);
             pDialog.setCancelable(false);
-            pDialog.show();*/
+            pDialog.show();
 
 
         }
@@ -623,9 +501,9 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         protected void onPostExecute(Void unused) {
             // closing progress dialog
-            //            pDialog.dismiss();
+//            pDialog.dismiss();
         }
-    }
+    }*/
 }
 
 
