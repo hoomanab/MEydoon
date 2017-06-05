@@ -231,7 +231,7 @@ public class ProfileFragment extends Fragment  {
 
         Cache.Entry entry = new Cache.Entry();
 
-        final long cacheHitButRefreshed = 3 * 60 * 1000;
+        final long cacheHitButRefreshed = 10 * 1000;
         final long cacheExpired = 5 * 24 * 60 * 1000;
         final long softExpire = now + cacheHitButRefreshed;
         final long ttl = now + cacheExpired;
@@ -274,9 +274,6 @@ public class ProfileFragment extends Fragment  {
                 }
             });
 
-
-
-
             profileInfoJsonRequest.setRetryPolicy(policy);
 
             // Adding request to volley request queue
@@ -310,9 +307,6 @@ public class ProfileFragment extends Fragment  {
             }
 
         } else {
-
-
-
 
             // making fresh volley request and getting json
             JsonObjectRequest getShopProductsJsonReq = new JsonObjectRequest(Request.Method.POST,
@@ -486,14 +480,12 @@ public class ProfileFragment extends Fragment  {
             profileGridJsonObject.put("user_id", pref.getUserId());
             profileGridJsonObject.put("page_number", offset);
             profileGridJsonObject.put("shop_id", reveivedExtras.getInt("shop_id"));
-
-
         }catch (JSONException e){
             e.printStackTrace();
         }
 
         // making fresh volley request and getting json
-        JsonObjectRequest requestFeed = new JsonObjectRequest(Request.Method.POST,
+        JsonObjectRequest requestProduct = new JsonObjectRequest(Request.Method.POST,
                 Config.URL_SHOP_PROFILE_PRODUCTS, profileGridJsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -523,15 +515,10 @@ public class ProfileFragment extends Fragment  {
         };
 
 
-        int socketTimeout = 10000; // 30 seconds. You can change it
-        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-
-        requestFeed.setRetryPolicy(policy);
+        requestProduct.setRetryPolicy(policy);
 
         // Adding request to volley request queue
-        AppController.getInstance().addToRequestQueue(requestFeed);
+        AppController.getInstance().addToRequestQueue(requestProduct);
 
         /** End **************************************/
 

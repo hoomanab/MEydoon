@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
     private MenuItem menuItem = null;
 
 
+
     /* =====================> Products and shops tabs will not be in the MVP
     private int[] tabIcons = {
            // R.drawable.ic_product_filter_tab,
@@ -78,6 +79,10 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+
+        }
 
         Log.v(TAG, "MainActivity created!");
 
@@ -134,11 +139,21 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
             }
         });
 
+        bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
+                bottomNavReselectedItem(item);
+            }
+        });
+
+
+
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
         /** Making Home the initial selected item */
         bottomNavigationView.getMenu().getItem(4).setChecked(true);
         bottomNavSelectedItem(bottomNavigationView.getMenu().getItem(4));
+
 
 
 
@@ -284,6 +299,124 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
                 break;
         }
     }
+
+    /** Bottom navigation selection */
+    public void bottomNavReselectedItem(MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.btm_nav_profile:
+                loginStatus = pref.isLoggedIn();
+                AddProductActivity addProductActivity = new AddProductActivity();
+                int shopId = pref.getShopId();
+
+
+
+                /** If the is logged in, he can proceed! */
+                if(loginStatus){
+
+                    if(shopId != 0){
+                        menuItem = bottomNavigationView.getMenu().getItem(0);
+                        getSupportFragmentManager().popBackStack();
+                    } else {
+                        /** ====================> This class forwards user to add_shop_fragment if it doesn't have a shop! <====================*/
+                        Intent registerShopIntent = new Intent(MainActivity.this, AddProductActivity.class);
+                        //putExtrasForFragment();
+                        //intent.putExtras(extras);
+                        startActivity(registerShopIntent);
+                    }
+
+
+                } else {
+                    /** If the user is a guest, he will be redirected to loggin fragment */
+                    startActivity(new Intent(this, ProceedActivity.class));
+                }
+                break;
+
+            case R.id.btm_nav_notifications_inbox:
+                loginStatus = pref.isLoggedIn();
+
+
+
+                /** If the is logged in, he can proceed! */
+                if(loginStatus){
+                    menuItem = bottomNavigationView.getMenu().getItem(1);
+                    NotificationsInboxFragment goToNotification = new NotificationsInboxFragment();
+                    //putExtrasForFragment();
+                    //goToNotification.setArguments(extras);
+
+                    FragmentTransaction notificationsFragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    notificationsFragmentTransaction.replace(R.id.main_container, goToNotification);
+                    notificationsFragmentTransaction.commit();
+                }else {
+                    /** If the user is a guest, he will be redirected to loggin fragment */
+                    startActivity(new Intent(this, ProceedActivity.class));
+                }
+                break;
+
+            case R.id.btm_nav_add_item:
+                //Intent goToAddProduct = new Intent(getBaseContext(), AddProductActivity.class);
+                //goToAddProduct.putExtra("Previously Selected Menu Item", bottomNavigationView.getMenu().getItem(4).toString());
+                loginStatus = pref.isLoggedIn();
+
+
+                /** Making Home the initial selected item */
+
+                //menuItem = bottomNavigationView.getMenu().getItem(4);
+
+                /** If the is logged in, he can proceed! */
+                if(loginStatus){
+                    /** ====================> Check if the user has shop! <====================*/
+                    Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
+                    //putExtrasForFragment();
+                    //intent.putExtras(extras);
+                    startActivity(intent);
+                }else {
+                    /** If the user is a guest, he will be redirected to loggin fragment */
+
+                    startActivity(new Intent(this, ProceedActivity.class));
+                }
+
+
+                /** ===============> On back-press menu item selected previously not implemented! */
+                break;
+
+            case R.id.btm_nav_search:
+                SearchFragment gotToSearch = new SearchFragment();
+
+                menuItem = bottomNavigationView.getMenu().getItem(3);
+
+                FragmentTransaction searchFragmentTransaction = getSupportFragmentManager().beginTransaction();
+                searchFragmentTransaction.replace(R.id.main_container, gotToSearch);
+                searchFragmentTransaction.commit();
+                // In case this activity was started with special instructions from an
+                // Intent, pass the Intent's extras to the fragment as arguments
+                //gotToSearch.setArguments(getIntent().getExtras());
+
+                // Add the fragment to the 'fragment_container' FrameLayout
+                break;
+
+            case R.id.btm_nav_home:
+
+                menuItem = bottomNavigationView.getMenu().getItem(4);
+
+                /** In Home, we should check if the user is guest or not to show products accordingly! */
+                // Create a new Fragment to be placed in the activity layout
+                HomeFragment goToHome = new HomeFragment();
+                //putExtrasForFragment();
+                //goToHome.setArguments(extras);
+
+                FragmentTransaction homeFragmentTransaction = getSupportFragmentManager().beginTransaction();
+                homeFragmentTransaction.replace(R.id.main_container, goToHome);
+                homeFragmentTransaction.commit();
+                // In case this activity was started with special instructions from an
+                // Intent, pass the Intent's extras to the fragment as arguments
+                //goToHome.setArguments(getIntent().getExtras());
+
+                // Add the fragment to the 'fragment_container' FrameLayout
+
+                break;
+        }
+    }
+
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
