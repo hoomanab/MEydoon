@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/home_swipe_refresh_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
 
 
     <ListView
@@ -14,6 +12,20 @@
         android:divider="@null" />
 
 
+    <!--<Button
+        android:id="@+id/btn_load_more_feed"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/feed_list_view_container"
+        android:background="@drawable/blue_btn"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20dip"
+        android:padding="20dip"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="20dip"
+        android:text="بیشتر" />-->
 
 
-</android.support.v4.widget.SwipeRefreshLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>

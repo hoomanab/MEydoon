@@ -6,6 +6,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,18 +55,19 @@ import java.util.List;
 /**
  * Created by hooma on 2/8/2017.
  */
-public class ProfileFragment extends Fragment  {
+public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private long now;
 
     private static final String TAG = ProfileFragment.class.getSimpleName();
 
     private ImageButton profilePic;
     private TextView followers, following, productCounter, shopName,
-            shopAddress,shopCity, shopCategoryName, shopDescription;
+            shopAddress, shopCity, shopCategoryName, shopDescription;
     private Button btnProfileAction;
     private NetworkImageView shopProfilePic;
 
     private ExpandableHeightGridView gridView;
+    private ListView profileListView;
     private ProfileGridAdapter profileGridAdapter;
     private List<ProfileGridItem> profileGridItems;
 
@@ -91,7 +94,11 @@ public class ProfileFragment extends Fragment  {
 
     private GradientDrawable colorForbutton;
 
-    ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+    private FragmentActivity activity = getActivity();
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    private ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -119,10 +126,9 @@ public class ProfileFragment extends Fragment  {
         super.onViewCreated(view, savedInstanceState);
 
         /** Custom Action Bar*/
-        ((MainActivity)getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
-        ((MainActivity)getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_shop_profile);
-
+        ((MainActivity) getActivity()).getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ((MainActivity) getActivity()).getSupportActionBar().setCustomView(R.layout.actionbar_shop_profile);
 
 
         pref = new PrefManager(getActivity().getApplicationContext());
@@ -133,8 +139,22 @@ public class ProfileFragment extends Fragment  {
 
         shopInfoItem = new ShopInfoItem();
 
+        View profileHeader = (View) getLayoutInflater(savedInstanceState).inflate(R.layout.profile_info, null);
 
-        followers = (TextView) view.findViewById(R.id.profile_txt_followers_number);
+        followers = (TextView) profileHeader.findViewById(R.id.profile_txt_followers_number);
+        //following = (TextView) view.findViewById(R.id.profile_txt_following_number);
+        productCounter = (TextView) profileHeader.findViewById(R.id.profile_txt_products_counter);
+        shopName = (TextView) profileHeader.findViewById(R.id.profile_shop_name_txt);
+        shopCity = (TextView) profileHeader.findViewById(R.id.profile_txt_shop_city);
+        shopCategoryName = (TextView) profileHeader.findViewById(R.id.txt_shop_category);
+        shopDescription = (TextView) profileHeader.findViewById(R.id.profile_txt_shop_description);
+        shopAddress = (TextView) profileHeader.findViewById(R.id.profile_txt_shop_address);
+        shopProfilePic = (NetworkImageView) profileHeader.findViewById(R.id.shop_profile_pic);
+        btnProfileAction = (Button) profileHeader.findViewById(R.id.profile_action_btn);
+
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.profile_swipe_refresh_layout);
+
+        /*followers = (TextView) view.findViewById(R.id.profile_txt_followers_number);
         //following = (TextView) view.findViewById(R.id.profile_txt_following_number);
         productCounter = (TextView) view.findViewById(R.id.profile_txt_products_counter);
         shopName = (TextView) view.findViewById(R.id.profile_shop_name_txt);
@@ -143,29 +163,31 @@ public class ProfileFragment extends Fragment  {
         shopDescription = (TextView) view.findViewById(R.id.profile_txt_shop_description);
         shopAddress = (TextView) view.findViewById(R.id.profile_txt_shop_address);
         shopProfilePic = (NetworkImageView) view.findViewById(R.id.shop_profile_pic);
-        btnProfileAction = (Button) view.findViewById(R.id.profile_action_btn);
-
+        btnProfileAction = (Button) view.findViewById(R.id.profile_action_btn);*/
 
 
         //swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.profile_swipe_refresh_layout);
 
         /** Getting shop information */
 
-        gridView = (ExpandableHeightGridView) view.findViewById(R.id.profile_grid_view);
-        gridView.setExpanded(true);
+        //gridView = (ExpandableHeightGridView) view.findViewById(R.id.profile_grid_view);
+        //gridView.setExpanded(true);
 
+        profileListView = (ListView) view.findViewById(R.id.profile_list);
+
+        profileListView.addHeaderView(profileHeader);
         profileGridItems = new ArrayList<ProfileGridItem>();
 
         profileGridAdapter = new ProfileGridAdapter(getActivity(), profileGridItems);
+        profileListView.setAdapter(profileGridAdapter);
 
-        gridView.setAdapter(profileGridAdapter);
-
-        fetchData();
-
+        swipeRefreshLayout.setOnRefreshListener(this);
 
 
+        //gridView.setAdapter(profileGridAdapter);
 
 
+        //fetchData();
 
 
         btnProfileAction.setOnClickListener(new View.OnClickListener() {
@@ -175,21 +197,10 @@ public class ProfileFragment extends Fragment  {
             }
         });
 
-        gridView.setOnScrollListener(new EndlessScrollListener() {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount) {
-                loadNextDataFromApi(currentPage + 1);
-            }
-        });
-
-
-
-        //swipeRefreshLayout.setOnRefreshListener(this);
-
         /**
-         * Showing Swipe Refresh animation on activity create
-         * As animation won't start on onCreate, post runnable is used
-
+        * Showing Swipe Refresh animation on activity create
+                * As animation won't start on onCreate, post runnable is used
+                */
         swipeRefreshLayout.post(new Runnable() {
                                     @Override
                                     public void run() {
@@ -198,35 +209,57 @@ public class ProfileFragment extends Fragment  {
                                         fetchData();
                                     }
                                 }
-        );*/
+        );
 
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*gridView.setOnScrollListener(new EndlessScrollListener() {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount) {
+                loadNextDataFromApi(currentPage + 1);
+            }
+        });*/
+
+
+        //swipeRefreshLayout.setOnRefreshListener(this);
+
+        /**
+         * Showing Swipe Refresh animation on activity create
+         * As animation won't start on onCreate, post runnable is used
+
+         swipeRefreshLayout.post(new Runnable() {
+        @Override public void run() {
+        //listView.setAdapter(null);
+        swipeRefreshLayout.setRefreshing(true);
+        fetchData();
+        }
+        }
+         );*/
+
+
+        /*gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                /** Go to ProductDetailsActivity */
+                /** Go to ProductDetailsActivity
 
             }
-        });
+        });*/
 
     }
-
 
 
     public void fetchData() {
 
         profileGridAdapter.clearGridAdapter();
-        //swipeRefreshLayout.setRefreshing(true);
+        swipeRefreshLayout.setRefreshing(true);
 
         JSONObject profileInfoJsonObject = new JSONObject();
         try {
             profileInfoJsonObject.put("user_id", pref.getUserId());
             profileInfoJsonObject.put("shop_id", reveivedExtras.getInt("shop_id"));
 
-        } catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
 
         Cache.Entry entry = new Cache.Entry();
@@ -271,10 +304,14 @@ public class ProfileFragment extends Fragment  {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG, "Error: " + error.getMessage());
+
+                    swipeRefreshLayout.setRefreshing(false);
+
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "خطا در دریافت اطلاعات!", Toast.LENGTH_SHORT).show();
+
                 }
             });
-
-
 
 
             profileInfoJsonRequest.setRetryPolicy(policy);
@@ -290,7 +327,7 @@ public class ProfileFragment extends Fragment  {
             profileProductsJsonObject.put("shop_id", reveivedExtras.getInt("shop_id"));
             profileProductsJsonObject.put("user_id", pref.getUserId());
 
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
@@ -312,10 +349,8 @@ public class ProfileFragment extends Fragment  {
         } else {
 
 
-
-
             // making fresh volley request and getting json
-            JsonObjectRequest getShopProductsJsonReq = new JsonObjectRequest(Request.Method.POST,
+            final JsonObjectRequest getShopProductsJsonReq = new JsonObjectRequest(Request.Method.POST,
                     getShopProductsUrl, profileProductsJsonObject, new Response.Listener<JSONObject>() {
 
                 @Override
@@ -330,11 +365,15 @@ public class ProfileFragment extends Fragment  {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG, "Error: " + error.getMessage());
+
+                    swipeRefreshLayout.setRefreshing(false);
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "خطا در دریافت اطلاعات!", Toast.LENGTH_SHORT).show();
                 }
             });
 
 
-            //swipeRefreshLayout.setRefreshing(false);
+
 
             getShopProductsJsonReq.setRetryPolicy(policy);
             // Adding request to volley request queue
@@ -343,10 +382,9 @@ public class ProfileFragment extends Fragment  {
     }
 
 
-
     /**
      * Parsing json reponse and passing the data to feed view list adapter
-     * */
+     */
     private void parseJsonShopInfo(JSONObject responseObj) {
         try {
 
@@ -381,7 +419,7 @@ public class ProfileFragment extends Fragment  {
                 shopInfoItem.setShopDescription(profileInfoJsonObject.getString("shop_description"));
                 shopInfoItem.setShopIsVerified(profileInfoJsonObject.getInt("is_verified"));
 
-
+                swipeRefreshLayout.setRefreshing(false);
                 setProfileInfo();
 
             } else {
@@ -404,7 +442,7 @@ public class ProfileFragment extends Fragment  {
         shopCity.setText(shopInfoItem.getShopCity());
         shopCategoryName.setText(shopInfoItem.getShopCategoryName());
         shopDescription.setText(shopInfoItem.getShopDescription());
-        shopAddress.setText("آدرس: "  + shopInfoItem.getShopAddress());
+        shopAddress.setText("آدرس: " + shopInfoItem.getShopAddress());
         shopProfilePic.setImageUrl(shopInfoItem.getShopProfilePic(), imageLoader);
 
         colorForbutton = new GradientDrawable();
@@ -426,7 +464,7 @@ public class ProfileFragment extends Fragment  {
             colorForbutton.setCornerRadius(3);
             colorForbutton.setStroke(1, getResources().getColor(R.color.black));
             btnProfileAction.setTextColor(getResources().getColor(R.color.black));
-                    }
+        }
         if (!(shopInfoItem.getViewerIsOwnerStatus()) && !(shopInfoItem.getviewerIsFollowerStatus())) {
             btnProfileAction.setText("دنبال کن");
 
@@ -442,7 +480,7 @@ public class ProfileFragment extends Fragment  {
 
     /**
      * Parsing json reponse and passing the data to feed view list adapter
-     * */
+     */
     private void parseJsonProfileGrid(JSONObject response) {
         try {
             JSONArray profileGridArray = response.getJSONArray("product_details");
@@ -461,6 +499,7 @@ public class ProfileFragment extends Fragment  {
                 profileGridItems.add(item);
             }
 
+            swipeRefreshLayout.setRefreshing(false);
             // notify data changes to list adapater
             profileGridAdapter.notifyDataSetChanged();
         } catch (JSONException e) {
@@ -469,15 +508,12 @@ public class ProfileFragment extends Fragment  {
     }
 
 
-    public void loadNextDataFromApi(int offset){
+    public void loadNextDataFromApi(int offset) {
         /*pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage("لطفا صبر کنید..");
         pDialog.setIndeterminate(true);
         pDialog.setCancelable(false);
         pDialog.show();*/
-
-
-
 
 
         /** Begin ************************************/
@@ -488,7 +524,7 @@ public class ProfileFragment extends Fragment  {
             profileGridJsonObject.put("shop_id", reveivedExtras.getInt("shop_id"));
 
 
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
@@ -536,7 +572,6 @@ public class ProfileFragment extends Fragment  {
         /** End **************************************/
 
 
-
         // get listview current position - used to maintain scroll position
         //int currentPosition = listView.getFirstVisiblePosition();
 
@@ -546,4 +581,14 @@ public class ProfileFragment extends Fragment  {
     }
 
 
+    @Override
+    public void onRefresh() {
+        if (ConnectivityReceiver.isConnected()) {
+            cache.clear();
+
+        }
+        //listAdapter.clearFeedAdapter();
+        //swipeRefreshLayout.setRefreshing(true);
+        fetchData();
+    }
 }

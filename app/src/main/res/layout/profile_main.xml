@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/profile_swipe_refresh_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/white">
 
-    <LinearLayout
-        android:id="@+id/profile_swipe_refresh_layout"
+    <!--<LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- top of the profile which contains image, button and followers -->
+         top of the profile which contains image, button and followers
         <RelativeLayout
             android:id="@+id/profile_top"
             android:layout_width="fill_parent"
@@ -19,10 +20,10 @@
             android:paddingLeft="20dip"
             android:paddingRight="20dip"
             android:layout_marginTop="40dip"
-            android:paddingBottom="10dip">
+            android:paddingBottom="10dip">-->
 
 
-            <!-- shop profile pic -->
+            <!-- shop profile pic
             <LinearLayout
                 android:id="@+id/profile_image_container"
                 android:layout_width="wrap_content"
@@ -50,21 +51,21 @@
                 android:layout_height="wrap_content"
                 android:text="آزمایش"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp" />-->
 
 
 
-            <!-- Above Button Container -->
+            <!-- Above Button Container
             <RelativeLayout
                 android:id="@+id/above_btn_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toLeftOf="@+id/profile_image_container"
                 android:paddingRight="10dip"
-                android:paddingLeft="10dip">
+                android:paddingLeft="10dip">-->
 
 
-                <!-- products counter -->
+                <!-- products counter
                 <LinearLayout
                     android:id="@+id/followers_container"
                     android:layout_width="wrap_content"
@@ -90,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:text="محصولات"/>
-                </LinearLayout>
+                </LinearLayout>-->
 
 
                 <!-- Following counter
@@ -122,7 +123,7 @@
                 </LinearLayout> -->
 
 
-                <!-- Followers counter -->
+                <!-- Followers counter
                 <LinearLayout
                     android:id="@+id/products_counter_container"
                     android:layout_width="wrap_content"
@@ -150,15 +151,15 @@
                         android:text="دنبال کننده"/>
                 </LinearLayout>
 
-            </RelativeLayout>
-            <!-- End of above button container -->
+            </RelativeLayout>-->
+            <!-- End of above button container
 
 
-        </RelativeLayout>
+        </RelativeLayout>-->
         <!-- End of Profile top -->
 
 
-        <!-- shop information -->
+        <!-- shop information
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -232,11 +233,18 @@
                 android:textColor="@color/black"/>
 
 
-        </RelativeLayout>
+        </RelativeLayout>-->
         <!-- Shop Information Ends -->
 
 
-        <!-- gridview of profile -->
+        <ListView
+            android:id="@+id/profile_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null" />
+
+
+        <!-- gridview of profile
         <com.example.meydoon.helper.ExpandableHeightGridView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/profile_grid_view"
             android:layout_width="wrap_content"
@@ -252,9 +260,9 @@
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:isScrollContainer="false"/>
-    </LinearLayout>
+    </LinearLayout>-->
 
 
 
 
-</ScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>

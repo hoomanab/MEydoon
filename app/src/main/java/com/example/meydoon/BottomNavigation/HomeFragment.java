@@ -2,13 +2,17 @@ package com.example.meydoon.BottomNavigation;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -79,6 +83,12 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private Cache cache;
 
+    private ProgressDialog pDialog;
+
+    private GradientDrawable colorForbutton;
+
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +128,8 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         pref = new PrefManager(getActivity().getApplicationContext());
         logginStatus = pref.isLoggedIn();
 
+
+
         now = System.currentTimeMillis();
         cache = AppController.getInstance().getRequestQueue().getCache();
         /*if (pref.isLoggedIn()) {
@@ -129,6 +141,22 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.home_swipe_refresh_layout);
 
         listView = (ListView)view.findViewById(R.id.list);
+        //btnLoadMore = (Button) view.findViewById(R.id.btn_load_more_feed);
+        btnLoadMore = new Button(getActivity());
+        btnLoadMore.setVisibility(View.GONE);
+        btnLoadMore.setText("بیشتر");
+
+        /*colorForbutton = new GradientDrawable();
+        colorForbutton.setColor(getResources().getColor(R.color.blue)); // Changes this drawbale to use a single color instead of a gradient
+        colorForbutton.setCornerRadius(3);
+        colorForbutton.setStroke(1, getResources().getColor(R.color.black));
+
+        btnLoadMore.setBackgroundDrawable(colorForbutton);
+        btnLoadMore.setTextColor(getResources().getColor(R.color.white));*/
+
+        //btnLoadMore.setPadding(0, 20, 0 ,20);
+
+        listView.addFooterView(btnLoadMore);
 
         feedItems = new ArrayList<FeedItem>();
 
@@ -138,6 +166,14 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         //fetchFeed();
         swipeRefreshLayout.setOnRefreshListener(this);
+
+
+        btnLoadMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new LoadMoreListView(getActivity(), listView).execute();
+            }
+        });
 
 
 
@@ -155,12 +191,12 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                                 }
         );
 
-        listView.setOnScrollListener(new EndlessScrollListener() {
+        /*listView.setOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
                 loadNextDataFromApi(current_page + 1);
             }
-        });
+        });*/
 /*
         btnLoadMore = new Button(getActivity());
         btnLoadMore.setText("بیشتر");
@@ -215,6 +251,8 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
     private void fetchFeed(){
+
+        btnLoadMore.setVisibility(View.GONE);
 
         listAdapter.clearFeedAdapter();
         swipeRefreshLayout.setRefreshing(true);
@@ -272,6 +310,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                     VolleyLog.d(TAG, "Response: " + response.toString());
                     if (response != null) {
                         parseJsonFeed(response);
+                        btnLoadMore.setVisibility(View.VISIBLE);
                     }
                 }
             }, new Response.ErrorListener() {
@@ -389,10 +428,27 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             @Override
             public void onResponse(JSONObject response) {
                 VolleyLog.d(TAG, "Response: " + response.toString());
-                if (response != null) {
-                    parseJsonFeed(response);
-                    //pDialog.hide();
+
+                try {
+                    // Parsing json object response
+                    // response will be a json object
+                    String error = response.getString("error");
+                    String statusCode = response.getString("StatusCode");
+
+                    // checking for error, if not error SMS is initiated
+                    // device should receive it shortly
+                    if (error.equals("0")) {
+                        parseJsonFeed(response);
+                    } else if (error.equals("1") && statusCode.equals("1000")) {
+
+                        /** Continue From HERE ================================================ */
+                        btnLoadMore.setVisibility(View.INVISIBLE);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -441,15 +497,22 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
      * Async Task that send a request to url
      * Gets new list view data
      * Appends to list view
-     *
+     **/
     public class LoadMoreListView extends AsyncTask<Void, Void, Void> {
 
+        private ListView mListView;
+        private FragmentActivity mContext;
+
+        public LoadMoreListView(FragmentActivity context, ListView lView){
+            this.mContext = context;
+            this.mListView = lView;
+        }
 
         @Override
         protected void onPreExecute() {
             // Showing progress dialog before sending http request
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait..");
+            pDialog.setMessage("دریافت محصولات بیشتر..");
             pDialog.setIndeterminate(true);
             pDialog.setCancelable(false);
             pDialog.show();
@@ -463,33 +526,11 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                     // increment current page
                     current_page += 1;
 
-                    // Next page request
-                    URL_FEED = "http://api.androidhive.info/list_paging/?page=" + current_page;
-
-                    // making fresh volley request and getting json
-                    JsonObjectRequest jsonReq = new JsonObjectRequest(Request.Method.GET,
-                            URL_FEED, null, new Response.Listener<JSONObject>() {
-
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            VolleyLog.d(TAG, "Response: " + response.toString());
-                            if (response != null) {
-                                parseJsonFeed(response);
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            VolleyLog.d(TAG, "Error: " + error.getMessage());
-                        }
-                    });
-
-                    // Adding request to volley request queue
-                    AppController.getInstance().addToRequestQueue(jsonReq);
+                    loadNextDataFromApi(current_page);
 
                     // get listview current position - used to maintain scroll position
                     int currentPosition = listView.getFirstVisiblePosition();
+
 
                     // Setting new scroll position
                     listView.setSelectionFromTop(currentPosition + 1, 0);
@@ -501,9 +542,9 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         protected void onPostExecute(Void unused) {
             // closing progress dialog
-//            pDialog.dismiss();
+            pDialog.dismiss();
         }
-    }*/
+    }
 }
 
 
