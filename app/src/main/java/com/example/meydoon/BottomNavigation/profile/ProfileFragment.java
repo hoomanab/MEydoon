@@ -1,8 +1,10 @@
 package com.example.meydoon.BottomNavigation.profile;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -63,7 +65,7 @@ public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRe
     private ImageButton profilePic;
     private TextView followers, following, productCounter, shopName,
             shopAddress, shopCity, shopCategoryName, shopDescription;
-    private Button btnProfileAction;
+    private Button btnProfileAction, btnLoadMore;
     private NetworkImageView shopProfilePic;
 
     private ExpandableHeightGridView gridView;
@@ -100,9 +102,13 @@ public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
     private ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
+    private ProgressDialog pDialog;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        currentPage = 1;
 
         socketTimeout = 10000; // 30 seconds. You can change it
         policy = new DefaultRetryPolicy(socketTimeout,
@@ -175,6 +181,23 @@ public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
         profileListView = (ListView) view.findViewById(R.id.profile_list);
 
+        //btnLoadMore = (Button) view.findViewById(R.id.btn_load_more_feed);
+        btnLoadMore = new Button(getActivity());
+        btnLoadMore.setVisibility(View.GONE);
+        btnLoadMore.setText("بیشتر");
+
+        /*colorForbutton = new GradientDrawable();
+        colorForbutton.setColor(getResources().getColor(R.color.blue)); // Changes this drawbale to use a single color instead of a gradient
+        colorForbutton.setCornerRadius(3);
+        colorForbutton.setStroke(1, getResources().getColor(R.color.black));
+
+        btnLoadMore.setBackgroundDrawable(colorForbutton);
+        btnLoadMore.setTextColor(getResources().getColor(R.color.white));*/
+
+        //btnLoadMore.setPadding(0, 20, 0 ,20);
+
+        profileListView.addFooterView(btnLoadMore);
+
         profileListView.addHeaderView(profileHeader);
         profileGridItems = new ArrayList<ProfileGridItem>();
 
@@ -210,6 +233,13 @@ public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRe
                                     }
                                 }
         );
+
+        btnLoadMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new LoadMoreListView(getActivity(), profileListView).execute();
+            }
+        });
 
 
         /*gridView.setOnScrollListener(new EndlessScrollListener() {
@@ -249,6 +279,7 @@ public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
     public void fetchData() {
 
+        btnLoadMore.setVisibility(View.GONE);
         profileGridAdapter.clearGridAdapter();
         swipeRefreshLayout.setRefreshing(true);
 
@@ -297,6 +328,7 @@ public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRe
                     VolleyLog.d(TAG, "Response: " + response.toString());
                     if (response != null) {
                         parseJsonShopInfo(response);
+                        btnLoadMore.setVisibility(View.VISIBLE);
                     }
                 }
             }, new Response.ErrorListener() {
@@ -590,5 +622,67 @@ public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRe
         //listAdapter.clearFeedAdapter();
         //swipeRefreshLayout.setRefreshing(true);
         fetchData();
+    }
+
+
+    /**
+     * Async Task that send a request to url
+     * Gets new list view data
+     * Appends to list view
+     **/
+    public class LoadMoreListView extends AsyncTask<Void, Void, Void> {
+
+        private ListView mListView;
+        private FragmentActivity mContext;
+
+        public LoadMoreListView(FragmentActivity context, ListView lView){
+            this.mContext = context;
+            this.mListView = lView;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // Showing progress dialog before sending http request
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("دریافت محصولات بیشتر..");
+            pDialog.setIndeterminate(true);
+            pDialog.setCancelable(false);
+            pDialog.show();
+
+
+        }
+
+        protected Void doInBackground(Void... unused) {
+            getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    // increment current page
+                    currentPage += 1;
+
+                    loadNextDataFromApi(currentPage);
+
+                    // get listview current position - used to maintain scroll position
+                    int currentPosition = profileListView.getFirstVisiblePosition();
+
+
+                    // Setting new scroll position
+                    profileListView.setSelectionFromTop(currentPosition + 1, 0);
+
+                }
+            });
+            return (null);
+        }
+
+        protected void onPostExecute(Void unused) {
+            // closing progress dialog
+            pDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (ConnectivityReceiver.isConnected()) {
+            cache.clear();
+        }
     }
 }
