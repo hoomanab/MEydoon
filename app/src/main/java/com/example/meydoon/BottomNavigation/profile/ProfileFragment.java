@@ -527,6 +527,8 @@ public class ProfileFragment extends Fragment implements SwipeRefreshLayout.OnRe
                         .getString("product_picture_address");
                 item.setProductImage(image);
                 item.setProductPrice(profileGridObj.getString("product_price"));
+                item.setProductTitle(profileGridObj.getString("product_name"));
+                item.setProductRegisterDate(profileGridObj.getString("product_register_date"));
 
                 profileGridItems.add(item);
             }

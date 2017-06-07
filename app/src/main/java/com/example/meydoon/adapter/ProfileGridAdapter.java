@@ -61,6 +61,8 @@ public class ProfileGridAdapter extends BaseAdapter {
         if (imageLoader == null)
             imageLoader = AppController.getInstance().getImageLoader();
 
+        TextView productTitle = (TextView) convertView.findViewById(R.id.grid_product_title);
+        TextView productRegisterDate = (TextView) convertView.findViewById(R.id.grid_product_register_date);
         TextView productPrice = (TextView) convertView.findViewById(R.id.grid_product_price);
         NetworkImageView gridImageView = (NetworkImageView) convertView
                 .findViewById(R.id.grid_image);
@@ -68,6 +70,8 @@ public class ProfileGridAdapter extends BaseAdapter {
         final ProfileGridItem item = profileGridItems.get(position);
 
         productPrice.setText(item.getProductPrice());
+        productTitle.setText(item.getProductTitle());
+        productRegisterDate.setText(item.getProductRegisterDate());
         gridImageView.setImageUrl(item.getProductImage(), imageLoader);
 
 
